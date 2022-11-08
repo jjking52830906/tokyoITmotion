@@ -56,7 +56,7 @@ public class MainMenuFrame extends JFrame {
 		lblNewLabel_1.setIcon(new ImageIcon(MainMenuFrame.class.getResource("/image/white_00032.jpg")));
 		panel.add(lblNewLabel_1);
 		
-		JButton btnlogin = new JButton("ログイン");
+		JButton btnlogin = new JButton("ログイン!");
 		btnlogin.setBackground(new Color(255, 255, 255));
 		btnlogin.setBounds(487, 6, 117, 29);
 		contentPane.add(btnlogin);
