@@ -3,6 +3,7 @@ package view;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -11,7 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class MainMenuFrame extends JFrame {
+public class MainMenuFrame extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 
@@ -66,19 +67,19 @@ public class MainMenuFrame extends JFrame {
 		btnRegister.setBounds(616, 6, 117, 29);
 		contentPane.add(btnRegister);
 		
-		JButton btnNewButton = new JButton("空き状況");
-		btnNewButton.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-		btnNewButton.setBounds(506, 385, 227, 58);
-		contentPane.add(btnNewButton);
+		JButton btnAva = new JButton("空き状況");
+		btnAva.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		btnAva.setBounds(506, 385, 227, 58);
+		contentPane.add(btnAva);
 		
-		JButton btnNewButton_1 = new JButton("予約確認");
-		btnNewButton_1.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-		btnNewButton_1.setBounds(506, 467, 227, 58);
-		contentPane.add(btnNewButton_1);
+		JButton btnReserve = new JButton("予約確認");
+		btnReserve.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		btnReserve.setBounds(506, 467, 227, 58);
+		contentPane.add(btnReserve);
 		
-		JButton btnNewButton_2 = new JButton("予約登録");
-		btnNewButton_2.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-		btnNewButton_2.setBounds(506, 556, 227, 58);
-		contentPane.add(btnNewButton_2);
+		JButton btnReserveRegister = new JButton("予約登録");
+		btnReserveRegister.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		btnReserveRegister.setBounds(506, 556, 227, 58);
+		contentPane.add(btnReserveRegister);
 	}
 }
