@@ -61,7 +61,7 @@ public class jjregisterFrame extends javax.swing.JFrame {
 		lblNewLabel.setBounds(12, 32, 90, 27);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("パスワード");
+		JLabel lblNewLabel_1 = new JLabel("パスワード!");
 		lblNewLabel_1.setBounds(12, 79, 90, 27);
 		contentPane.add(lblNewLabel_1);
 		
