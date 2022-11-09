@@ -155,7 +155,7 @@ public class JFrame extends javax.swing.JFrame {
 		btnNewButton.setBounds(123, 351, 113, 41);
 		contentPane.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("キャンセル!");
+		JButton btnNewButton_1 = new JButton("キャンセル");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
