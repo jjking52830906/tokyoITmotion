@@ -21,7 +21,7 @@ public class ControlDBAccess {
             // JDBCドライバのロード
             Class.forName("com.mysql.cj.jdbc.Driver");
             // データベース接続
-            con = DriverManager.getConnection("jdbc:mysql://localhost:65534/test_db?serverTimezone=JST", "root", "root");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_db?serverTimezone=JST", "user", "pass");
             // SQL実行準備
             stmt = con.prepareStatement(sql);
             // 実行結果取得
@@ -37,7 +37,7 @@ public class ControlDBAccess {
         } catch (ClassNotFoundException e) {
             System.out.println("JDBCドライバのロードでエラーが発生しました");
         } catch (SQLException e) {
-            System.out.println("データベースへのアクセスでエラーが発生しました。1");
+            System.out.println("データベースへのアクセスでエラーが発生しました。");
         } finally {
             try {
                 if (con != null) {
