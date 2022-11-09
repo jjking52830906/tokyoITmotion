@@ -22,7 +22,9 @@ public class ControlDBAccess {
             Class.forName("com.mysql.cj.jdbc.Driver");
             // データベース接続
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_db?serverTimezone=JST", "user", "pass");
-            // SQL実行準備
+            // SQL実行準備3
+            
+            
             stmt = con.prepareStatement(sql);
             // 実行結果取得
             rs = stmt.executeQuery();
