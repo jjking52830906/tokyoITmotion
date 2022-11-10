@@ -73,23 +73,23 @@ public class Jjsearch extends JFrame {
 		contentPane.add(lblNewLabel_4);
 		
 		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setBounds(98, 104, 30, 21);
+		comboBox_2.setBounds(98, 104, 39, 21);
 		contentPane.add(comboBox_2);
 		
 		JLabel lblNewLabel_5 = new JLabel("～");
-		lblNewLabel_5.setBounds(182, 108, 30, 13);
+		lblNewLabel_5.setBounds(193, 108, 30, 13);
 		contentPane.add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_6 = new JLabel("時");
-		lblNewLabel_6.setBounds(132, 108, 21, 13);
+		lblNewLabel_6.setBounds(149, 108, 21, 13);
 		contentPane.add(lblNewLabel_6);
 		
 		JComboBox comboBox_3 = new JComboBox();
-		comboBox_3.setBounds(235, 104, 30, 21);
+		comboBox_3.setBounds(244, 104, 37, 21);
 		contentPane.add(comboBox_3);
 		
 		JLabel lblNewLabel_7 = new JLabel("時");
-		lblNewLabel_7.setBounds(272, 108, 21, 13);
+		lblNewLabel_7.setBounds(293, 108, 21, 13);
 		contentPane.add(lblNewLabel_7);
 		
 		JLabel lblNewLabel_8 = new JLabel("施設");
@@ -105,10 +105,11 @@ public class Jjsearch extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("キャンセル");
-		btnNewButton_1.setBounds(258, 218, 91, 21);
+		btnNewButton_1.setBounds(258, 218, 104, 21);
 		contentPane.add(btnNewButton_1);
 		
 		JComboBox comboBox_5 = new JComboBox();
+		comboBox_5.setModel(new DefaultComboBoxModel(new String[] {"2022", "2023"}));
 		comboBox_5.setBounds(98, 41, 96, 21);
 		contentPane.add(comboBox_5);
 	}
