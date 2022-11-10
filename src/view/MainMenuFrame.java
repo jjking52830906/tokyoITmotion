@@ -2,8 +2,6 @@ package view;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -12,14 +10,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class MainMenuFrame extends JFrame implements ActionListener{
+public class MainMenuFrame extends JFrame {
 
 	private JPanel GazouPane;
-	private JButton Login;
-	private JButton Register;
-	private JButton Availability;
-	private JButton BookingConfirmation;
-	private JButton ReservationRegistration;
+	
 	
 	
 
@@ -53,44 +47,34 @@ public class MainMenuFrame extends JFrame implements ActionListener{
 		btnlogin.setBackground(new Color(255, 255, 255));
 		btnlogin.setBounds(487, 6, 117, 29);
 		GazouPane.add(btnlogin);
-		getContentPane().add(Login);
+		
 		
 		JButton btnRegister = new JButton("登録");
 		btnRegister.setBackground(Color.WHITE);
 		btnRegister.setBounds(616, 6, 117, 29);
 		GazouPane.add(btnRegister);
-		getContentPane().add(Register);
+		
 		
 		JButton btnAva = new JButton("空き状況");
 		btnAva.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
 		btnAva.setBounds(506, 385, 227, 58);
 		GazouPane.add(btnAva);
-		getContentPane().add(Availability);
+		
 		
 		JButton btnReserve = new JButton("予約確認");
 		btnReserve.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
 		btnReserve.setBounds(506, 467, 227, 58);
 		GazouPane.add(btnReserve);
-		getContentPane().add(BookingConfirmation);
+		
 		
 		JButton btnReserveRegister = new JButton("予約登録");
 		btnReserveRegister.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
 		btnReserveRegister.setBounds(506, 556, 227, 58);
 		GazouPane.add(btnReserveRegister);
-		getContentPane().add(ReservationRegistration);
+		
 		
 		setVisible(true);
 	}
 	
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == Login) {
-			setVisible(false);
-			
-			
-		}else if(e.getSource() == Register) {
-			setVisible(false);
-			
-			
-		}
-	}
+	
 }
