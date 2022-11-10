@@ -41,7 +41,7 @@ public class LoginFrame extends JFrame {
 	 */
 	public LoginFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 757, 674);
+		setBounds(220, 50, 900, 650);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -50,15 +50,16 @@ public class LoginFrame extends JFrame {
 		ImageIcon icon = new ImageIcon(LoginFrame.class.getResource("/image/white_00032.jpg"));
 		
 		
+		
 		JLabel Label1 = new JLabel(icon);
-		Label1.setBounds(0, 0, 740, 635);
+		Label1.setBounds(0, 0, 900, 650);
 		contentPane.add(Label1);
 		Label1.setLayout(null);
 		
 		JPanel panel1 = new JPanel();
 		Label1.add(panel1);
 		panel1.setBackground(new Color(224, 255, 255));
-		panel1.setBounds(154,140,411,336);
+		panel1.setBounds(230,140,410,330);
 		panel1.setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("ログイン");
