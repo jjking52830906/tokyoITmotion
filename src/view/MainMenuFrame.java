@@ -25,7 +25,7 @@ public class MainMenuFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 757, 674);
 		GazouPane = new JPanel();
-		GazouPane.setBackground(new Color(192, 192, 192));
+		GazouPane.setBackground(new Color(255, 255, 255));
 		GazouPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(GazouPane);
@@ -33,7 +33,7 @@ public class MainMenuFrame extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(6, 6, 475, 634);
+		panel.setBounds(6, 6, 475, 619);
 		GazouPane.add(panel);
 		panel.setLayout(null);
 		
