@@ -1,7 +1,6 @@
 package view;
 
 import java.awt.Component;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -11,6 +10,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
@@ -18,7 +18,9 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-public class jjregisterFrame extends javax.swing.JFrame {
+import control.Controller;
+
+public class RegisterFrame extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -27,29 +29,16 @@ public class jjregisterFrame extends javax.swing.JFrame {
 	private JTextField textField_3;
 	private JTextField textField_8;
 	private JTextField textField_9;
+	private JButton Return;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					jjregisterFrame frame = new jjregisterFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
 	 */
-	public jjregisterFrame() {
+	public RegisterFrame() {
 		setTitle("【登録画面】");
-		setDefaultCloseOperation(jjregisterFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(RegisterFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 646, 441);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -151,13 +140,9 @@ public class jjregisterFrame extends javax.swing.JFrame {
 		btnNewButton.setBounds(123, 351, 113, 41);
 		contentPane.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("キャンセル");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton_1.setBounds(312, 350, 126, 43);
-		contentPane.add(btnNewButton_1);
+		Return = new JButton("キャンセル");
+		Return.setBounds(312, 350, 126, 43);
+		contentPane.add(Return);
 		
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("男性");
 		rdbtnNewRadioButton.setSelected(true);
@@ -208,6 +193,8 @@ public class jjregisterFrame extends javax.swing.JFrame {
 		comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県", "茨城県", "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県", "新潟県", "富山県", "石川県", "福井県", "山梨県", "長野県", "岐阜県", "静岡県", "愛知県", "三重県", "滋賀県", "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県", "鳥取県", "島根県", "岡山県", "広島県", "山口県", "徳島県", "香川県", "愛媛県", "高知県", "福岡県", "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"}));
 		comboBox_3.setBounds(105, 255, 79, 21);
 		contentPane.add(comboBox_3);
+		
+		setVisible(true);
 	}
 	private static void addPopup(Component component, final JPopupMenu popup) {
 		component.addMouseListener(new MouseAdapter() {
@@ -225,5 +212,17 @@ public class jjregisterFrame extends javax.swing.JFrame {
 				popup.show(e.getComponent(), e.getX(), e.getY());
 			}
 		});
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == Return) {
+			setVisible(false);
+			
+			try {
+				Controller.mainMenuDisplay();
+			}catch (Exception ex) {
+				
+			}
+		}
 	}
 }

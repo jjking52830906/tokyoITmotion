@@ -18,6 +18,7 @@ public class MainMenuFrame extends JFrame implements ActionListener{
 
 	private JPanel GazouPane;
 	private JButton Login;
+	private JButton Register;
 
 	/**
 	 * Create the frame.
@@ -53,10 +54,12 @@ public class MainMenuFrame extends JFrame implements ActionListener{
 		add(Login);
 		
 		
-		JButton btnRegister = new JButton("登録");
-		btnRegister.setBackground(Color.WHITE);
-		btnRegister.setBounds(616, 6, 117, 29);
-		GazouPane.add(btnRegister);
+		Register = new JButton("登録");
+		Register.setBackground(Color.WHITE);
+		Register.setBounds(616, 6, 117, 29);
+		GazouPane.add(Register);
+		Register.addActionListener(this);
+		add(Register);
 		
 		
 		JButton btnAva = new JButton("空き状況");
@@ -85,6 +88,10 @@ public class MainMenuFrame extends JFrame implements ActionListener{
 			setVisible(false);
 			
 			Controller.loginDisplay();
+		}else if(e.getSource() == Register) {
+			setVisible(false);
+			
+			Controller.registerDisplay();
 		}
 	}
 }
