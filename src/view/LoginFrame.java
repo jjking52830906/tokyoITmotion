@@ -65,7 +65,7 @@ public class LoginFrame extends JFrame implements ActionListener{
 		panel1.add(textField_1);
 		textField_1.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel("ログインID");
+		JLabel lblNewLabel_2 = new JLabel("ログインID!");
 		lblNewLabel_2.setBounds(57, 106, 68, 13);
 		panel1.add(lblNewLabel_2);
 		
