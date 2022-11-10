@@ -13,6 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import control.Controller;
+
 public class LoginFrame extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
@@ -83,10 +85,12 @@ public class LoginFrame extends JFrame implements ActionListener{
 		panel1.add(btnNewButton);
 		
 		Return = new JButton("キャンセル");
+		Return.setForeground(new Color(255, 255, 255));
 		Return.setBackground(Color.BLACK);
 		Return.setFont(new Font("MS UI Gothic", Font.PLAIN, 14));
 		Return.setBounds(145, 252, 115, 33);
 		panel1.add(Return);
+		Return.addActionListener(this);
 		
 		setVisible(true);
 		}
@@ -97,7 +101,11 @@ public class LoginFrame extends JFrame implements ActionListener{
 		if(e.getSource() == Return) {
 			setVisible(false);
 			
-			control.Controller.mainMenuDisplay();
+			try {
+				Controller.mainMenuDisplay();
+			}catch (Exception ex) {
+				ex.printStackTrace();
+			}
 		}
 	}
 }
