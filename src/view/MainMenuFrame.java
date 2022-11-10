@@ -2,6 +2,7 @@ package view;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -13,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 public class MainMenuFrame extends JFrame {
 
 	private JPanel GazouPane;
+	private JButton Login;
 	
 	
 	
@@ -47,6 +49,7 @@ public class MainMenuFrame extends JFrame {
 		btnlogin.setBackground(new Color(255, 255, 255));
 		btnlogin.setBounds(487, 6, 117, 29);
 		GazouPane.add(btnlogin);
+		add(Login);
 		
 		
 		JButton btnRegister = new JButton("登録");
@@ -76,5 +79,11 @@ public class MainMenuFrame extends JFrame {
 		setVisible(true);
 	}
 	
-	
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == Login) {
+			setVisible(false);
+			
+			Controller.
+		}
+	}
 }
