@@ -47,13 +47,18 @@ public class LoginFrame extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		ImageIcon icon = new ImageIcon(LoginFrame.class.getResource("white_00032.jpg"));
+		ImageIcon icon = new ImageIcon(LoginFrame.class.getResource("/image/white_00032.jpg"));
+		
+		
+		JLabel Label1 = new JLabel(icon);
+		Label1.setBounds(0, 0, 740, 635);
+		contentPane.add(Label1);
+		Label1.setLayout(null);
 		
 		JPanel panel1 = new JPanel();
-		contentPane.add(panel1);
-		//FlowLayout flowLayout = (FlowLayout) panel1.getLayout();
+		Label1.add(panel1);
 		panel1.setBackground(new Color(224, 255, 255));
-		panel1.setBounds(154,100,411,336);
+		panel1.setBounds(154,140,411,336);
 		panel1.setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("ログイン");
@@ -101,9 +106,5 @@ public class LoginFrame extends JFrame {
 		});
 		btnNewButton_1.setBounds(145, 252, 115, 33);
 		panel1.add(btnNewButton_1);
-		JLabel Label1 = new JLabel(new ImageIcon(LoginFrame.class.getResource("/image/white_00032.jpg")));
-		Label1.setBounds(0, 0, 740, 635);
-		contentPane.add(Label1);
-		Label1.setLayout(null);
 		}
 }
