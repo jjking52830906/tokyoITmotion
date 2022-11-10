@@ -18,6 +18,7 @@ public class LoginFrame extends JFrame implements ActionListener{
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
+	private JButton Return;
 
 	
 
@@ -71,7 +72,6 @@ public class LoginFrame extends JFrame implements ActionListener{
 		panel1.add(lblNewLabel_3);
 		
 		JButton btnNewButton = new JButton("ログイン");
-		btnNewButton.setEnabled(false);
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -82,16 +82,11 @@ public class LoginFrame extends JFrame implements ActionListener{
 		btnNewButton.setBounds(145, 205, 115, 33);
 		panel1.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("キャンセル");
-		btnNewButton_1.setBackground(Color.BLACK);
-		btnNewButton_1.setEnabled(false);
-		btnNewButton_1.setFont(new Font("MS UI Gothic", Font.PLAIN, 14));
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton_1.setBounds(145, 252, 115, 33);
-		panel1.add(btnNewButton_1);
+		Return = new JButton("キャンセル");
+		Return.setBackground(Color.BLACK);
+		Return.setFont(new Font("MS UI Gothic", Font.PLAIN, 14));
+		Return.setBounds(145, 252, 115, 33);
+		panel1.add(Return);
 		
 		setVisible(true);
 		}
@@ -99,7 +94,10 @@ public class LoginFrame extends JFrame implements ActionListener{
 
 
 	public void actionPerformed(ActionEvent e) {
-		// TODO 自動生成されたメソッド・スタブ
-		
+		if(e.getSource() == Return) {
+			setVisible(false);
+			
+			control.Controller.mainMenuDisplay();
+		}
 	}
 }
