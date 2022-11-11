@@ -1,6 +1,7 @@
 package view;
 
-import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -10,32 +11,21 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class AkiSearchFrame extends JFrame {
+import control.Controller;
+
+public class AkiSearchFrame extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
+	private JButton Return;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AkiSearchFrame frame = new AkiSearchFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
 	 */
 	public AkiSearchFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(450, 200, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -107,13 +97,25 @@ public class AkiSearchFrame extends JFrame {
 		btnNewButton.setBounds(98, 218, 91, 21);
 		contentPane.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("キャンセル");
-		btnNewButton_1.setBounds(244, 218, 104, 21);
-		contentPane.add(btnNewButton_1);
+		Return = new JButton("キャンセル");
+		Return.setBounds(244, 218, 104, 21);
+		contentPane.add(Return);
+		add(Return);
+		Return.addActionListener(this);
 		
 		JComboBox comboBox_5 = new JComboBox();
 		comboBox_5.setBounds(98, 41, 96, 21);
 		comboBox_5.setModel(new DefaultComboBoxModel(new String[] {"2022", "2023"}));
 		contentPane.add(comboBox_5);
+		
+		setVisible(true);
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == Return) {
+			setVisible(false);
+			
+			Controller.mainMenuDisplay();
+		}
 	}
 }

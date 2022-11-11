@@ -1,5 +1,6 @@
 package control;
 
+import action.AkiSearchDisplayAction;
 import action.LoginDisplayAction;
 import action.MainMenuDisplayAction;
 import action.RegisterDisplayAction;
@@ -24,6 +25,11 @@ public class Controller {
 	
 	public static void yoyakuDisplay() {
 		YoyakuDisplayAction action = new YoyakuDisplayAction();
+		action.execute();
+	}
+	
+	public static void AkiSearchDisplay() {
+		AkiSearchDisplayAction action = new AkiSearchDisplayAction();
 		action.execute();
 	}
 }
