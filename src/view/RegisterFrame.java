@@ -30,8 +30,7 @@ public class RegisterFrame extends JFrame implements ActionListener{
 	private JTextField textField_8;
 	private JTextField textField_9;
 	private JButton Return;
-
-	
+	private JButton Register;
 
 	/**
 	 * Create the frame.
@@ -39,7 +38,7 @@ public class RegisterFrame extends JFrame implements ActionListener{
 	public RegisterFrame() {
 		setTitle("【登録画面】");
 		setDefaultCloseOperation(RegisterFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 646, 441);
+		setBounds(420, 150, 646, 441);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -136,13 +135,17 @@ public class RegisterFrame extends JFrame implements ActionListener{
 		contentPane.add(textField_9);
 		textField_9.setColumns(10);
 		
-		JButton btnNewButton = new JButton("登録");
-		btnNewButton.setBounds(123, 351, 113, 41);
-		contentPane.add(btnNewButton);
+		Register = new JButton("登録");
+		Register.setBounds(123, 351, 113, 41);
+		contentPane.add(Register);
+		add(Register);
+		Register.addActionListener(this);
 		
 		Return = new JButton("キャンセル");
 		Return.setBounds(312, 350, 126, 43);
 		contentPane.add(Return);
+		Return.addActionListener(this);
+		add(Return);
 		
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("男性");
 		rdbtnNewRadioButton.setSelected(true);
@@ -223,6 +226,8 @@ public class RegisterFrame extends JFrame implements ActionListener{
 			}catch (Exception ex) {
 				
 			}
+		}else if(e.getSource() == Register) {
+			
 		}
 	}
 }
