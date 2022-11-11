@@ -3,6 +3,7 @@ package control;
 import action.LoginDisplayAction;
 import action.MainMenuDisplayAction;
 import action.RegisterDisplayAction;
+import action.YoyakuDisplayAction;
 
 public class Controller {
 
@@ -18,6 +19,11 @@ public class Controller {
 	
 	public static void registerDisplay() {
 		RegisterDisplayAction action = new RegisterDisplayAction();
+		action.execute();
+	}
+	
+	public static void yoyakuDisplay() {
+		YoyakuDisplayAction action = new YoyakuDisplayAction();
 		action.execute();
 	}
 }

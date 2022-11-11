@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,25 +11,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class YoyakuActionFrame extends JFrame {
+import control.Controller;
+
+public class YoyakuActionFrame extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
+	private JButton Return;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					YoyakuActionFrame frame = new YoyakuActionFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
@@ -38,7 +26,7 @@ public class YoyakuActionFrame extends JFrame {
 	public YoyakuActionFrame() {
 		setTitle("【予約検索画面】");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 448, 393);
+		setBounds(450, 200, 448, 393);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -53,13 +41,11 @@ public class YoyakuActionFrame extends JFrame {
 		btnNewButton.setBounds(128, 277, 86, 39);
 		contentPane.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("戻る");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton_1.setBounds(280, 277, 91, 40);
-		contentPane.add(btnNewButton_1);
+		Return = new JButton("戻る");
+		Return.setBounds(280, 277, 91, 40);
+		contentPane.add(Return);
+		getContentPane().add(Return);
+		Return.addActionListener(this);
 		
 		JLabel lblNewLabel = new JLabel("年月日");
 		lblNewLabel.setBounds(47, 60, 50, 13);
@@ -128,7 +114,17 @@ public class YoyakuActionFrame extends JFrame {
 		contentPane.add(comboBox_5);
 		
 		JLabel lblNewLabel_9 = new JLabel("※予約可能日は本日から1年後まで");
-		lblNewLabel_9.setBounds(131, 83, 181, 13);
+		lblNewLabel_9.setBounds(131, 83, 215, 13);
 		contentPane.add(lblNewLabel_9);
+		
+		setVisible(true);
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == Return) {
+			setVisible(false);
+			
+			Controller.mainMenuDisplay();
+		}
 	}
 }

@@ -19,6 +19,7 @@ public class MainMenuFrame extends JFrame implements ActionListener{
 	private JPanel GazouPane;
 	private JButton Login;
 	private JButton Register;
+	private JButton YoyakuToroku;
 
 	/**
 	 * Create the frame.
@@ -74,10 +75,12 @@ public class MainMenuFrame extends JFrame implements ActionListener{
 		GazouPane.add(btnReserve);
 		
 		
-		JButton btnReserveRegister = new JButton("予約登録");
-		btnReserveRegister.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-		btnReserveRegister.setBounds(506, 556, 227, 58);
-		GazouPane.add(btnReserveRegister);
+		YoyakuToroku = new JButton("予約登録");
+		YoyakuToroku.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		YoyakuToroku.setBounds(506, 556, 227, 58);
+		GazouPane.add(YoyakuToroku);
+		add(YoyakuToroku);
+		YoyakuToroku.addActionListener(this);
 		
 		
 		setVisible(true);
@@ -92,6 +95,10 @@ public class MainMenuFrame extends JFrame implements ActionListener{
 			setVisible(false);
 			
 			Controller.registerDisplay();
+		}else if(e.getSource() == YoyakuToroku) {
+			setVisible(false);
+			
+			Controller.yoyakuDisplay();
 		}
 	}
 }
