@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class Jjsearch extends JFrame {
+public class AkiSearchFrame extends JFrame {
 
 	private JPanel contentPane;
 
@@ -21,7 +21,7 @@ public class Jjsearch extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Jjsearch frame = new Jjsearch();
+					AkiSearchFrame frame = new AkiSearchFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -33,7 +33,7 @@ public class Jjsearch extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Jjsearch() {
+	public AkiSearchFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
