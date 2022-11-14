@@ -7,7 +7,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.ButtonGroup;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -23,12 +22,43 @@ import control.Controller;
 public class RegisterFrame extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_8;
-	private JTextField textField_9;
+	
+	private JLabel lblId;
+	private JLabel lblIdNote;
+	private JTextField txtId;
+	
+	private JLabel lblPass;
+	private JLabel lblPassNote;
+	private JTextField txtPass;
+	
+	private JLabel lblName;
+	
+	private JLabel lblFName;
+	private JTextField txtFName;
+	
+	private JLabel lblLName;
+	private JTextField txtLName;
+	
+	private JLabel lblBirth;
+	private JComboBox cbYear;
+	private JComboBox cbMonth;
+	private JComboBox cbDay;
+	
+	private JLabel lblAddress;
+	private JLabel lblFAddress;
+	private JComboBox cbFAddress;
+	private JLabel lblLAddress;
+	private JTextField txtLAddress;
+	
+	private JLabel lblSex;
+	private JRadioButton rbMam;
+	private JRadioButton rbWoman;
+	private JRadioButton rbOthers;
+	
+	private JLabel lblTel;
+	private JLabel lblTelNote;
+	private JTextField txtTel;
+	
 	private JButton Return;
 	private JButton Register;
 
@@ -38,164 +68,152 @@ public class RegisterFrame extends JFrame implements ActionListener{
 	public RegisterFrame() {
 		setTitle("【登録画面】");
 		setDefaultCloseOperation(RegisterFrame.EXIT_ON_CLOSE);
-		setBounds(420, 150, 646, 441);
+		setBounds(420, 150, 625, 463);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("ログインID");
-		lblNewLabel.setBounds(12, 32, 90, 27);
-		contentPane.add(lblNewLabel);
+		lblId = new JLabel("ログインID");
+		lblId.setBounds(12, 32, 90, 27);
+		getContentPane().add(lblId);
 		
-		JLabel lblNewLabel_1 = new JLabel("パスワード");
-		lblNewLabel_1.setBounds(12, 79, 90, 27);
-		contentPane.add(lblNewLabel_1);
+		lblIdNote = new JLabel("※半角英数字");
+		lblIdNote.setBounds(105, 56, 96, 13);
+		contentPane.add(lblIdNote);
 		
-		JLabel lblNewLabel_2 = new JLabel("氏名");
-		lblNewLabel_2.setBounds(12, 142, 50, 13);
-		contentPane.add(lblNewLabel_2);
+		txtId = new JTextField();
+		txtId.setBounds(105, 36, 152, 19);
+		getContentPane().add(txtId);
+		txtId.setColumns(10);
 		
-		JLabel lblNewLabel_3 = new JLabel("生年月日");
-		lblNewLabel_3.setBounds(12, 185, 66, 13);
-		contentPane.add(lblNewLabel_3);
+		lblPass = new JLabel("パスワード");
+		lblPass.setBounds(12, 79, 90, 27);
+		getContentPane().add(lblPass);
 		
-		JLabel lblNewLabel_4 = new JLabel("住所");
-		lblNewLabel_4.setBounds(12, 259, 50, 13);
-		contentPane.add(lblNewLabel_4);
+		lblPassNote = new JLabel("※半角英数字8文字以上16字以内");
+		lblPassNote.setBounds(105, 108, 199, 13);
+		getContentPane().add(lblPassNote);
 		
-		textField = new JTextField();
-		textField.setBounds(105, 36, 152, 19);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		txtPass = new JTextField();
+		txtPass.setBounds(105, 83, 152, 19);
+		getContentPane().add(txtPass);
+		txtPass.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(105, 83, 152, 19);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		lblName = new JLabel("氏名");
+		lblName.setBounds(12, 142, 50, 13);
+		getContentPane().add(lblName);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(105, 142, 152, 19);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		lblLName = new JLabel("姓");
+		lblLName.setBounds(74, 145, 14, 13);
+		getContentPane().add(lblLName);
 		
-		JLabel lblNewLabel_5 = new JLabel("姓");
-		lblNewLabel_5.setBounds(74, 145, 14, 13);
-		contentPane.add(lblNewLabel_5);
+		txtLName = new JTextField();
+		txtLName.setBounds(105, 142, 152, 19);
+		getContentPane().add(txtLName);
+		txtLName.setColumns(10);
 		
-		JLabel lblNewLabel_6 = new JLabel("名");
-		lblNewLabel_6.setBounds(312, 189, 50, -11);
-		contentPane.add(lblNewLabel_6);
+		lblFName = new JLabel("名");
+		lblFName.setBounds(294, 145, 24, 13);
+		getContentPane().add(lblFName);
 		
-		JLabel lblNewLabel_7 = new JLabel("名");
-		lblNewLabel_7.setBounds(294, 145, 24, 13);
-		contentPane.add(lblNewLabel_7);
+		txtFName = new JTextField();
+		txtFName.setBounds(329, 142, 152, 19);
+		getContentPane().add(txtFName);
+		txtFName.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(329, 142, 152, 19);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
+		lblBirth = new JLabel("生年月日");
+		lblBirth.setBounds(12, 185, 66, 13);
+		getContentPane().add(lblBirth);
 		
-		JLabel lblNewLabel_8 = new JLabel("性別");
-		lblNewLabel_8.setBounds(12, 221, 50, 13);
-		contentPane.add(lblNewLabel_8);
+		String[] year = {"1900", "1901", "1902", "1903", "1904", "1905", "1906", "1907", "1908", "1909", "1910", "1911", "1912", "1913", "1914", "1915", "1916", "1917", "1918", "1919", "1920", "1921", "1922", "1923", "1924", "1925", "1926", "1927", "1928", "1929", "1930", "1931", "1932", "1933", "1934", "1935", "1936", "1937", "1938", "1939", "1940", "1941", "1942", "1943", "1944", "1945", "1946", "1947", "1948", "1949", "1950", "1951", "1952", "1953", "1954", "1955", "1956", "1957", "1958", "1959", "1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022"};
+		cbYear = new JComboBox(year);
+		cbYear.setBounds(105, 181, 66, 21);
+		getContentPane().add(cbYear);
+		cbYear.addActionListener(this);
 		
-		JLabel lblNewLabel_9 = new JLabel("年");
-		lblNewLabel_9.setBounds(183, 185, 14, 13);
-		contentPane.add(lblNewLabel_9);
+		String[] month = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
+		cbMonth = new JComboBox();
+		cbMonth.setBounds(228, 181, 54, 21);
+		getContentPane().add(cbMonth);
+		cbMonth.addActionListener(this);
 		
-		JLabel lblNewLabel_10 = new JLabel("月");
-		lblNewLabel_10.setBounds(294, 185, 14, 13);
-		contentPane.add(lblNewLabel_10);
+		String[] day = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
+		cbDay = new JComboBox();
+		cbDay.setBounds(341, 181, 56, 21);
+		getContentPane().add(cbDay);
+		cbDay.addActionListener(this);
 		
-		JLabel lblNewLabel_11 = new JLabel("日");
-		lblNewLabel_11.setBounds(414, 185, 24, 13);
-		contentPane.add(lblNewLabel_11);
+		lblAddress = new JLabel("住所");
+		lblAddress.setBounds(12, 259, 50, 13);
+		getContentPane().add(lblAddress);
+				
+		lblFAddress = new JLabel("都道府県");
+		lblFAddress.setBounds(49, 259, 50, 13);
+		getContentPane().add(lblFAddress);
 		
-		JLabel lblNewLabel_12 = new JLabel("都道府県");
-		lblNewLabel_12.setBounds(49, 259, 50, 13);
-		contentPane.add(lblNewLabel_12);
+		String[] fAddress = {"北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県", "茨城県", "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県", "新潟県", "富山県", "石川県", "福井県", "山梨県", "長野県", "岐阜県", "静岡県", "愛知県", "三重県", "滋賀県", "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県", "鳥取県", "島根県", "岡山県", "広島県", "山口県", "徳島県", "香川県", "愛媛県", "高知県", "福岡県", "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"};
+		cbFAddress = new JComboBox();
+		cbFAddress.setBounds(105, 255, 79, 21);
+		getContentPane().add(cbFAddress);
 		
-		JLabel lblNewLabel_13 = new JLabel("市区町村以下");
-		lblNewLabel_13.setBounds(199, 259, 78, 13);
-		contentPane.add(lblNewLabel_13);
+		lblLAddress = new JLabel("市区町村以下");
+		lblLAddress.setBounds(199, 259, 78, 13);
+		getContentPane().add(lblLAddress);
 		
-		textField_8 = new JTextField();
-		textField_8.setBounds(277, 256, 306, 19);
-		contentPane.add(textField_8);
-		textField_8.setColumns(10);
+		txtLAddress = new JTextField();
+		txtLAddress.setBounds(277, 256, 306, 19);
+		getContentPane().add(txtLAddress);
+		txtLAddress.setColumns(10);
 		
-		JLabel lblNewLabel_14 = new JLabel("電話番号");
-		lblNewLabel_14.setBounds(12, 302, 50, 13);
-		contentPane.add(lblNewLabel_14);
+		lblSex = new JLabel("性別");
+		lblSex.setBounds(12, 221, 50, 13);
+		getContentPane().add(lblSex);
 		
-		textField_9 = new JTextField();
-		textField_9.setBounds(105, 299, 152, 19);
-		contentPane.add(textField_9);
-		textField_9.setColumns(10);
+		rbMam = new JRadioButton("男性");
+		rbMam.setSelected(true);
+		rbMam.setBounds(105, 217, 56, 21);
+		getContentPane().add(rbMam);
 		
+		rbWoman = new JRadioButton("女性");
+		rbWoman.setBounds(183, 217, 56, 21);
+		contentPane.add(rbWoman);
+		
+		rbOthers = new JRadioButton("どちらでもない");
+		rbOthers.setBounds(264, 217, 113, 21);
+		contentPane.add(rbOthers);
+		
+		ButtonGroup bgroup = new ButtonGroup();
+		bgroup.add(rbMam);
+		bgroup.add(rbWoman);
+		bgroup.add(rbOthers);
+		
+		lblTel = new JLabel("電話番号");
+		lblTel.setBounds(12, 302, 50, 13);
+		getContentPane().add(lblTel);
+		
+		lblTelNote = new JLabel("※ハイフンなし");
+		lblTelNote.setBounds(105, 322, 92, 13);
+		getContentPane().add(lblTelNote);
+		
+		txtTel = new JTextField();
+		txtTel.setBounds(105, 299, 261, 19);
+		getContentPane().add(txtTel);
+		txtTel.setColumns(10);
+				
 		Register = new JButton("登録");
 		Register.setBounds(123, 351, 113, 41);
 		contentPane.add(Register);
-		add(Register);
+		getContentPane().add(Register);
 		Register.addActionListener(this);
 		
 		Return = new JButton("キャンセル");
 		Return.setBounds(312, 350, 126, 43);
 		contentPane.add(Return);
 		Return.addActionListener(this);
-		add(Return);
+		getContentPane().add(Return);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("男性");
-		rdbtnNewRadioButton.setSelected(true);
-		rdbtnNewRadioButton.setBounds(105, 217, 56, 21);
-		contentPane.add(rdbtnNewRadioButton);
-		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("女性");
-		rdbtnNewRadioButton_1.setBounds(183, 217, 56, 21);
-		contentPane.add(rdbtnNewRadioButton_1);
-		
-		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("どちらでもない");
-		rdbtnNewRadioButton_2.setBounds(264, 217, 113, 21);
-		contentPane.add(rdbtnNewRadioButton_2);
-		
-		ButtonGroup bgroup = new ButtonGroup();
-		bgroup.add(rdbtnNewRadioButton);
-		bgroup.add(rdbtnNewRadioButton_1);
-		bgroup.add(rdbtnNewRadioButton_2);
-		
-		JLabel lblNewLabel_15 = new JLabel("※半角英数字8文字以上16字以内");
-		lblNewLabel_15.setBounds(105, 108, 199, 13);
-		contentPane.add(lblNewLabel_15);
-		
-		JLabel lblNewLabel_16 = new JLabel("※半角英数字");
-		lblNewLabel_16.setBounds(105, 65, 96, 13);
-		contentPane.add(lblNewLabel_16);  
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"1900", "1901", "1902", "1903", "1904", "1905", "1906", "1907", "1908", "1909", "1910", "1911", "1912", "1913", "1914", "1915", "1916", "1917", "1918", "1919", "1920", "1921", "1922", "1923", "1924", "1925", "1926", "1927", "1928", "1929", "1930", "1931", "1932", "1933", "1934", "1935", "1936", "1937", "1938", "1939", "1940", "1941", "1942", "1943", "1944", "1945", "1946", "1947", "1948", "1949", "1950", "1951", "1952", "1953", "1954", "1955", "1956", "1957", "1958", "1959", "1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022"}));
-		comboBox.setBounds(105, 181, 66, 21);
-		contentPane.add(comboBox);
-		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"}));
-		comboBox_1.setBounds(228, 181, 54, 21);
-		contentPane.add(comboBox_1);
-		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
-		comboBox_2.setBounds(341, 181, 56, 21);
-		contentPane.add(comboBox_2);
-		
-		JLabel lblNewLabel_17 = new JLabel("※ハイフンなし");
-		lblNewLabel_17.setBounds(105, 322, 92, 13);
-		contentPane.add(lblNewLabel_17);
-		
-		JComboBox comboBox_3 = new JComboBox();
-		comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県", "茨城県", "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県", "新潟県", "富山県", "石川県", "福井県", "山梨県", "長野県", "岐阜県", "静岡県", "愛知県", "三重県", "滋賀県", "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県", "鳥取県", "島根県", "岡山県", "広島県", "山口県", "徳島県", "香川県", "愛媛県", "高知県", "福岡県", "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"}));
-		comboBox_3.setBounds(105, 255, 79, 21);
-		contentPane.add(comboBox_3);
 		
 		setVisible(true);
 	}
@@ -227,7 +245,15 @@ public class RegisterFrame extends JFrame implements ActionListener{
 				
 			}
 		}else if(e.getSource() == Register) {
-			
+			String id = txtId.getText();
+			String fname = txtFName.getText();
+			String lname = txtLName.getText();
+			String year = (String)cbYear.getSelectedItem();
+			String month = (String)cbMonth.getSelectedItem();
+			String day = (String)cbDay.getSelectedItem();
+			String lAddress = (String)cbFAddress.getSelectedItem();
+			String laddress = txtLAddress.getText();
+			String tel = txtTel.getText();
 		}
 	}
 }
