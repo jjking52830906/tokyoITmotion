@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JRadioButton;
@@ -134,13 +135,13 @@ public class RegisterFrame extends JFrame implements ActionListener{
 		cbYear.addActionListener(this);
 		
 		String[] month = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
-		cbMonth = new JComboBox();
+		cbMonth = new JComboBox(month);
 		cbMonth.setBounds(228, 181, 54, 21);
 		getContentPane().add(cbMonth);
 		cbMonth.addActionListener(this);
 		
 		String[] day = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
-		cbDay = new JComboBox();
+		cbDay = new JComboBox(day);
 		cbDay.setBounds(341, 181, 56, 21);
 		getContentPane().add(cbDay);
 		cbDay.addActionListener(this);
@@ -154,7 +155,7 @@ public class RegisterFrame extends JFrame implements ActionListener{
 		getContentPane().add(lblFAddress);
 		
 		String[] fAddress = {"北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県", "茨城県", "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県", "新潟県", "富山県", "石川県", "福井県", "山梨県", "長野県", "岐阜県", "静岡県", "愛知県", "三重県", "滋賀県", "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県", "鳥取県", "島根県", "岡山県", "広島県", "山口県", "徳島県", "香川県", "愛媛県", "高知県", "福岡県", "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"};
-		cbFAddress = new JComboBox();
+		cbFAddress = new JComboBox(fAddress);
 		cbFAddress.setBounds(105, 255, 79, 21);
 		getContentPane().add(cbFAddress);
 		
@@ -217,6 +218,8 @@ public class RegisterFrame extends JFrame implements ActionListener{
 		
 		setVisible(true);
 	}
+	
+	
 	private static void addPopup(Component component, final JPopupMenu popup) {
 		component.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
@@ -246,14 +249,21 @@ public class RegisterFrame extends JFrame implements ActionListener{
 			}
 		}else if(e.getSource() == Register) {
 			String id = txtId.getText();
+			String pass = txtPass.getText();
 			String fname = txtFName.getText();
 			String lname = txtLName.getText();
 			String year = (String)cbYear.getSelectedItem();
 			String month = (String)cbMonth.getSelectedItem();
 			String day = (String)cbDay.getSelectedItem();
-			String lAddress = (String)cbFAddress.getSelectedItem();
-			String laddress = txtLAddress.getText();
+			String fAddress = (String)cbFAddress.getSelectedItem();
+			String lAddress = txtLAddress.getText();
 			String tel = txtTel.getText();
+			
+			if(!(id.equals("")) && !(pass.equals("")) && !(fname.equals("")) && !(lname.equals("")) && !(lAddress.equals("")) && !(tel.equals(""))) {
+				
+			}else {
+				JOptionPane.showMessageDialog(this, "未入力の項目があります", "エラー", JOptionPane.WARNING_MESSAGE);
+			}
 		}
 	}
 }
