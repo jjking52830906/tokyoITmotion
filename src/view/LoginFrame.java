@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -93,7 +94,11 @@ public class LoginFrame extends JFrame implements ActionListener{
 		Return.addActionListener(this);
 		
 		setVisible(true);
-		}
+		}	
+	public static void systemErrorMessage(JFrame frame, Exception e) {
+
+		JOptionPane.showMessageDialog(frame, e + "DB接続に失敗しました。", "【システムエラー】", JOptionPane.ERROR_MESSAGE);
+	}
 
 
 

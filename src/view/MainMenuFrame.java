@@ -21,6 +21,7 @@ public class MainMenuFrame extends JFrame implements ActionListener{
 	private JButton Register;
 	private JButton YoyakuToroku;
 	private JButton AkiSearch;
+	private JButton btnReserve;
 
 	/**
 	 * Create the frame.
@@ -72,10 +73,12 @@ public class MainMenuFrame extends JFrame implements ActionListener{
 		add(AkiSearch);
 		
 		
-		JButton btnReserve = new JButton("予約確認");
+		btnReserve = new JButton("予約確認");
 		btnReserve.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
 		btnReserve.setBounds(506, 467, 227, 58);
 		GazouPane.add(btnReserve);
+		add(btnReserve);
+		btnReserve.addActionListener(this);
 		
 		
 		YoyakuToroku = new JButton("予約登録");
@@ -106,6 +109,10 @@ public class MainMenuFrame extends JFrame implements ActionListener{
 			setVisible(false);
 			
 			Controller.AkiSearchDisplay();
+		}else if (e.getSource() == btnReserve) {
+			setVisible(false);
+			
+			Controller.mainMenuDisplay();
 		}
 	}
 }

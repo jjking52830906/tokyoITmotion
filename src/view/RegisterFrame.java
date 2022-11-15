@@ -18,6 +18,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import control.Controller;
+
 public class RegisterFrame extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
@@ -250,7 +252,7 @@ public class RegisterFrame extends JFrame implements ActionListener{
 			 String tel = txtTel.getText();
 			 
 			 if(!(id.equals("")) && !(pass.equals("")) && !(fname.equals("")) && !(lname.equals("")) && !(lAddress.equals("")) && !(tel.equals(""))) {
-				 if()
+				 
 				 try {
 					 Long.parseLong(tel);
 				 }catch(NumberFormatException n) {
@@ -266,9 +268,9 @@ public class RegisterFrame extends JFrame implements ActionListener{
 			 }else {
 				 JOptionPane.showMessageDialog(this, "未入力の項目があります", "エラー", JOptionPane.WARNING_MESSAGE);
 			 }
-		}else if(e.getSource() == Register) {
+		}else if(e.getSource() == Return) {
 			setVisible(false);
-			
+			Controller.mainMenuDisplay();
 		}
 	}
 }
