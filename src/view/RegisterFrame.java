@@ -249,22 +249,26 @@ public class RegisterFrame extends JFrame implements ActionListener{
 			 String lAddress = txtLAddress.getText();
 			 String tel = txtTel.getText();
 			 
-			 boolean date = tel.matches("[+-]?\\d*(\\.\\d+)?");
-			 
 			 if(!(id.equals("")) && !(pass.equals("")) && !(fname.equals("")) && !(lname.equals("")) && !(lAddress.equals("")) && !(tel.equals(""))) {
+				 if()
 				 try {
 					 Long.parseLong(tel);
 				 }catch(NumberFormatException n) {
 					 JOptionPane.showMessageDialog(this, "電話番号には数字を入力してください", "入力値エラー", JOptionPane.WARNING_MESSAGE);
 					 return;
 				 }
-				 
+				 txtId.setText("");
+				 txtPass.setText("");
+				 txtFName.setText("");
+				 txtLName.setText("");
+				 txtLAddress.setText("");
+				 txtTel.setText("");
 			 }else {
 				 JOptionPane.showMessageDialog(this, "未入力の項目があります", "エラー", JOptionPane.WARNING_MESSAGE);
 			 }
 		}else if(e.getSource() == Register) {
 			setVisible(false);
-			new MainMenuFrame();
+			
 		}
 	}
 }
