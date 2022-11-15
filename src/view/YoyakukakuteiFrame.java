@@ -8,11 +8,15 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 public class YoyakukakuteiFrame extends JFrame {
 
 	private JPanel contentPane;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
 
 	/**
 	 * Launch the application.
@@ -60,12 +64,26 @@ public class YoyakukakuteiFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setBounds(115, 240, 91, 34);
+		btnNewButton.setBounds(97, 240, 109, 34);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("キャンセル");
-		btnNewButton_1.setBounds(263, 240, 91, 34);
+		btnNewButton_1.setBounds(263, 240, 115, 34);
 		contentPane.add(btnNewButton_1);
+		
+		textField = new JTextField();
+		textField.setBounds(136, 42, 147, 19);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(136, 100, 147, 19);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(136, 163, 147, 19);
+		contentPane.add(textField_2);
+		textField_2.setColumns(10);
 	}
-
 }
