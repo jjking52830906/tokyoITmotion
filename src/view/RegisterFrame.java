@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -17,6 +19,8 @@ import javax.swing.JPopupMenu;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import control.Controller;
 
 public class RegisterFrame extends JFrame implements ActionListener{
 
@@ -91,7 +95,7 @@ public class RegisterFrame extends JFrame implements ActionListener{
 		lblPass.setBounds(12, 79, 90, 27);
 		getContentPane().add(lblPass);
 		
-		lblPassNote = new JLabel("※半角英数字8文字以上16字以内");
+		lblPassNote = new JLabel("※半角英数字6文字以上16字以内");
 		lblPassNote.setBounds(105, 108, 199, 13);
 		getContentPane().add(lblPassNote);
 		
@@ -249,8 +253,30 @@ public class RegisterFrame extends JFrame implements ActionListener{
 			 String lAddress = txtLAddress.getText();
 			 String tel = txtTel.getText();
 			 
+			 String regex_AlphaNum = "^[A-Za-z0-9]+$" ; // 半角英数字のみ
 			 if(!(id.equals("")) && !(pass.equals("")) && !(fname.equals("")) && !(lname.equals("")) && !(lAddress.equals("")) && !(tel.equals(""))) {
-				 if()
+				 if(!(checkLogic(regex_AlphaNum, id) == true)) {
+					 JOptionPane.showMessageDialog(this, "ログインIDには半角英数字のみ入力してください", "入力エラー", JOptionPane.WARNING_MESSAGE);
+				 }else if(!(checkLogic(regex_AlphaNum, pass) == true)) {
+					 JOptionPane.showMessageDialog(this, "パスワードには半角英数字で6文字以上16文字以内で入力してください", "入力エラー", JOptionPane.WARNING_MESSAGE);
+				 }
+				 if(!(cbYear.getSelectedIndex() == -1) && !(cbMonth.getSelectedIndex() == -1) && !(cbDay.getSelectedIndex() == -1)) {
+					 JOptionPane.showMessageDialog(this, "生年月日を選択してください","入力エラー", JOptionPane.WARNING_MESSAGE);
+				 }
+				 try {
+					 
+					 int res = Controller.accountRegister(id, pass, fname, lname, year, month, day, fAddress, lAddress, tel);
+					 if(res == 1) {
+						 JOptionPane.showMessageDialog(this, "アカウント登録に成功しました！", "登録完了", JOptionPane.INFORMATION_MESSAGE);
+					 }else {
+						 JOptionPane.showMessageDialog(this, "アカウント登録に失敗しました", "登録失敗", JOptionPane.WARNING_MESSAGE);
+					 }
+					 if(res == 1) {
+						 
+					 }
+				 }catch(Exception ex) {
+					 ErrorDialogUtility.systemErrorMessage(this, ex);
+				 }
 				 try {
 					 Long.parseLong(tel);
 				 }catch(NumberFormatException n) {
@@ -270,5 +296,16 @@ public class RegisterFrame extends JFrame implements ActionListener{
 			setVisible(false);
 			
 		}
+	}
+
+	//半角英数字判定処理
+	private boolean checkLogic(String regex, String target) {
+		 boolean result = true;
+		    if( target == null || target.isEmpty() ) return false ;
+		    // 3. 引数に指定した正規表現regexがtargetにマッチするか確認する
+		    Pattern p1 = Pattern.compile(regex); // 正規表現パターンの読み込み
+		    Matcher m1 = p1.matcher(target); // パターンと検査対象文字列の照合
+		    result = m1.matches(); // 照合結果をtrueかfalseで取得
+		    return result;
 	}
 }

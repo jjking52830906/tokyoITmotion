@@ -1,5 +1,6 @@
 package control;
 
+import action.AccountRegisterAction;
 import action.AkiSearchDisplayAction;
 import action.LoginDisplayAction;
 import action.MainMenuDisplayAction;
@@ -31,5 +32,11 @@ public class Controller {
 	public static void AkiSearchDisplay() {
 		AkiSearchDisplayAction action = new AkiSearchDisplayAction();
 		action.execute();
+	}
+	
+	public static void accountRegister(String id, String pass, String fname, String lname, String year, String month, String day, String fAddress, String lAddress, String tel) {
+		AccountRegisterAction action = new AccountRegisterAction();
+		int res = action.execute(id, pass, fname, lname, year, month, day, fAddress, lAddress, tel);
+		return res;
 	}
 }
