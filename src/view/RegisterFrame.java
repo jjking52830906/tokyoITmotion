@@ -18,8 +18,6 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import control.Controller;
-
 public class RegisterFrame extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
@@ -239,31 +237,34 @@ public class RegisterFrame extends JFrame implements ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == Return) {
-			setVisible(false);
-			
-			try {
-				Controller.mainMenuDisplay();
-			}catch (Exception ex) {
-				
-			}
+		 if(e.getSource() == Register) {
+			 String id = txtId.getText();
+			 String pass = txtPass.getText();
+			 String fname = txtFName.getText();
+			 String lname = txtLName.getText();
+			 String year = (String)cbYear.getSelectedItem();
+			 String month = (String)cbMonth.getSelectedItem();
+			 String day = (String)cbDay.getSelectedItem();
+			 String fAddress = (String)cbFAddress.getSelectedItem();
+			 String lAddress = txtLAddress.getText();
+			 String tel = txtTel.getText();
+			 
+			 boolean date = tel.matches("[+-]?\\d*(\\.\\d+)?");
+			 
+			 if(!(id.equals("")) && !(pass.equals("")) && !(fname.equals("")) && !(lname.equals("")) && !(lAddress.equals("")) && !(tel.equals(""))) {
+				 try {
+					 Long.parseLong(tel);
+				 }catch(NumberFormatException n) {
+					 JOptionPane.showMessageDialog(this, "電話番号には数字を入力してください", "入力値エラー", JOptionPane.WARNING_MESSAGE);
+					 return;
+				 }
+				 
+			 }else {
+				 JOptionPane.showMessageDialog(this, "未入力の項目があります", "エラー", JOptionPane.WARNING_MESSAGE);
+			 }
 		}else if(e.getSource() == Register) {
-			String id = txtId.getText();
-			String pass = txtPass.getText();
-			String fname = txtFName.getText();
-			String lname = txtLName.getText();
-			String year = (String)cbYear.getSelectedItem();
-			String month = (String)cbMonth.getSelectedItem();
-			String day = (String)cbDay.getSelectedItem();
-			String fAddress = (String)cbFAddress.getSelectedItem();
-			String lAddress = txtLAddress.getText();
-			String tel = txtTel.getText();
-			
-			if(!(id.equals("")) && !(pass.equals("")) && !(fname.equals("")) && !(lname.equals("")) && !(lAddress.equals("")) && !(tel.equals(""))) {
-				
-			}else {
-				JOptionPane.showMessageDialog(this, "未入力の項目があります", "エラー", JOptionPane.WARNING_MESSAGE);
-			}
+			setVisible(false);
+			new MainMenuFrame();
 		}
 	}
 }
