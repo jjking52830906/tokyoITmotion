@@ -47,9 +47,8 @@ public class RegisterFrame extends JFrame implements ActionListener{
     private JTextField txtLAddress;
     
     private JLabel lblSex;
-    private JRadioButton rbMam;
-    private JRadioButton rbWoman;
-    private JRadioButton rbOthers;
+    private JRadioButton[] rbSex;
+    
     
     private JLabel lblTel;
     private JLabel lblTelNote;
@@ -162,51 +161,54 @@ public class RegisterFrame extends JFrame implements ActionListener{
         txtLAddress.setColumns(10);
         
         lblSex = new JLabel("性別");
-        lblSex.setBounds(12, 221, 50, 13);
+        lblSex.setBounds(12, 223, 50, 13);
         getContentPane().add(lblSex);
         
-        rbMam = new JRadioButton("男性");
-        rbMam.setSelected(true);
-        rbMam.setBounds(105, 217, 56, 21);
-        getContentPane().add(rbMam);
+        rbSex = new JRadioButton[3];
         
-        rbWoman = new JRadioButton("女性");
-        rbWoman.setBounds(183, 217, 56, 21);
-        contentPane.add(rbWoman);
-        
-        rbOthers = new JRadioButton("どちらでもない");
-        rbOthers.setBounds(264, 217, 113, 21);
-        contentPane.add(rbOthers);
+        rbSex[0] = new JRadioButton("男性");
+        rbSex[1] = new JRadioButton("女性", true);
+        rbSex[2] = new JRadioButton("どちらでもない");
         
         ButtonGroup bgroup = new ButtonGroup();
-        bgroup.add(rbMam);
-        bgroup.add(rbWoman);
-        bgroup.add(rbOthers);
+        bgroup.add(rbSex[0]);
+        bgroup.add(rbSex[1]);
+        bgroup.add(rbSex[2]);
+        
+        rbSex[0].setSelected(true);
+        rbSex[0].setBounds(105, 217, 56, 21);
+        rbSex[1].setBounds(183, 217, 56, 21);
+        rbSex[2].setBounds(264, 217, 113, 21);
+        
+        contentPane.add(rbSex[0]);
+        contentPane.add(rbSex[1]);
+        contentPane.add(rbSex[2]);
         
         lblTel = new JLabel("電話番号");
         lblTel.setBounds(12, 302, 50, 13);
-        getContentPane().add(lblTel);
+        contentPane.add(lblTel);
+        
         
         lblTelNote = new JLabel("※ハイフンなし");
         lblTelNote.setBounds(105, 322, 92, 13);
-        getContentPane().add(lblTelNote);
+        contentPane.add(lblTelNote);
+        
         
         txtTel = new JTextField();
         txtTel.setBounds(105, 299, 261, 19);
-        getContentPane().add(txtTel);
+        contentPane.add(txtTel);
         txtTel.setColumns(10);
                 
         Register = new JButton("登録");
         Register.setBounds(123, 351, 113, 41);
         contentPane.add(Register);
-        getContentPane().add(Register);
         Register.addActionListener(this);
         
         Return = new JButton("キャンセル");
         Return.setBounds(312, 350, 126, 43);
         contentPane.add(Return);
         Return.addActionListener(this);
-        getContentPane().add(Return);
+        
         
         
         setVisible(true);
@@ -226,20 +228,22 @@ public class RegisterFrame extends JFrame implements ActionListener{
              String lAddress = txtLAddress.getText();
              String tel = txtTel.getText();
              
+             String radio = "";
+             for (int i = 0 ; i < rbSex.length; i++){
+                 if (rbSex[i].isSelected()){
+                   radio = rbSex[i].getText();
+                 }
+             }
+             System.out.println(radio);
              int passlength = pass.length();
              String regex_AlphaNum = "^[A-Za-z0-9]+$" ; // 半角英数字のみ
              if(!(id.equals("")) && !(pass.equals("")) && !(fname.equals("")) && !(lname.equals("")) && !(lAddress.equals("")) && !(tel.equals(""))) {
                  if(!(checkLogic(regex_AlphaNum, id) == true)) {
                      JOptionPane.showMessageDialog(this, "ログインIDには半角英数字のみ入力してください", "入力エラー", JOptionPane.WARNING_MESSAGE);
-                 }else if(!(checkLogic(regex_AlphaNum, pass) == true) && (passlength < 6) && (passlength > 16)) {
+                     return;
+                 }else if(!((checkLogic(regex_AlphaNum, pass) == true) && passlength > 6 && passlength <= 16)){
                      JOptionPane.showMessageDialog(this, "パスワードには半角英数字で6文字以上16文字以内で入力してください", "入力エラー", JOptionPane.WARNING_MESSAGE);
-                 }
-                 if(!(cbYear.getSelectedIndex() == -1) && !(cbMonth.getSelectedIndex() == -1) && !(cbDay.getSelectedIndex() == -1)) {
-                     JOptionPane.showMessageDialog(this, "生年月日を選択してください","入力エラー", JOptionPane.WARNING_MESSAGE);
-                 }
-                 
-                 if(!(cbFAddress.getSelectedIndex() == -1)) {
-                     JOptionPane.showMessageDialog(this, "都道府県を選択してください", "入力エラー", JOptionPane.WARNING_MESSAGE);
+                     return;
                  }
                  try {
                      Long.parseLong(tel);
@@ -248,7 +252,7 @@ public class RegisterFrame extends JFrame implements ActionListener{
                      return;
                  }
                  try {
-                     int res = Controller.accountRegister(id, pass, fname, lname, year, month, day, fAddress, lAddress, tel);
+                     int res = Controller.accountRegister(id, pass, fname, lname, year, month, day, radio, fAddress, lAddress, tel);
                      if(res == 1) {
                          JOptionPane.showMessageDialog(this, "アカウント登録に成功しました！", "登録完了", JOptionPane.INFORMATION_MESSAGE);
                      }else {

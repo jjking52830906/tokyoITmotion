@@ -34,9 +34,9 @@ public class Controller {
 		action.execute();
 	}
 	
-	public static int accountRegister(String id, String pass, String fname, String lname, String year, String month, String day, String fAddress, String lAddress, String tel) {
+	public static int accountRegister(String id, String pass, String fname, String lname, String year, String month, String day ,String radio, String fAddress, String lAddress, String tel) {
 		AccountRegisterAction action = new AccountRegisterAction();
-		int res = action.execute(id, pass, fname, lname, year, month, day, fAddress, lAddress, tel);
+		int res = action.execute(id, pass, fname, lname, year, month, day, radio, fAddress, lAddress, tel);
 		return res;
 	}
 }
