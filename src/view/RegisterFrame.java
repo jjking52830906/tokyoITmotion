@@ -1,6 +1,7 @@
 package view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -227,6 +228,9 @@ public class RegisterFrame extends JFrame implements ActionListener{
              String fAddress = (String)cbFAddress.getSelectedItem();
              String lAddress = txtLAddress.getText();
              String tel = txtTel.getText();
+             String strDate = year + "-" + month + "-" + day;
+             Date date = Date.valueOf(strDate);
+             
              
              String radio = "";
              for (int i = 0 ; i < rbSex.length; i++){
@@ -262,7 +266,7 @@ public class RegisterFrame extends JFrame implements ActionListener{
                 	 ErrorDialogUtility.systemErrorMessage(this, ex);
                  }
                  try {
-                     int res = Controller.accountRegister(id, fname, lname, year, month, day, radio, fAddress, lAddress, tel);
+                     int res = Controller.accountRegister(id, fname, lname, date, radio, fAddress, lAddress, tel);
                      if(res == 1) {
                          JOptionPane.showMessageDialog(this, "アカウント登録に成功しました！", "登録完了", JOptionPane.INFORMATION_MESSAGE);
                      }else {
