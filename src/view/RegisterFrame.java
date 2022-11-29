@@ -234,7 +234,7 @@ public class RegisterFrame extends JFrame implements ActionListener{
                    radio = rbSex[i].getText();
                  }
              }
-             System.out.println(radio);
+             
              int passlength = pass.length();
              String regex_AlphaNum = "^[A-Za-z0-9]+$" ; // 半角英数字のみ
              if(!(id.equals("")) && !(pass.equals("")) && !(fname.equals("")) && !(lname.equals("")) && !(lAddress.equals("")) && !(tel.equals(""))) {
@@ -252,7 +252,17 @@ public class RegisterFrame extends JFrame implements ActionListener{
                      return;
                  }
                  try {
-                     int res = Controller.accountRegister(id, pass, fname, lname, year, month, day, radio, fAddress, lAddress, tel);
+                	 int rel = Controller.passwordRegister(pass);
+                	 if(rel == 1) {
+                		 JOptionPane.showMessageDialog(this, "パスワード登録に成功しました。！");
+                	 }else {
+                		 JOptionPane.showMessageDialog(this, "パスワード登録に失敗しました。！");
+                	 }
+                 }catch(Exception ex) {
+                	 ErrorDialogUtility.systemErrorMessage(this, ex);
+                 }
+                 try {
+                     int res = Controller.accountRegister(id, fname, lname, year, month, day, radio, fAddress, lAddress, tel);
                      if(res == 1) {
                          JOptionPane.showMessageDialog(this, "アカウント登録に成功しました！", "登録完了", JOptionPane.INFORMATION_MESSAGE);
                      }else {
