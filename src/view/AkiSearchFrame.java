@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -17,13 +18,16 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	private JButton Return;
-
+	private JComboBox cbbefore;
+	private JComboBox cbafter;
+	private JButton Search;
 	
 
 	/**
 	 * Create the frame.
 	 */
 	public AkiSearchFrame() {
+		setTitle("【空き検索画面】");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450, 200, 450, 300);
 		contentPane = new JPanel();
@@ -62,10 +66,11 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 		lblNewLabel_4.setBounds(38, 108, 37, 13);
 		contentPane.add(lblNewLabel_4);
 		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"}));
-		comboBox_2.setBounds(98, 104, 39, 21);
-		contentPane.add(comboBox_2);
+		String[] before={"9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"};
+		cbbefore = new JComboBox(before);
+		cbbefore.setBounds(98, 104, 39, 21);
+		getContentPane().add(cbbefore);
+		cbbefore.addActionListener(this);
 		
 		JLabel lblNewLabel_5 = new JLabel("～");
 		lblNewLabel_5.setBounds(193, 108, 30, 13);
@@ -75,10 +80,11 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 		lblNewLabel_6.setBounds(149, 108, 21, 13);
 		contentPane.add(lblNewLabel_6);
 		
-		JComboBox comboBox_3 = new JComboBox();
-		comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"}));
-		comboBox_3.setBounds(244, 104, 39, 21);
-		contentPane.add(comboBox_3);
+		String[] after={"9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"};
+		cbafter = new JComboBox(after);
+		cbafter.setBounds(244, 104, 39, 21);
+		getContentPane().add(cbafter);
+		cbafter.addActionListener(this);
 		
 		JLabel lblNewLabel_7 = new JLabel("時");
 		lblNewLabel_7.setBounds(293, 108, 21, 13);
@@ -93,14 +99,15 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 		comboBox_4.setModel(new DefaultComboBoxModel(new String[] {"体育館", "野球場", "サッカー場", "テニスコート", "プール"}));
 		contentPane.add(comboBox_4);
 		
-		JButton btnNewButton = new JButton("検索");
-		btnNewButton.setBounds(98, 218, 91, 21);
-		contentPane.add(btnNewButton);
+		Search = new JButton("検索");
+		Search.setBounds(98, 218, 91, 21);
+		contentPane.add(Search);
+		Search.addActionListener(this);
 		
 		Return = new JButton("キャンセル");
 		Return.setBounds(244, 218, 104, 21);
 		contentPane.add(Return);
-		add(Return);
+		getContentPane().add(Return);
 		Return.addActionListener(this);
 		
 		JComboBox comboBox_5 = new JComboBox();
@@ -109,9 +116,19 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 		contentPane.add(comboBox_5);
 		
 		setVisible(true);
+		
 	}
 	
 	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==Search) {
+			String before =(String)cbbefore.getSelectedItem();
+			String after = (String)cbafter.getSelectedItem();
+			int benum = Integer.parseInt(before);
+			int afnum = Integer.parseInt(after);
+			if(benum>=afnum) {
+				 JOptionPane.showMessageDialog(this, "正しい時刻を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
+			}
+		}
 		if(e.getSource() == Return) {
 			setVisible(false);
 			
