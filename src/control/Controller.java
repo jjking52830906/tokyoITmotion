@@ -36,7 +36,7 @@ public class Controller {
 	
 	public static int accountRegister(String id, String pass, String fname, String lname, String year, String month, String day ,String radio, String fAddress, String lAddress, String tel) {
 		AccountRegisterAction action = new AccountRegisterAction();
-		int res = action.execute(id, pass, fname, lname, year, month, day, radio, fAddress, lAddress, tel);
+		int res = action.execute(id, fname, lname, year, month, day, radio, fAddress, lAddress, tel);
 		return res;
 	}
 }
