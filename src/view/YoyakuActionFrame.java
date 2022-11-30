@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -17,6 +18,9 @@ public class YoyakuActionFrame extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	private JButton Return;
+	private JComboBox cbbefore;
+	private JComboBox cbafter;
+	private JButton Search;
 
 	
 
@@ -33,13 +37,10 @@ public class YoyakuActionFrame extends JFrame implements ActionListener{
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnNewButton = new JButton("検索");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton.setBounds(128, 277, 86, 39);
-		contentPane.add(btnNewButton);
+		Search = new JButton("検索");
+		Search.setBounds(128, 277, 86, 39);
+		contentPane.add(Search);
+		Search.addActionListener(this);
 		
 		Return = new JButton("戻る");
 		Return.setBounds(280, 277, 91, 40);
@@ -86,10 +87,12 @@ public class YoyakuActionFrame extends JFrame implements ActionListener{
 		lblNewLabel_5.setBounds(204, 60, 18, 13);
 		contentPane.add(lblNewLabel_5);
 		
-		JComboBox comboBox_3 = new JComboBox();
-		comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"}));
-		comboBox_3.setBounds(128, 130, 42, 21);
-		contentPane.add(comboBox_3);
+		String[] before={"9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"};
+		cbbefore = new JComboBox(before);
+		cbbefore.setBounds(128, 130, 42, 21);
+		getContentPane().add(cbbefore);
+		cbbefore.addActionListener(this);
+
 		
 		JLabel lblNewLabel_6 = new JLabel("時");
 		lblNewLabel_6.setBounds(179, 134, 18, 13);
@@ -99,10 +102,11 @@ public class YoyakuActionFrame extends JFrame implements ActionListener{
 		lblNewLabel_7.setBounds(222, 134, 24, 13);
 		contentPane.add(lblNewLabel_7);
 		
-		JComboBox comboBox_4 = new JComboBox();
-		comboBox_4.setModel(new DefaultComboBoxModel(new String[] {"9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"}));
-		comboBox_4.setBounds(264, 130, 42, 21);
-		contentPane.add(comboBox_4);
+		String[] after={"9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"};
+		cbafter = new JComboBox(after);
+		cbafter.setBounds(264, 130, 42, 21);
+		getContentPane().add(cbafter);
+		cbafter.addActionListener(this);
 		
 		JLabel lblNewLabel_8 = new JLabel("時");
 		lblNewLabel_8.setBounds(325, 134, 21, 13);
@@ -121,6 +125,15 @@ public class YoyakuActionFrame extends JFrame implements ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==Search) {
+			String before =(String)cbbefore.getSelectedItem();
+			String after = (String)cbafter.getSelectedItem();
+			int benum = Integer.parseInt(before);
+			int afnum = Integer.parseInt(after);
+			if(benum>=afnum) {
+				 JOptionPane.showMessageDialog(this, "正しい時刻を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
+			}
+		}
 		if(e.getSource() == Return) {
 			setVisible(false);
 			
