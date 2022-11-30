@@ -11,13 +11,15 @@ public class ControlDBAccess {
 		Connection con = null;
 		try{
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:65534/test_db?",
+			con = DriverManager.getConnection("jdbc:mysql://localhost:65534/東京ITモーション?serverTimezone=JST",
 					"user1",
 					"pass1");
 		} catch(ClassNotFoundException e) {
-			throw new Exception("DB接続処理に失敗しました！");
+			e.printStackTrace();
+			throw new Exception("DB接続処理に失敗しました");
 		}catch(SQLException e) {
-			throw new Exception("DB接続処理に失敗しました！");
+			e.printStackTrace();
+			throw new Exception("DB接続処理に失敗しました");
 		}
 		return con;
 	}
@@ -29,7 +31,8 @@ public class ControlDBAccess {
 				con.close();
 			}
 		} catch(SQLException e) {
-			System.out.println("DB切断処理に失敗しました！");
+			e.printStackTrace();
+			System.out.println("DB切断処理に失敗しました");
 		}
 	}
 }
