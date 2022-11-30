@@ -24,7 +24,7 @@ public class AccountRegisterDBAccess extends ControlDBAccess{
 			pstmt.setString(9, tel);
 			result = pstmt.executeUpdate();
 		}catch(SQLException e) {
-			throw new Exception("アカウント登録処理に失敗しました。!");
+			throw new Exception("アカウント登録処理に失敗しました。");
 		}finally {
 			try {
 				if(pstmt != null) {
