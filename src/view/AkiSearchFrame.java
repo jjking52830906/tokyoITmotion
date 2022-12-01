@@ -17,10 +17,26 @@ import control.Controller;
 public class AkiSearchFrame extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
-	private JButton Return;
+	
+	private JLabel lblDate;
+	private JComboBox cbYear;
+	private JLabel lblYear;
+	private JComboBox cbMonth;
+	private JLabel lblMonth;
+	private JComboBox cbDay;
+	private JLabel lblDay;
+	
+	private JLabel lblPM;
 	private JComboBox cbbefore;
+	private JLabel lblBefore;
 	private JComboBox cbafter;
+	private JLabel lblAfter;
+	
+	private JLabel lblInstitution;
+	private JComboBox cbInstitution;
+	
 	private JButton Search;
+	private JButton Return;
 	
 
 	/**
@@ -32,39 +48,43 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 		setBounds(450, 200, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("年月日");
-		lblNewLabel.setBounds(25, 45, 50, 13);
-		contentPane.add(lblNewLabel);
+		lblDate = new JLabel("年月日");
+		lblDate.setBounds(25, 45, 50, 13);
+		contentPane.add(lblDate);
 		
-		JLabel lblNewLabel_1 = new JLabel("年");
-		lblNewLabel_1.setBounds(202, 45, 21, 13);
-		contentPane.add(lblNewLabel_1);
+		cbYear = new JComboBox();
+		cbYear.setBounds(98, 41, 96, 21);
+		cbYear.setModel(new DefaultComboBoxModel(new String[] {"2022", "2023"}));
+		contentPane.add(cbYear);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(244, 41, 39, 21);
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"}));
-		contentPane.add(comboBox);
+		lblYear = new JLabel("年");
+		lblYear.setBounds(202, 45, 21, 13);
+		contentPane.add(lblYear);
 		
-		JLabel lblNewLabel_2 = new JLabel("月");
-		lblNewLabel_2.setBounds(288, 45, 21, 13);
-		contentPane.add(lblNewLabel_2);
+		cbMonth = new JComboBox();
+		cbMonth.setBounds(244, 41, 39, 21);
+		cbMonth.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"}));
+		contentPane.add(cbMonth);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(321, 41, 39, 21);
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
-		contentPane.add(comboBox_1);
+		lblMonth = new JLabel("月");
+		lblMonth.setBounds(288, 45, 21, 13);
+		contentPane.add(lblMonth);
 		
-		JLabel lblNewLabel_3 = new JLabel("日");
-		lblNewLabel_3.setBounds(370, 45, 21, 13);
-		contentPane.add(lblNewLabel_3);
+		cbDay = new JComboBox();
+		cbDay.setBounds(321, 41, 39, 21);
+		cbDay.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
+		contentPane.add(cbDay);
 		
-		JLabel lblNewLabel_4 = new JLabel("時刻");
-		lblNewLabel_4.setBounds(38, 108, 37, 13);
-		contentPane.add(lblNewLabel_4);
+		lblDay = new JLabel("日");
+		lblDay.setBounds(370, 45, 21, 13);
+		contentPane.add(lblDay);
+		
+		lblPM = new JLabel("時刻");
+		lblPM.setBounds(38, 108, 37, 13);
+		contentPane.add(lblPM);
 		
 		String[] before={"9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"};
 		cbbefore = new JComboBox(before);
@@ -72,13 +92,13 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 		getContentPane().add(cbbefore);
 		cbbefore.addActionListener(this);
 		
-		JLabel lblNewLabel_5 = new JLabel("～");
-		lblNewLabel_5.setBounds(193, 108, 30, 13);
-		contentPane.add(lblNewLabel_5);
+		lblBefore = new JLabel("時");
+		lblBefore.setBounds(149, 108, 21, 13);
+		contentPane.add(lblBefore);
 		
-		JLabel lblNewLabel_6 = new JLabel("時");
-		lblNewLabel_6.setBounds(149, 108, 21, 13);
-		contentPane.add(lblNewLabel_6);
+		JLabel lblNewLabel = new JLabel("～");
+		lblNewLabel.setBounds(193, 108, 30, 13);
+		contentPane.add(lblNewLabel);
 		
 		String[] after={"9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"};
 		cbafter = new JComboBox(after);
@@ -86,18 +106,19 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 		getContentPane().add(cbafter);
 		cbafter.addActionListener(this);
 		
-		JLabel lblNewLabel_7 = new JLabel("時");
-		lblNewLabel_7.setBounds(293, 108, 21, 13);
-		contentPane.add(lblNewLabel_7);
+		lblAfter = new JLabel("時");
+		lblAfter.setBounds(293, 108, 21, 13);
+		contentPane.add(lblAfter);
 		
-		JLabel lblNewLabel_8 = new JLabel("施設");
-		lblNewLabel_8.setBounds(38, 163, 30, 13);
-		contentPane.add(lblNewLabel_8);
+		lblInstitution = new JLabel("施設");
+		lblInstitution.setBounds(38, 163, 30, 13);
+		contentPane.add(lblInstitution);
 		
-		JComboBox comboBox_4 = new JComboBox();
-		comboBox_4.setBounds(98, 159, 114, 21);
-		comboBox_4.setModel(new DefaultComboBoxModel(new String[] {"体育館", "野球場", "サッカー場", "テニスコート", "プール"}));
-		contentPane.add(comboBox_4);
+		String[] institution = {"体育館", "野球場", "サッカー場", "テニスコート", "プール"};
+		cbInstitution = new JComboBox(institution);
+		cbInstitution.setBounds(98, 159, 114, 21);
+		getContentPane().add(cbInstitution);
+		cbInstitution.addActionListener(this);
 		
 		Search = new JButton("検索");
 		Search.setBounds(98, 218, 91, 21);
@@ -110,13 +131,8 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 		getContentPane().add(Return);
 		Return.addActionListener(this);
 		
-		JComboBox comboBox_5 = new JComboBox();
-		comboBox_5.setBounds(98, 41, 96, 21);
-		comboBox_5.setModel(new DefaultComboBoxModel(new String[] {"2022", "2023"}));
-		contentPane.add(comboBox_5);
 		
 		setVisible(true);
-		
 	}
 	
 	public void actionPerformed(ActionEvent e) {
@@ -125,14 +141,12 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 			String after = (String)cbafter.getSelectedItem();
 			int benum = Integer.parseInt(before);
 			int afnum = Integer.parseInt(after);
-			if(benum>=afnum) {
+			if(benum >= afnum) {
 				 JOptionPane.showMessageDialog(this, "正しい時刻を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
 			}
-		}
-		if(e.getSource() == Return) {
+		}else if(e.getSource() == Return) {
 			setVisible(false);
-			
-			Controller.mainMenuDisplay();
+            Controller.mainMenuDisplay();
 		}
 	}
 }
