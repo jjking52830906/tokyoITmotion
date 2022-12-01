@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -26,11 +27,11 @@ public class LoginFrame extends JFrame implements ActionListener{
 	private JLabel lblLabel;
 	
 	private JLabel lblLogin;
+	
 	private JLabel lblLoginId;
 	private JTextField txtLoginID;
 	
 	private JLabel lblPassword;
-	private JButton btnPassword;
 	private JTextField txtPassword;
 	
 	private JButton btnLogin;
@@ -109,14 +110,18 @@ public class LoginFrame extends JFrame implements ActionListener{
 	
 
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == Return) {
-			setVisible(false);
+		if(e.getSource() == btnLogin) {
+			String id  = txtLoginID.getText();
+			String pass = txtPassword.getText();
 			
-			try {
-				Controller.mainMenuDisplay();
-			}catch (Exception ex) {
-				ex.printStackTrace();
+			if(!(id.equals("")) && !(pass.equals(""))) {
+				
+			}else {
+				JOptionPane.showMessageDialog(this, "未入力の項目があります。","エラー", JOptionPane.WARNING_MESSAGE);
 			}
-		}
+		}else if(e.getSource() == Return) {
+            setVisible(false);
+            Controller.mainMenuDisplay();
+        }
 	}
 }
