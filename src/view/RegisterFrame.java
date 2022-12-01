@@ -236,15 +236,7 @@ public class RegisterFrame extends JFrame implements ActionListener{
                    radio = rbSex[i].getText();
                  }
              }
-             System.out.println(id);
-             System.out.println(pass);
-             System.out.println(fname);
-             System.out.println(lname);
-             System.out.println(date);
-             System.out.println(radio);
-             System.out.println(fAddress);
-             System.out.println(lAddress);
-             System.out.println(tel);
+             
              
              
              int passlength = pass.length();
