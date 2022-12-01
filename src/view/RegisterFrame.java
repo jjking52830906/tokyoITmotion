@@ -257,7 +257,7 @@ public class RegisterFrame extends JFrame implements ActionListener{
                  }
                  
                  try {
-                     int res = Controller.accountRegister(id, pass, fname, lname, date, radio, fAddress, lAddress, tel);
+                     int res = Controller.accountRegister(id, fname, lname, date, radio, fAddress, lAddress, tel);
                      if(res == 1) {
                          JOptionPane.showMessageDialog(this, "アカウント登録に成功しました！", "登録完了", JOptionPane.INFORMATION_MESSAGE);
                      }else {
