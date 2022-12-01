@@ -11,7 +11,7 @@ public class ControlDBAccess {
 		Connection con = null;
 		try{
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:65534/test_db?",
+			con = DriverManager.getConnection("jdbc:mysql://localhost:65534/sakusei?",
 					"user1",
 					"pass1");
 		} catch(ClassNotFoundException e) {
