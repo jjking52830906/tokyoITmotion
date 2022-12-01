@@ -6,7 +6,6 @@ import action.AccountRegisterAction;
 import action.AkiSearchDisplayAction;
 import action.LoginDisplayAction;
 import action.MainMenuDisplayAction;
-import action.PasswordRegisterAction;
 import action.RegisterDisplayAction;
 import action.YoyakuDisplayAction;
 
@@ -43,10 +42,6 @@ public class Controller {
 		return res;
 	}
 	
-	public static int passwordRegister(String pass) throws Exception {
-		PasswordRegisterAction action = new PasswordRegisterAction();
-		int rel = action.execute(pass);
-		return rel;
-	}
+	
 	
 }
