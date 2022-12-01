@@ -9,7 +9,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -19,8 +18,22 @@ import control.Controller;
 public class LoginFrame extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
+	
+	
+	
+	
+	private ImageIcon imIcon;
+	private JLabel lblLabel;
+	
+	private JLabel lblLogin;
+	private JLabel lblLoginId;
+	private JTextField txtLoginID;
+	
+	private JLabel lblPassword;
+	private JButton btnPassword;
+	private JTextField txtPassword;
+	
+	private JButton btnLogin;
 	private JButton Return;
 
 	
@@ -33,57 +46,54 @@ public class LoginFrame extends JFrame implements ActionListener{
 		setBounds(220, 50, 900, 650);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		ImageIcon icon = new ImageIcon(LoginFrame.class.getResource("/image/white_00032.jpg"));
+		imIcon = new ImageIcon(LoginFrame.class.getResource("/image/white_00032.jpg"));
 		
-		
-		
-		JLabel Label1 = new JLabel(icon);
-		Label1.setBounds(0, 0, 900, 650);
-		contentPane.add(Label1);
-		Label1.setLayout(null);
+		lblLabel = new JLabel(imIcon);
+		lblLabel.setBounds(0, 0, 900, 650);
+		contentPane.add(lblLabel);
+		lblLabel.setLayout(null);
 		
 		JPanel panel1 = new JPanel();
-		Label1.add(panel1);
+		lblLabel.add(panel1);
 		panel1.setBackground(new Color(224, 255, 255));
 		panel1.setBounds(230,140,410,330);
 		panel1.setLayout(null);
 		
-		JLabel lblNewLabel_1 = new JLabel("ログイン");
-		lblNewLabel_1.setFont(new Font("MS UI Gothic", Font.PLAIN, 25));
-		lblNewLabel_1.setBounds(171, 43, 134, 50);
-		panel1.add(lblNewLabel_1);
 		
-		textField = new JTextField();
-		textField.setBounds(127, 103, 168, 19);
-		panel1.add(textField);
-		textField.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(127, 144, 168, 19);
-		panel1.add(textField_1);
-		textField_1.setColumns(10);
+		lblLogin = new JLabel("ログイン");
+		lblLogin.setFont(new Font("MS UI Gothic", Font.PLAIN, 25));
+		lblLogin.setBounds(171, 43, 134, 50);
+		panel1.add(lblLogin);
 		
-		JLabel lblNewLabel_2 = new JLabel("ログインID");
-		lblNewLabel_2.setBounds(57, 106, 68, 13);
-		panel1.add(lblNewLabel_2);
+		lblLoginId = new JLabel("ログインID");
+		lblLoginId.setBounds(57, 106, 68, 13);
+		panel1.add(lblLoginId);
 		
-		JLabel lblNewLabel_3 = new JLabel("パスワード");
-		lblNewLabel_3.setBounds(57, 147, 68, 13);
-		panel1.add(lblNewLabel_3);
+		txtLoginID = new JTextField();
+		txtLoginID.setBounds(127, 103, 168, 19);
+		panel1.add(txtLoginID);
+		txtLoginID.setColumns(10);
+		txtLoginID.addActionListener(this);
+				
+		lblPassword = new JLabel("パスワード");
+		lblPassword.setBounds(57, 147, 68, 13);
+		panel1.add(lblPassword);
 		
-		JButton btnNewButton = new JButton("ログイン");
-		btnNewButton.setForeground(new Color(255, 255, 255));
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton.setBackground(new Color(0,0,0));
-		btnNewButton.setFont(new Font("MS UI Gothic", Font.PLAIN, 14));
-		btnNewButton.setBounds(145, 205, 115, 33);
-		panel1.add(btnNewButton);
+		txtPassword = new JTextField();
+		txtPassword.setBounds(127, 144, 168, 19);
+		panel1.add(txtPassword);
+		txtPassword.setColumns(10);
+		txtPassword.addActionListener(this);
+		
+		btnLogin = new JButton("ログイン");
+		btnLogin.setForeground(new Color(255, 255, 255));
+		btnLogin.setBackground(new Color(0,0,0));
+		btnLogin.setFont(new Font("MS UI Gothic", Font.PLAIN, 14));
+		btnLogin.setBounds(145, 205, 115, 33);
+		panel1.add(btnLogin);
 		
 		Return = new JButton("キャンセル");
 		Return.setForeground(new Color(255, 255, 255));
@@ -93,14 +103,10 @@ public class LoginFrame extends JFrame implements ActionListener{
 		panel1.add(Return);
 		Return.addActionListener(this);
 		
+		
 		setVisible(true);
 		}	
-	public static void systemErrorMessage(JFrame frame, Exception e) {
-
-		JOptionPane.showMessageDialog(frame, e + "DB接続に失敗しました。", "【システムエラー】", JOptionPane.ERROR_MESSAGE);
-	}
-
-
+	
 
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == Return) {
