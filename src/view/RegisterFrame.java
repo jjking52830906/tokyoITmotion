@@ -230,14 +230,22 @@ public class RegisterFrame extends JFrame implements ActionListener{
              String tel = txtTel.getText();
              String strDate = year + "-" + month + "-" + day;
              Date date = Date.valueOf(strDate);
-             
-             
              String radio = "";
              for (int i = 0 ; i < rbSex.length; i++){
                  if (rbSex[i].isSelected()){
                    radio = rbSex[i].getText();
                  }
              }
+             System.out.println(id);
+             System.out.println(pass);
+             System.out.println(fname);
+             System.out.println(lname);
+             System.out.println(date);
+             System.out.println(radio);
+             System.out.println(fAddress);
+             System.out.println(lAddress);
+             System.out.println(tel);
+             
              
              int passlength = pass.length();
              String regex_AlphaNum = "^[A-Za-z0-9]+$" ; // 半角英数字のみ
@@ -257,7 +265,7 @@ public class RegisterFrame extends JFrame implements ActionListener{
                  }
                  
                  try {
-                     int res = Controller.accountRegister(id, fname, lname, date, radio, fAddress, lAddress, tel);
+                     int res = Controller.accountRegister(id, pass, fname, lname, date, radio, fAddress, lAddress, tel);
                      if(res == 1) {
                          JOptionPane.showMessageDialog(this, "アカウント登録に成功しました！", "登録完了", JOptionPane.INFORMATION_MESSAGE);
                      }else {

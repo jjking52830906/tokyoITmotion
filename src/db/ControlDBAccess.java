@@ -15,10 +15,8 @@ public class ControlDBAccess {
 					"user1",
 					"pass1");
 		} catch(ClassNotFoundException e) {
-			e.printStackTrace();
 			throw new Exception("DB接続処理に失敗しました");
 		}catch(SQLException e) {
-			e.printStackTrace();
 			throw new Exception("DB接続処理に失敗しました");
 		}
 		return con;
