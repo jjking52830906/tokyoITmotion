@@ -5,6 +5,8 @@ import java.sql.Date;
 import action.AccountRegisterAction;
 import action.AkiSearchDisplayAction;
 import action.LoginDisplayAction;
+import action.LoginNinshouAction;
+import action.LoginafterDisplayAction;
 import action.MainMenuDisplayAction;
 import action.RegisterDisplayAction;
 import action.YoyakuDisplayAction;
@@ -46,6 +48,11 @@ public class Controller {
 		LoginNinshouAction action = new LoginNinshouAction();
 		String[][] tableData = action.execute(data);
 		return tableData;
+	}
+	
+	public static void LoginafterDisplay() {
+		LoginafterDisplayAction action = new LoginafterDisplayAction();
+		action.execute();
 	}
 	
 }
