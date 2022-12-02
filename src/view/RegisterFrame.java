@@ -245,7 +245,7 @@ public class RegisterFrame extends JFrame implements ActionListener{
                  if(!(checkLogic(regex_AlphaNum, id) == true)) {
                      JOptionPane.showMessageDialog(this, "ログインIDには半角英数字のみ入力してください", "入力エラー", JOptionPane.WARNING_MESSAGE);
                      return;
-                 }else if(!((checkLogic(regex_AlphaNum, pass) == true) && passlength > 6 && passlength <= 16)){
+                 }else if(!((checkLogic(regex_AlphaNum, pass) == true) && passlength >= 6 && passlength <= 16)){
                      JOptionPane.showMessageDialog(this, "パスワードには半角英数字で6文字以上16文字以内で入力してください", "入力エラー", JOptionPane.WARNING_MESSAGE);
                      return;
                  }

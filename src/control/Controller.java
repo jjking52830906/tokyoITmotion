@@ -42,6 +42,10 @@ public class Controller {
 		return res;
 	}
 	
-	
+	public static String[][] ninshou(String[] data)throws Exception{
+		LoginNinshouAction action = new LoginNinshouAction();
+		String[][] tableData = action.execute(data);
+		return tableData;
+	}
 	
 }

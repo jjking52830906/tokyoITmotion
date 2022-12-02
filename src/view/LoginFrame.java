@@ -19,10 +19,7 @@ import control.Controller;
 public class LoginFrame extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
-	
-	
-	
-	
+		
 	private ImageIcon imIcon;
 	private JLabel lblLabel;
 	
@@ -36,7 +33,6 @@ public class LoginFrame extends JFrame implements ActionListener{
 	
 	private JButton btnLogin;
 	private JButton Return;
-
 	
 
 	/**
@@ -77,7 +73,6 @@ public class LoginFrame extends JFrame implements ActionListener{
 		txtLoginID.setBounds(127, 103, 168, 19);
 		panel1.add(txtLoginID);
 		txtLoginID.setColumns(10);
-		txtLoginID.addActionListener(this);
 				
 		lblPassword = new JLabel("パスワード");
 		lblPassword.setBounds(57, 147, 68, 13);
@@ -87,7 +82,6 @@ public class LoginFrame extends JFrame implements ActionListener{
 		txtPassword.setBounds(127, 144, 168, 19);
 		panel1.add(txtPassword);
 		txtPassword.setColumns(10);
-		txtPassword.addActionListener(this);
 		
 		btnLogin = new JButton("ログイン");
 		btnLogin.setForeground(new Color(255, 255, 255));
@@ -115,7 +109,19 @@ public class LoginFrame extends JFrame implements ActionListener{
 			String pass = txtPassword.getText();
 			
 			if(!(id.equals("")) && !(pass.equals(""))) {
-				
+				try {
+					String[] data = [id, pass];
+					String[][] tableData = Controller.ninshou(data);
+					
+					if(tableData != null) {
+						setVisible(false);
+						Controller.LoginafterDisplay();
+					}else {
+						JOptionPane.showMessageDialog(this, "ログインID、またはパスワードが間違っています。","【確認】",JOptionPane.INFORMATION_MESSAGE);
+					}
+				}catch (Exception ex) {
+					JOptionPane.showMessageDialog(this, ex);
+				}
 			}else {
 				JOptionPane.showMessageDialog(this, "未入力の項目があります。","エラー", JOptionPane.WARNING_MESSAGE);
 			}
