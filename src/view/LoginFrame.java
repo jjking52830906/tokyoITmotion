@@ -110,7 +110,7 @@ public class LoginFrame extends JFrame implements ActionListener{
 			
 			if(!(id.equals("")) && !(pass.equals(""))) {
 				try {
-					String[] data = [id, pass];
+					String[] data = {id, pass};
 					String[][] tableData = Controller.ninshou(data);
 					
 					if(tableData != null) {
