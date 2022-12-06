@@ -1,10 +1,13 @@
 package model;
 import java.io.Serializable;
+import java.sql.Date;
 public class Customer implements Serializable{
     private int custId;
+    private String rogid;
+    private String rogpass;
     private String firstName;
     private String lastName;
-    private int birth;
+    private Date birth;
     private String sex;
     private String firstAddress;
     private String lastAddress;
@@ -13,8 +16,15 @@ public class Customer implements Serializable{
     public Customer() {
     }
     
-    public Customer(int custId, String firstName, String lastName, int birth, String sex, String firstAddress, String lastAddress, int tel) {
+    public Customer(String rogid, String rogpass) {
+    	this.rogid = rogid;
+    	this.rogpass = rogpass;
+    }
+    
+    public Customer(int custId, String rogid, String rogpass, String firstName, String lastName, Date birth, String sex, String firstAddress, String lastAddress, int tel) {
         this.custId = custId;
+        this.rogid = rogid;
+        this.rogpass = rogpass;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birth = birth;
@@ -29,6 +39,18 @@ public class Customer implements Serializable{
     public void setCustId(int custId) {
         this.custId = custId;
     }
+    public String getRogid() {
+    	return rogid;
+    }
+    public void setRogid(String rogid) {
+    	this.rogid = rogid;
+    }
+    public String getRogpass() {
+    	return rogpass;
+    }
+    public void setRogpass(String rogpass) {
+    	this.rogpass = rogpass;
+    }
     public String getFirstName() {
         return firstName;
     }
@@ -41,10 +63,10 @@ public class Customer implements Serializable{
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    public int getBirth() {
+    public Date getBirth() {
         return birth;
     }
-    public void setBirth(int birth) {
+    public void setBirth(Date birth) {
         this.birth = birth;
     }
     public String getSex() {

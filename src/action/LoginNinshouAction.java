@@ -14,7 +14,11 @@ public class LoginNinshouAction {
 		data[1] = data[1].replaceAll(" ", "");
 		ArrayList<Customer> list = null;
 		LoginNinshouDBAccess dao = new LoginNinshouDBAccess();
-		
+		if(!data[0].equals("") && !data[1].equals("")) {
+			list = dao.loginNinshou(data[0], data[1]);
+		}
+		String[][] tableData = null;
+		if(list != null)
 		
 		return tableData;
 	}

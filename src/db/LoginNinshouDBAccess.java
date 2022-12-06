@@ -22,9 +22,7 @@ public class LoginNinshouDBAccess extends ControlDBAccess{
 				pstmt.setString(1, id);
 				pstmt.setString(2, pass);
 				rs = pstmt.executeQuery();
-				while(rs.next() == true) {
-					
-				}
+				
 			}
 		}catch (SQLException e) {
 			throw new Exception("IDとパスワード情報取得処理に失敗しました。");
