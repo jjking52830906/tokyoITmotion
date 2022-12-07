@@ -119,7 +119,7 @@ public class YoyakuActionFrame extends JFrame implements ActionListener{
 		
 		JComboBox comboBox_5 = new JComboBox();
 		comboBox_5.setModel(new DefaultComboBoxModel(new String[] {"体育館", "野球場", "サッカー場", "テニスコート", "プール"}));
-		comboBox_5.setBounds(128, 203, 86, 21);
+		comboBox_5.setBounds(128, 204, 109, 21);
 		contentPane.add(comboBox_5);
 		
 		JLabel lblNewLabel_9 = new JLabel("※予約可能日は本日から1年後まで");
