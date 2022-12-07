@@ -6,22 +6,20 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class AccountRegisterDBAccess extends ControlDBAccess{
-	public int registerAccount(String id, String pass, String fname, String lname, Date date, String radio, String fAddress, String lAddress, String tel) throws Exception{
+	public int registerAccount(String fname, String lname, Date date, String radio, String fAddress, String lAddress, String tel) throws Exception{
 		int result = 0;
 		Connection con = createConnection();
 		PreparedStatement pstmt = null;
 		try {
-			String sql = "INSERT INTO CUSTOMER(ROGID, ROGPASS, FIRSTNAME, LASTNAME, BIRTH, SEX, FIRSTADDRESS, LASTADDRESS, TEL) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "INSERT INTO CUSTOMER(FIRSTNAME, LASTNAME, BIRTH, SEX, FIRSTADDRESS, LASTADDRESS, TEL) VALUES(?, ?, ?, ?, ?, ?, ?);";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, id);
-			pstmt.setString(2, pass);
-			pstmt.setString(3, fname);
-			pstmt.setString(4, lname);
-			pstmt.setDate(5, date);
-			pstmt.setString(6, radio);
-			pstmt.setString(7, fAddress);
-			pstmt.setString(8, lAddress);
-			pstmt.setString(9, tel);
+			pstmt.setString(1, fname);
+			pstmt.setString(2, lname);
+			pstmt.setDate(3, date);
+			pstmt.setString(4, radio);
+			pstmt.setString(5, fAddress);
+			pstmt.setString(6, lAddress);
+			pstmt.setString(7, tel);
 			result = pstmt.executeUpdate();
 		}catch(SQLException e) {
 			throw new Exception("アカウント登録処理に失敗しました。");

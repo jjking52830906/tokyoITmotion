@@ -14,7 +14,6 @@ public class LoginNinshouDBAccess extends ControlDBAccess{
 		Connection con = createConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		ArrayList<Customer> list = new ArrayList<Customer>();
 		try {
 			if(con != null) {
 				String sql = "SELECT ROGID, ROGPASS FROM CUSTOMER WHERE ROGID = ? AND ROGPASS = ?;";
