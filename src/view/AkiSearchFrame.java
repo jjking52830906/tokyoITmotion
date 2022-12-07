@@ -38,6 +38,7 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 	private JButton Search;
 	private JButton Return;
 	
+	
 
 	/**
 	 * Create the frame.
@@ -64,19 +65,21 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 		lblYear.setBounds(202, 45, 21, 13);
 		contentPane.add(lblYear);
 		
-		cbMonth = new JComboBox();
+		String[] Month={"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
+		cbMonth = new JComboBox(Month);
 		cbMonth.setBounds(244, 41, 39, 21);
-		cbMonth.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"}));
-		contentPane.add(cbMonth);
+		getContentPane().add(cbMonth);
+		cbMonth.addActionListener(this);
 		
 		lblMonth = new JLabel("月");
 		lblMonth.setBounds(288, 45, 21, 13);
 		contentPane.add(lblMonth);
 		
-		cbDay = new JComboBox();
+		String[] Day={"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
+		cbDay = new JComboBox(Day);
 		cbDay.setBounds(321, 41, 39, 21);
-		cbDay.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
-		contentPane.add(cbDay);
+		getContentPane().add(cbDay);
+		cbDay.addActionListener(this);
 		
 		lblDay = new JLabel("日");
 		lblDay.setBounds(370, 45, 21, 13);
@@ -139,10 +142,35 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 		if(e.getSource()==Search) {
 			String before =(String)cbbefore.getSelectedItem();
 			String after = (String)cbafter.getSelectedItem();
+			String month = (String)cbMonth.getSelectedItem();
+			String day = (String)cbDay.getSelectedItem();
 			int benum = Integer.parseInt(before);
 			int afnum = Integer.parseInt(after);
-			if(benum >= afnum) {
+			int bemonth = Integer.parseInt(month);
+			int beday = Integer.parseInt(day);
+			
+			if(benum>=afnum&&bemonth==2&&beday>28) {
+				 JOptionPane.showMessageDialog(this, "正しい日付と時刻を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
+			}else if(benum>=afnum&&bemonth==4&&beday==31) {
+				JOptionPane.showMessageDialog(this, "正しい日付と時刻を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
+			}else if(benum>=afnum&&bemonth==6&&beday==31) {
+				JOptionPane.showMessageDialog(this, "正しい日付と時刻を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
+			}else if(benum>=afnum&&bemonth==9&&beday==31) {
+				JOptionPane.showMessageDialog(this, "正しい日付と時刻を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
+			}else if(benum>=afnum&&bemonth==11&&beday==31) {
+				JOptionPane.showMessageDialog(this, "正しい日付と時刻を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
+			}else if(benum>=afnum) {
 				 JOptionPane.showMessageDialog(this, "正しい時刻を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
+			}else if(bemonth==2&&beday>28) {
+				 JOptionPane.showMessageDialog(this, "正しい日付を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
+			}else if(bemonth==4&&beday==31) {
+				JOptionPane.showMessageDialog(this, "正しい日付を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
+			}else if(bemonth==6&&beday==31) {
+				JOptionPane.showMessageDialog(this, "正しい日付を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
+			}else if(bemonth==9&&beday==31) {
+				JOptionPane.showMessageDialog(this, "正しい日付を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
+			}else if(bemonth==11&&beday==31) {
+				JOptionPane.showMessageDialog(this, "正しい日付を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
 			}
 		}else if(e.getSource() == Return) {
 			setVisible(false);

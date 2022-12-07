@@ -21,14 +21,16 @@ public class YoyakuActionFrame extends JFrame implements ActionListener{
 	private JComboBox cbbefore;
 	private JComboBox cbafter;
 	private JButton Search;
-
-	
+	private JComboBox cbMonth;
+	private JLabel lblMonth;
+	private JComboBox cbDay;
+	private JLabel lblDay;
 
 	/**
 	 * Create the frame.
 	 */
 	public YoyakuActionFrame() {
-		setTitle("【予約検索画面】");
+		setTitle("【予約登録画面】");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450, 200, 448, 393);
 		contentPane = new JPanel();
@@ -65,15 +67,18 @@ public class YoyakuActionFrame extends JFrame implements ActionListener{
 		comboBox.setBounds(128, 55, 66, 21);
 		contentPane.add(comboBox);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"}));
-		comboBox_1.setBounds(234, 56, 42, 21);
-		contentPane.add(comboBox_1);
+		String[] Month={"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
+		cbMonth = new JComboBox(Month);
+		cbMonth.setBounds(234, 56, 39, 21);
+		getContentPane().add(cbMonth);
+		cbMonth.addActionListener(this);
 		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
-		comboBox_2.setBounds(318, 56, 42, 21);
-		contentPane.add(comboBox_2);
+		String[] Day={"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
+		cbDay = new JComboBox(Day);
+		cbDay.setBounds(321, 56, 39, 21);
+		getContentPane().add(cbDay);
+		cbDay.addActionListener(this);
+
 		
 		JLabel lblNewLabel_3 = new JLabel("月");
 		lblNewLabel_3.setBounds(288, 60, 18, 13);
@@ -128,15 +133,39 @@ public class YoyakuActionFrame extends JFrame implements ActionListener{
 		if(e.getSource()==Search) {
 			String before =(String)cbbefore.getSelectedItem();
 			String after = (String)cbafter.getSelectedItem();
+			String month = (String)cbMonth.getSelectedItem();
+			String day = (String)cbDay.getSelectedItem();
 			int benum = Integer.parseInt(before);
 			int afnum = Integer.parseInt(after);
-			if(benum>=afnum) {
+			int bemonth = Integer.parseInt(month);
+			int beday = Integer.parseInt(day);
+			
+			if(benum>=afnum&&bemonth==2&&beday>28) {
+				 JOptionPane.showMessageDialog(this, "正しい日付と時刻を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
+			}else if(benum>=afnum&&bemonth==4&&beday==31) {
+				JOptionPane.showMessageDialog(this, "正しい日付と時刻を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
+			}else if(benum>=afnum&&bemonth==6&&beday==31) {
+				JOptionPane.showMessageDialog(this, "正しい日付と時刻を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
+			}else if(benum>=afnum&&bemonth==9&&beday==31) {
+				JOptionPane.showMessageDialog(this, "正しい日付と時刻を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
+			}else if(benum>=afnum&&bemonth==11&&beday==31) {
+				JOptionPane.showMessageDialog(this, "正しい日付と時刻を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
+			}else if(benum>=afnum) {
 				 JOptionPane.showMessageDialog(this, "正しい時刻を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
+			}else if(bemonth==2&&beday>28) {
+				 JOptionPane.showMessageDialog(this, "正しい日付を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
+			}else if(bemonth==4&&beday==31) {
+				JOptionPane.showMessageDialog(this, "正しい日付を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
+			}else if(bemonth==6&&beday==31) {
+				JOptionPane.showMessageDialog(this, "正しい日付を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
+			}else if(bemonth==9&&beday==31) {
+				JOptionPane.showMessageDialog(this, "正しい日付を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
+			}else if(bemonth==11&&beday==31) {
+				JOptionPane.showMessageDialog(this, "正しい日付を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
 			}
 		}
 		if(e.getSource() == Return) {
 			setVisible(false);
-			
 			Controller.mainMenuDisplay();
 		}
 	}
