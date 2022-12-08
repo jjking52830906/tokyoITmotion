@@ -9,7 +9,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -89,6 +88,7 @@ public class LoginFrame extends JFrame implements ActionListener{
 		btnLogin.setFont(new Font("MS UI Gothic", Font.PLAIN, 14));
 		btnLogin.setBounds(145, 205, 115, 33);
 		panel1.add(btnLogin);
+		btnLogin.addActionListener(this);
 		
 		Return = new JButton("キャンセル");
 		Return.setForeground(new Color(255, 255, 255));
@@ -100,31 +100,13 @@ public class LoginFrame extends JFrame implements ActionListener{
 		
 		
 		setVisible(true);
-		}	
+	}
 	
 
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnLogin) {
-			String id  = txtLoginID.getText();
-			String pass = txtPassword.getText();
-			
-			if(!(id.equals("")) && !(pass.equals(""))) {
-				try {
-					String[] data = {id, pass};
-					String[][] tableData = Controller.ninshou(data);
-					
-					if(tableData != null) {
-						setVisible(false);
-						Controller.LoginafterDisplay();
-					}else {
-						JOptionPane.showMessageDialog(this, "ログインID、またはパスワードが間違っています。","【確認】",JOptionPane.INFORMATION_MESSAGE);
-					}
-				}catch (Exception ex) {
-					JOptionPane.showMessageDialog(this, ex);
-				}
-			}else {
-				JOptionPane.showMessageDialog(this, "未入力の項目があります。","エラー", JOptionPane.WARNING_MESSAGE);
-			}
+			setVisible(false);
+			Controller.LoginafterDisplay();
 		}else if(e.getSource() == Return) {
             setVisible(false);
             Controller.mainMenuDisplay();
