@@ -11,6 +11,7 @@ import action.LoginafterDisplayAction;
 import action.MainMenuDisplayAction;
 import action.RegisterDisplayAction;
 import action.YoyakuDisplayAction;
+import action.YoyakukauninDisplayAction;
 
 public class Controller {
 
@@ -60,5 +61,9 @@ public class Controller {
 		IDPassRegisterAction action = new IDPassRegisterAction();
 		int rel = action.execute(id, pass);
 		return rel;
+	}
+	public static void YoyakukakuninDisplay() {
+		YoyakukauninDisplayAction action = new YoyakukauninDisplayAction();
+		action.execute();
 	}
 }

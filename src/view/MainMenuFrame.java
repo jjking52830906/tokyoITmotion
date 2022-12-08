@@ -112,7 +112,7 @@ public class MainMenuFrame extends JFrame implements ActionListener{
 		}else if (e.getSource() == btnReserve) {
 			setVisible(false);
 			
-			Controller.mainMenuDisplay();
+			Controller.YoyakukakuninDisplay();
 		}
 	}
 }

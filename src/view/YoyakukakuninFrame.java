@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,37 +10,23 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-public class YoyakukakuteiFrame extends JFrame {
+import control.Controller;
+
+public class YoyakukakuninFrame extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
-	private JTextField textField_3;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					YoyakukakuteiFrame frame = new YoyakukakuteiFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private JButton Return;
 
 	/**
 	 * Create the frame.
 	 */
-	public YoyakukakuteiFrame() {
-		setTitle("【予約確定確認画面】");
+	public YoyakukakuninFrame() {
+		setTitle("【予約確認画面】");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 457, 440);
+		setBounds(100, 100, 450, 347);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -60,17 +45,13 @@ public class YoyakukakuteiFrame extends JFrame {
 		lblNewLabel_2.setBounds(55, 166, 50, 13);
 		contentPane.add(lblNewLabel_2);
 		
-		JButton btnNewButton = new JButton("確定");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnNewButton.setBounds(92, 332, 109, 34);
-		contentPane.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("キャンセル");
-		btnNewButton_1.setBounds(266, 332, 115, 34);
-		contentPane.add(btnNewButton_1);
+		
+		Return = new JButton("キャンセル");
+		Return.setBounds(146, 236, 130, 41);
+		contentPane.add(Return);
+		getContentPane().add(Return);
+		Return.addActionListener(this);
 		
 		textField = new JTextField();
 		textField.setBounds(136, 42, 147, 19);
@@ -87,13 +68,12 @@ public class YoyakukakuteiFrame extends JFrame {
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(136, 221, 192, 80);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
-		
-		JLabel lblNewLabel_3 = new JLabel("利用目的");
-		lblNewLabel_3.setBounds(55, 254, 50, 13);
-		contentPane.add(lblNewLabel_3);
+		setVisible(true);
+	}
+	public void actionPerformed(ActionEvent e) { 
+		if(e.getSource() == Return) {
+			setVisible(false);
+			Controller.mainMenuDisplay();
+		}
 	}
 }
