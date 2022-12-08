@@ -142,8 +142,10 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 		if(e.getSource()==Search) {
 			String before =(String)cbbefore.getSelectedItem();
 			String after = (String)cbafter.getSelectedItem();
+			String year = (String)cbYear.getSelectedItem();
 			String month = (String)cbMonth.getSelectedItem();
 			String day = (String)cbDay.getSelectedItem();
+			String institution = (String)cbInstitution.getSelectedItem();
 			int benum = Integer.parseInt(before);
 			int afnum = Integer.parseInt(after);
 			int bemonth = Integer.parseInt(month);
@@ -172,6 +174,12 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 			}else if(bemonth==11&&beday==31) {
 				JOptionPane.showMessageDialog(this, "正しい日付を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
 			}
+			try {
+				String[] data = {year, month, day, before, after, institution};
+				
+			}catch(Exception ex) {
+                ErrorDialogUtility.systemErrorMessage(this, ex);
+            }
 		}else if(e.getSource() == Return) {
 			setVisible(false);
             Controller.mainMenuDisplay();
