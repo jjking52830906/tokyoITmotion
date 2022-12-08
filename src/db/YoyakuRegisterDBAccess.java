@@ -1,5 +1,11 @@
 package db;
 
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Time;
+
 public class YoyakuRegisterDBAccess {
 	public int registerYoyaku(int insid, Date resdate, Time strtime, Time fintime, int custid, String purpose, String place) throws Exception{
         int result = 0;
