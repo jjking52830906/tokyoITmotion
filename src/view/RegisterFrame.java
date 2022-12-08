@@ -236,9 +236,7 @@ public class RegisterFrame extends JFrame implements ActionListener{
                    radio = rbSex[i].getText();
                  }
              }
-             
-             
-             
+                          
              int passlength = pass.length();
              String regex_AlphaNum = "^[A-Za-z0-9]+$" ; // 半角英数字のみ
              if(!(id.equals("")) && !(pass.equals("")) && !(fname.equals("")) && !(lname.equals("")) && !(lAddress.equals("")) && !(tel.equals(""))) {
@@ -255,9 +253,17 @@ public class RegisterFrame extends JFrame implements ActionListener{
                      JOptionPane.showMessageDialog(this, "電話番号には数字を入力してください", "入力値エラー", JOptionPane.WARNING_MESSAGE);
                      return;
                  }
-                 
                  try {
-                     int res = Controller.accountRegister(id, pass, fname, lname, date, radio, fAddress, lAddress, tel);
+                	 int rel = Controller.idpassRegister(id, pass);
+                	 if(rel == 1) {
+                		 JOptionPane.showMessageDialog(this, "ログインIDまたはパスワード登録に成功しました。", JOptionPane.INFORMATION_MESSAGE); 
+                	 }else {
+                		 JOptionPane.showMessageDialog(this, "ログインIDまたはパスワード登録に失敗しました。", JOptionPane.WARNING_MESSAGE);
+                		 
+                	 }
+                 }
+                 try {
+                     int res = Controller.accountRegister(fname, lname, date, radio, fAddress, lAddress, tel);
                      if(res == 1) {
                          JOptionPane.showMessageDialog(this, "アカウント登録に成功しました！", "登録完了", JOptionPane.INFORMATION_MESSAGE);
                      }else {

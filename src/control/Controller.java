@@ -4,6 +4,7 @@ import java.sql.Date;
 
 import action.AccountRegisterAction;
 import action.AkiSearchDisplayAction;
+import action.IDPassRegisterAction;
 import action.LoginDisplayAction;
 import action.LoginNinshouAction;
 import action.LoginafterDisplayAction;
@@ -38,9 +39,9 @@ public class Controller {
 		action.execute();
 	}
 	
-	public static int accountRegister(String id, String pass, String fname, String lname, Date date, String radio, String fAddress, String lAddress, String tel) throws Exception {
+	public static int accountRegister(String fname, String lname, Date date, String radio, String fAddress, String lAddress, String tel) throws Exception {
 		AccountRegisterAction action = new AccountRegisterAction();
-		int res = action.execute(id, pass, fname, lname, date, radio, fAddress, lAddress, tel);
+		int res = action.execute(fname, lname, date, radio, fAddress, lAddress, tel);
 		return res;
 	}
 	
@@ -55,4 +56,9 @@ public class Controller {
 		action.execute();
 	}
 	
+	public static int idpassRegister(String id, String pass) throws Exception{
+		IDPassRegisterAction action = new IDPassRegisterAction();
+		int rel = action.execute(id, pass);
+		return rel;
+	}
 }
