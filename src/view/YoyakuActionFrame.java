@@ -112,7 +112,7 @@ public class YoyakuActionFrame extends JFrame implements ActionListener{
 		if(ddd==2) {
 			for(int count=0;count<28;count++) {
 
-				Integer dda = Integer.valueOf(day1);
+				Integer dda = Integer.valueOf(day1 );
 				String dax = dda.toString();
 
 				D[count]=dax;
