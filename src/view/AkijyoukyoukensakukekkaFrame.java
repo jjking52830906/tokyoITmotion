@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -16,7 +17,7 @@ import javax.swing.table.TableColumn;
 
 import control.Controller;
 
-public class AkijyoukyoukensakukekkaFrame extends JFrame {
+public class AkijyoukyoukensakukekkaFrame extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	
@@ -43,7 +44,7 @@ public class AkijyoukyoukensakukekkaFrame extends JFrame {
 		Return.setBounds(428, 358, 128, 31);
 		contentPane.add(Return);
 		getContentPane().add(Return);
-		
+		Return.addActionListener(this);
 		
 		scrollPane = new JScrollPane();
 		scrollPane.setToolTipText("");
