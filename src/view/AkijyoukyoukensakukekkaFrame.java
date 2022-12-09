@@ -44,6 +44,7 @@ public class AkijyoukyoukensakukekkaFrame extends JFrame {
 		contentPane.add(Return);
 		getContentPane().add(Return);
 		
+		
 		scrollPane = new JScrollPane();
 		scrollPane.setToolTipText("");
 		scrollPane.setBounds(12, 10, 544, 338);
