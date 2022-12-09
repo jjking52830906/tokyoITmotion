@@ -126,6 +126,7 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 		Search = new JButton("検索");
 		Search.setBounds(98, 218, 91, 21);
 		contentPane.add(Search);
+		getContentPane().add(Search);
 		Search.addActionListener(this);
 		
 		Return = new JButton("キャンセル");
@@ -134,12 +135,15 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 		getContentPane().add(Return);
 		Return.addActionListener(this);
 		
-		
+
 		setVisible(true);
 	}
 	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==Search) {
+			
+			setVisible(false);
+			Controller.AkikekkaDisplay();
 			String before =(String)cbbefore.getSelectedItem();
 			String after = (String)cbafter.getSelectedItem();
 			String year = (String)cbYear.getSelectedItem();
@@ -174,12 +178,7 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 			}else if(bemonth==11&&beday==31) {
 				JOptionPane.showMessageDialog(this, "正しい日付を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
 			}
-			try {
-				String[] data = {year, month, day, before, after, institution};
-				
-			}catch(Exception ex) {
-                ErrorDialogUtility.systemErrorMessage(this, ex);
-            }
+			
 		}else if(e.getSource() == Return) {
 			setVisible(false);
             Controller.mainMenuDisplay();

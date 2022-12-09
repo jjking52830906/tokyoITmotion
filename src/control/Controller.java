@@ -4,6 +4,7 @@ import java.sql.Date;
 
 import action.AccountRegisterAction;
 import action.AkiSearchDisplayAction;
+import action.AkikekkaDisplayAction;
 import action.IDPassRegisterAction;
 import action.LoginDisplayAction;
 import action.LoginNinshouAction;
@@ -64,6 +65,11 @@ public class Controller {
 	}
 	public static void YoyakukakuninDisplay() {
 		YoyakukauninDisplayAction action = new YoyakukauninDisplayAction();
+		action.execute();
+	}
+	
+	public static void AkikekkaDisplay() {
+		AkikekkaDisplayAction action = new AkikekkaDisplayAction();
 		action.execute();
 	}
 }

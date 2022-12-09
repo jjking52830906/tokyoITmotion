@@ -3,7 +3,6 @@ package view;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -40,6 +39,11 @@ public class AkijyoukyoukensakukekkaFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		Return = new JButton("キャンセル");
+		Return.setBounds(428, 358, 128, 31);
+		contentPane.add(Return);
+		getContentPane().add(Return);
+		
 		scrollPane = new JScrollPane();
 		scrollPane.setToolTipText("");
 		scrollPane.setBounds(12, 10, 544, 338);
@@ -55,19 +59,14 @@ public class AkijyoukyoukensakukekkaFrame extends JFrame {
 		TableColumn column1 = columnModel.getColumn(1);
 		TableColumn column2 = columnModel.getColumn(2);
 		TableColumn column3 = columnModel.getColumn(3);
-		column0.setPreferredWidth(40);
+		column0.setPreferredWidth(150);
 		column1.setPreferredWidth(90);
 		column2.setPreferredWidth(90);
-		column3.setPreferredWidth(240);
+		column3.setPreferredWidth(350);
 		
 		table.addMouseListener(new AkiSearchMouseEvent());
 		
 		scrollPane.setViewportView(table);
-		
-		Return = new JButton("キャンセル");
-		Return.setBounds(428, 358, 128, 31);
-		contentPane.add(Return);
-		Return.addActionListener(this);
 		
 		setVisible(true);
 	}
