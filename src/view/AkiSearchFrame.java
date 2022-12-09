@@ -8,7 +8,6 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -140,44 +139,11 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()==Search) {
-			
+		if(e.getSource() == Search) {
 			setVisible(false);
+		
 			Controller.AkikekkaDisplay();
-			String before =(String)cbbefore.getSelectedItem();
-			String after = (String)cbafter.getSelectedItem();
-			String year = (String)cbYear.getSelectedItem();
-			String month = (String)cbMonth.getSelectedItem();
-			String day = (String)cbDay.getSelectedItem();
-			String institution = (String)cbInstitution.getSelectedItem();
-			int benum = Integer.parseInt(before);
-			int afnum = Integer.parseInt(after);
-			int bemonth = Integer.parseInt(month);
-			int beday = Integer.parseInt(day);
 			
-			if(benum>=afnum&&bemonth==2&&beday>28) {
-				 JOptionPane.showMessageDialog(this, "正しい日付と時刻を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
-			}else if(benum>=afnum&&bemonth==4&&beday==31) {
-				JOptionPane.showMessageDialog(this, "正しい日付と時刻を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
-			}else if(benum>=afnum&&bemonth==6&&beday==31) {
-				JOptionPane.showMessageDialog(this, "正しい日付と時刻を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
-			}else if(benum>=afnum&&bemonth==9&&beday==31) {
-				JOptionPane.showMessageDialog(this, "正しい日付と時刻を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
-			}else if(benum>=afnum&&bemonth==11&&beday==31) {
-				JOptionPane.showMessageDialog(this, "正しい日付と時刻を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
-			}else if(benum>=afnum) {
-				 JOptionPane.showMessageDialog(this, "正しい時刻を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
-			}else if(bemonth==2&&beday>28) {
-				 JOptionPane.showMessageDialog(this, "正しい日付を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
-			}else if(bemonth==4&&beday==31) {
-				JOptionPane.showMessageDialog(this, "正しい日付を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
-			}else if(bemonth==6&&beday==31) {
-				JOptionPane.showMessageDialog(this, "正しい日付を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
-			}else if(bemonth==9&&beday==31) {
-				JOptionPane.showMessageDialog(this, "正しい日付を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
-			}else if(bemonth==11&&beday==31) {
-				JOptionPane.showMessageDialog(this, "正しい日付を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
-			}
 			
 		}else if(e.getSource() == Return) {
 			setVisible(false);
