@@ -32,6 +32,7 @@ public class AkijyoukyoukensakukekkaFrame extends JFrame implements ActionListen
 	 * Create the frame.
 	 */
 	public AkijyoukyoukensakukekkaFrame() {
+		setTitle("【空き状況検索結果画面】");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 584, 438);
 		contentPane = new JPanel();
