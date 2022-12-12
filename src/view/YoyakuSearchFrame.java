@@ -15,7 +15,7 @@ import javax.swing.border.EmptyBorder;
 
 import control.Controller;
 
-public class YoyakuActionFrame extends JFrame implements ActionListener{
+public class YoyakuSearchFrame extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	private JButton Return;
@@ -30,7 +30,7 @@ public class YoyakuActionFrame extends JFrame implements ActionListener{
 	/**
 	 * Create the frame.
 	 */
-	public YoyakuActionFrame() {
+	public YoyakuSearchFrame() {
 		setTitle("【予約登録画面】");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450, 200, 448, 393);

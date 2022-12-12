@@ -1,9 +1,9 @@
 package action;
 
-import view.YoyakuActionFrame;
+import view.YoyakuSearchFrame;
 
 public class YoyakuDisplayAction {
 	public void execute() {
-		new YoyakuActionFrame();
+		new YoyakuSearchFrame();
 	}
 }

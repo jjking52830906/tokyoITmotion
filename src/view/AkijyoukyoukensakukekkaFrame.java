@@ -34,7 +34,7 @@ public class AkijyoukyoukensakukekkaFrame extends JFrame implements ActionListen
 	public AkijyoukyoukensakukekkaFrame() {
 		setTitle("【空き状況検索結果画面】");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 584, 438);
+		setBounds(100, 100, 517, 438);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -42,14 +42,14 @@ public class AkijyoukyoukensakukekkaFrame extends JFrame implements ActionListen
 		contentPane.setLayout(null);
 		
 		Return = new JButton("キャンセル");
-		Return.setBounds(428, 358, 128, 31);
+		Return.setBounds(367, 358, 128, 31);
 		contentPane.add(Return);
 		getContentPane().add(Return);
 		Return.addActionListener(this);
 		
 		scrollPane = new JScrollPane();
 		scrollPane.setToolTipText("");
-		scrollPane.setBounds(12, 10, 544, 338);
+		scrollPane.setBounds(12, 10, 483, 338);
 		contentPane.add(scrollPane);
 		
 		String[] columnNames = {"年月日", "開始時刻", "終了時刻", "施設名"};
@@ -63,9 +63,9 @@ public class AkijyoukyoukensakukekkaFrame extends JFrame implements ActionListen
 		TableColumn column2 = columnModel.getColumn(2);
 		TableColumn column3 = columnModel.getColumn(3);
 		column0.setPreferredWidth(150);
-		column1.setPreferredWidth(90);
-		column2.setPreferredWidth(90);
-		column3.setPreferredWidth(350);
+		column1.setPreferredWidth(100);
+		column2.setPreferredWidth(100);
+		column3.setPreferredWidth(130);
 		
 		table.addMouseListener(new AkiSearchMouseEvent());
 		
