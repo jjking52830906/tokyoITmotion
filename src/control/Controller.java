@@ -8,6 +8,8 @@ import action.AkikekkaDisplayAction;
 import action.IDPassRegisterAction;
 import action.LoginDisplayAction;
 import action.LoginNinshouAction;
+import action.LoginRegisterAction;
+import action.LoginRegisterDisplayAction;
 import action.LoginafterDisplayAction;
 import action.MainMenuDisplayAction;
 import action.RegisterDisplayAction;
@@ -31,6 +33,11 @@ public class Controller {
 		action.execute();
 	}
 	
+	public static void loginRegisterDisplay() {
+		LoginRegisterDisplayAction action = new LoginRegisterDisplayAction();
+		action.execute();
+	}
+	
 	public static void yoyakuDisplay() {
 		YoyakuDisplayAction action = new YoyakuDisplayAction();
 		action.execute();
@@ -45,6 +52,12 @@ public class Controller {
 		AccountRegisterAction action = new AccountRegisterAction();
 		int res = action.execute(fname, lname, date, radio, fAddress, lAddress, tel);
 		return res;
+	}
+	
+	public static int loginRegister(String id, String pass)throws Exception{
+		LoginRegisterAction action = new LoginRegisterAction();
+		int rel = action.execute(id, pass);
+		return rel;
 	}
 	
 	public static String[][] ninshou(String[] data)throws Exception{
@@ -72,4 +85,6 @@ public class Controller {
 		AkikekkaDisplayAction action = new AkikekkaDisplayAction();
 		action.execute();
 	}
+	
+	
 }

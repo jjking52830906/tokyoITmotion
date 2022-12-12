@@ -1,9 +1,9 @@
 package action;
 
-import view.RegisterFrame;
+import view.KokyakuRegisterFrame;
 
 public class RegisterDisplayAction {
 	public void execute() {
-		new RegisterFrame();
+		new KokyakuRegisterFrame();
 	}
 }

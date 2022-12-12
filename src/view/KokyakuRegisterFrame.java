@@ -2,8 +2,6 @@ package view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -54,7 +52,7 @@ public class KokyakuRegisterFrame extends JFrame implements ActionListener{
      */
     public KokyakuRegisterFrame() {
         setTitle("【登録画面】");
-        setDefaultCloseOperation(RegisterFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(KokyakuRegisterFrame.EXIT_ON_CLOSE);
         setBounds(420, 150, 625, 422);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -196,8 +194,6 @@ public class KokyakuRegisterFrame extends JFrame implements ActionListener{
     
     public void actionPerformed(ActionEvent e) {
          if(e.getSource() == Register) {
-             String id = txtId.getText();
-             String pass = txtPass.getText();
              String fname = txtFName.getText();
              String lname = txtLName.getText();
              String year = (String)cbYear.getSelectedItem();
@@ -214,45 +210,29 @@ public class KokyakuRegisterFrame extends JFrame implements ActionListener{
                    radio = rbSex[i].getText();
                  }
              }
-                          
-             int passlength = pass.length();
-             String regex_AlphaNum = "^[A-Za-z0-9]+$" ; // 半角英数字のみ
-             if(!(id.equals("")) && !(pass.equals("")) && !(fname.equals("")) && !(lname.equals("")) && !(lAddress.equals("")) && !(tel.equals(""))) {
-                 if(!(checkLogic(regex_AlphaNum, id) == true)) {
-                     JOptionPane.showMessageDialog(this, "ログインIDには半角英数字のみ入力してください", "入力エラー", JOptionPane.WARNING_MESSAGE);
-                     return;
-                 }else if(!((checkLogic(regex_AlphaNum, pass) == true) && passlength >= 6 && passlength <= 16)){
-                     JOptionPane.showMessageDialog(this, "パスワードには半角英数字で6文字以上16文字以内で入力してください", "入力エラー", JOptionPane.WARNING_MESSAGE);
-                     return;
-                 }
+             
+             
+             if(!(fname.equals("")) && !(lname.equals("")) && !(lAddress.equals("")) && !(tel.equals(""))) {
                  try {
                      Long.parseLong(tel);
                  }catch(NumberFormatException n) {
                      JOptionPane.showMessageDialog(this, "電話番号には数字を入力してください", "入力値エラー", JOptionPane.WARNING_MESSAGE);
                      return;
                  }
-                 try {
-                	 int rel = Controller.idpassRegister(id, pass);
-                	 if(rel == 1) {
-                		 JOptionPane.showMessageDialog(this, "ログインIDまたはパスワード登録に成功しました。", JOptionPane.INFORMATION_MESSAGE); 
-                	 }else {
-                		 JOptionPane.showMessageDialog(this, "ログインIDまたはパスワード登録に失敗しました。", JOptionPane.WARNING_MESSAGE);
-                		 
-                	 }
-                 }
+                 
                  try {
                      int res = Controller.accountRegister(fname, lname, date, radio, fAddress, lAddress, tel);
                      if(res == 1) {
-                         JOptionPane.showMessageDialog(this, "アカウント登録に成功しました！", "登録完了", JOptionPane.INFORMATION_MESSAGE);
+                         JOptionPane.showMessageDialog(this, "顧客情報登録に成功しました", "登録完了", JOptionPane.INFORMATION_MESSAGE);
+                         setVisible(false);
+                         Controller.loginRegisterDisplay();
                      }else {
-                         JOptionPane.showMessageDialog(this, "アカウント登録に失敗しました", "登録失敗", JOptionPane.WARNING_MESSAGE);
+                         JOptionPane.showMessageDialog(this, "顧客情報登録に失敗しました", "登録失敗", JOptionPane.WARNING_MESSAGE);
                      }
                  }catch(Exception ex) {
                      ErrorDialogUtility.systemErrorMessage(this, ex);
                  }
                  
-                 txtId.setText("");
-                 txtPass.setText("");
                  txtFName.setText("");
                  txtLName.setText("");
                  txtLAddress.setText("");
@@ -264,15 +244,5 @@ public class KokyakuRegisterFrame extends JFrame implements ActionListener{
             setVisible(false);
             Controller.mainMenuDisplay();
         }
-    }
-    //半角英数字判定処理
-    private boolean checkLogic(String regex, String target) {
-         boolean result = true;
-            if( target == null || target.isEmpty() ) return false ;
-            // 3. 引数に指定した正規表現regexがtargetにマッチするか確認する
-            Pattern p1 = Pattern.compile(regex); // 正規表現パターンの読み込み
-            Matcher m1 = p1.matcher(target); // パターンと検査対象文字列の照合
-            result = m1.matches(); // 照合結果をtrueかfalseで取得
-            return result;
     }
 }
