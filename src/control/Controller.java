@@ -50,6 +50,21 @@ public class Controller {
 		action.execute();
 	}
 	
+	public static void YoyakukakuninDisplay() {
+		YoyakukauninDisplayAction action = new YoyakukauninDisplayAction();
+		action.execute();
+	}
+	
+	public static void AkikekkaDisplay() {
+		AkikekkaDisplayAction action = new AkikekkaDisplayAction();
+		action.execute();
+	}
+	
+	public static void LoginafterDisplay() {
+		LoginafterDisplayAction action = new LoginafterDisplayAction();
+		action.execute();
+	}
+	
 	public static int accountRegister(String fname, String lname, Date date, String radio, String fAddress, String lAddress, String tel) throws Exception {
 		AccountRegisterAction action = new AccountRegisterAction();
 		int res = action.execute(fname, lname, date, radio, fAddress, lAddress, tel);
@@ -74,25 +89,12 @@ public class Controller {
 		return tableData;
 	}
 	
-	public static void LoginafterDisplay() {
-		LoginafterDisplayAction action = new LoginafterDisplayAction();
-		action.execute();
-	}
-	
 	public static int idpassRegister(String id, String pass) throws Exception{
 		IDPassRegisterAction action = new IDPassRegisterAction();
 		int rel = action.execute(id, pass);
 		return rel;
 	}
-	public static void YoyakukakuninDisplay() {
-		YoyakukauninDisplayAction action = new YoyakukauninDisplayAction();
-		action.execute();
-	}
 	
-	public static void AkikekkaDisplay() {
-		AkikekkaDisplayAction action = new AkikekkaDisplayAction();
-		action.execute();
-	}
 	
 	
 }
