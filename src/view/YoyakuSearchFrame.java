@@ -177,8 +177,8 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 				JOptionPane.showMessageDialog(this, "正しい日付を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
 			}
 			try {
-				String[] data = {before, after, basho};
-				String[] tableData = Controller.AkiSearch(date, data);
+				String[] data = {strDate, before, after, basho};
+				String[][][][] tableData = Controller.akiSearch(data);
 			}catch (Exception ex) {
 				
 			}
