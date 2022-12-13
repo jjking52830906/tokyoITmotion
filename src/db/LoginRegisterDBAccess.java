@@ -10,12 +10,13 @@ public class LoginRegisterDBAccess extends ControlDBAccess{
 		Connection con = createConnection();
 		PreparedStatement pstmt = null;
 		try {
-			String sql = "INSERT INTO LOGIN(ID, PASS) VALUES(?, ?);";
+			String sql = "INSERT INTO LOGIN(LOGID,LOGPASS) VALUES(?, ?);";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.setString(2, pass);
 			result = pstmt.executeUpdate();
 		}catch(SQLException e) {
+			e.printStackTrace();
 			throw new Exception("ログインIDとパスワード登録処理に失敗しました。");
 		}finally {
 			try {
