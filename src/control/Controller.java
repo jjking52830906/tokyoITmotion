@@ -19,7 +19,8 @@ import action.YoyakuRegisterAction;
 import action.YoyakukauninDisplayAction;
 
 public class Controller {
-
+	
+	//表示系
 	public static void loginDisplay() {
 		LoginDisplayAction action = new LoginDisplayAction();
 		action.execute();
@@ -65,6 +66,7 @@ public class Controller {
 		action.execute();
 	}
 	
+	//登録系
 	public static int accountRegister(String fname, String lname, Date date, String radio, String fAddress, String lAddress, String tel) throws Exception {
 		AccountRegisterAction action = new AccountRegisterAction();
 		int res = action.execute(fname, lname, date, radio, fAddress, lAddress, tel);
@@ -83,6 +85,7 @@ public class Controller {
 		return rel;
 	}
 	
+	//アクション系
 	public static String[][] ninshou(String[] data)throws Exception{
 		LoginNinshouAction action = new LoginNinshouAction();
 		String[][] tableData = action.execute(data);
@@ -94,7 +97,5 @@ public class Controller {
 		int rel = action.execute(id, pass);
 		return rel;
 	}
-	
-	
 	
 }
