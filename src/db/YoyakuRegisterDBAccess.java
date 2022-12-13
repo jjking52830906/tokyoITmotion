@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Time;
 
-public class YoyakuRegisterDBAccess {
+public class YoyakuRegisterDBAccess extends ControlDBAccess{
 	public int registerYoyaku(int insid, Date resdate, Time strtime, Time fintime, int custid, String purpose, String place) throws Exception{
         int result = 0;
         Connection con = createConnection();
@@ -36,12 +36,5 @@ public class YoyakuRegisterDBAccess {
         closeConnection(con);
         return result;
     }
-    private void closeConnection(Connection con) {
-        // TODO 自動生成されたメソッド・スタブ
-        
-    }
-    private Connection createConnection() {
-        // TODO 自動生成されたメソッド・スタブ
-        return null;
-    }
+    
 }
