@@ -2,8 +2,6 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -66,9 +64,7 @@ public class AkijyoukyoukensakukekkaFrame extends JFrame implements ActionListen
 		column1.setPreferredWidth(100);
 		column2.setPreferredWidth(100);
 		column3.setPreferredWidth(130);
-		
-		table.addMouseListener(new AkiSearchMouseEvent());
-		
+				
 		scrollPane.setViewportView(table);
 		
 		setVisible(true);
@@ -80,11 +76,4 @@ public class AkijyoukyoukensakukekkaFrame extends JFrame implements ActionListen
 			Controller.mainMenuDisplay();
 		}
 	}
-	
-	private class AkiSearchMouseEvent extends MouseAdapter{
-		public void mouseClicked(MouseEvent e) {
-			setVisible(false);
-		}
-	}
-	
 }
