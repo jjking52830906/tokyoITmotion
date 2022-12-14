@@ -62,7 +62,7 @@ public class Controller {
 		action.execute();
 	}
 	
-	public static void LoginafterDisplay() {
+	public static void loginafterDisplay() {
 		LoginafterDisplayAction action = new LoginafterDisplayAction();
 		action.execute();
 	}
@@ -87,10 +87,10 @@ public class Controller {
 	}
 	
 	//アクション系
-	public static String[][] ninshou(String[] data)throws Exception{
+	public static String[] ninshou(String[] ipass)throws Exception{
 		LoginNinshouAction action = new LoginNinshouAction();
-		String[][] tableData = action.execute(data);
-		return tableData;
+		String[] tableIpass = action.execute(ipass);
+		return tableIpass;
 	}
 	
 	public static int idpassRegister(String id, String pass) throws Exception{

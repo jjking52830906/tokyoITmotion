@@ -9,11 +9,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import control.Controller;
+import model.ControlUtility;
 
 public class LoginFrame extends JFrame implements ActionListener{
 
@@ -30,7 +32,7 @@ public class LoginFrame extends JFrame implements ActionListener{
 	private JLabel lblPassword;
 	private JTextField txtPassword;
 	
-	private JButton btnLogin;
+	private JButton login;
 	private JButton Return;
 	
 
@@ -82,13 +84,13 @@ public class LoginFrame extends JFrame implements ActionListener{
 		panel1.add(txtPassword);
 		txtPassword.setColumns(10);
 		
-		btnLogin = new JButton("ログイン");
-		btnLogin.setForeground(new Color(255, 255, 255));
-		btnLogin.setBackground(new Color(0,0,0));
-		btnLogin.setFont(new Font("MS UI Gothic", Font.PLAIN, 14));
-		btnLogin.setBounds(145, 205, 115, 33);
-		panel1.add(btnLogin);
-		btnLogin.addActionListener(this);
+		login = new JButton("ログイン");
+		login.setForeground(new Color(255, 255, 255));
+		login.setBackground(Color.BLACK);
+		login.setFont(new Font("MS UI Gothic", Font.PLAIN, 14));
+		login.setBounds(145, 205, 115, 33);
+		panel1.add(login);
+		login.addActionListener(this);
 		
 		Return = new JButton("キャンセル");
 		Return.setForeground(new Color(255, 255, 255));
@@ -104,9 +106,27 @@ public class LoginFrame extends JFrame implements ActionListener{
 	
 
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == btnLogin) {
-			setVisible(false);
-			Controller.LoginafterDisplay();
+		if(e.getSource() == login) {
+			String id = txtLoginID.getText();
+			String pass = txtPassword.getText();
+			
+			if(!(id.equals("")) && !(pass.equals(""))) {
+				try {
+					String[] ipass = {id, pass};
+					String[] tableIpass = Controller.ninshou(ipass);
+					
+					if(tableIpass != null) {
+						setVisible(false);
+						Controller.loginafterDisplay();
+					}else {
+						JOptionPane.showMessageDialog(this, "ログインIDまたはパスワードが間違っています。", "【確認】", JOptionPane.INFORMATION_MESSAGE);
+					}
+				}catch (Exception ex) {
+					ControlUtility.systemErrorMessage(this, ex);
+				}
+			}else {
+				JOptionPane.showMessageDialog(this, "未入力の項目があります", "エラー", JOptionPane.WARNING_MESSAGE);
+			}
 		}else if(e.getSource() == Return) {
             setVisible(false);
             Controller.mainMenuDisplay();
