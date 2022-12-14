@@ -7,7 +7,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import control.Controller;
@@ -15,9 +14,11 @@ import control.Controller;
 public class YoyakukakuninFrame extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	
+	private JLabel lblShisetu;
+	private JLabel lblDate;
+	private JLabel lblJikoku;
+	
 	private JButton Return;
 
 	/**
@@ -45,28 +46,23 @@ public class YoyakukakuninFrame extends JFrame implements ActionListener{
 		lblNewLabel_2.setBounds(55, 166, 50, 13);
 		contentPane.add(lblNewLabel_2);
 		
-		
-		
-		Return = new JButton("キャンセル");
+		Return = new JButton("戻る");
 		Return.setBounds(146, 236, 130, 41);
 		contentPane.add(Return);
 		getContentPane().add(Return);
 		Return.addActionListener(this);
 		
-		textField = new JTextField();
-		textField.setBounds(136, 42, 147, 19);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		lblShisetu = new JLabel();
+		lblShisetu.setBounds(136, 42, 147, 19);
+		contentPane.add(lblShisetu);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(136, 100, 147, 19);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		lblDate = new JLabel();
+		lblDate.setBounds(136, 100, 147, 19);
+		contentPane.add(lblDate);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(136, 163, 147, 19);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		lblJikoku = new JLabel();
+		lblJikoku.setBounds(136, 163, 147, 19);
+		contentPane.add(lblJikoku);
 		
 		setVisible(true);
 	}

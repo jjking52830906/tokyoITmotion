@@ -7,13 +7,15 @@ public class Yoyaku {
 	private String basho;
 	
 	public Yoyaku() {
+		
 	}
 	
-	public void Yoyaku(String strDate, String getBefore, String getAfter, String getBasho) {
-		this.strDate = strDate;
-		this.before = getBefore;
-		this.after = getAfter;
-		this.basho = getBasho;
+	
+	public Yoyaku(String strDate, String getBefore, String getAfter, String getBasho) {
+		setStrDate(strDate);
+		setBefore(getBefore);
+		setAfter(getAfter);
+		setBasho(getBasho);
 	}
 	
 	public String getStrDate() {

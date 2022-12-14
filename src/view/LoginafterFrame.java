@@ -12,14 +12,19 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import control.Controller;
+
 public class LoginafterFrame extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
+	
 	private JButton Login;
-	private JButton Register;
-	private JButton Availability;
-	private JButton BookingConfirmation;
-	private JButton ReservationRegistration;
+	private JButton btnLogout;
+	
+	private JButton btnRegister;
+	private JButton btnAkiSearch;
+	private JButton btnYoyakuKakunin;
+	private JButton btnYoyakuToroku;
 
 	/**
 	 * Create the frame.
@@ -48,44 +53,57 @@ public class LoginafterFrame extends JFrame implements ActionListener{
 		panel.add(lblNewLabel_1);
 		getContentPane().add(Login);
 		
-		JButton btnRegister = new JButton("ログアウト");
-		btnRegister.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnRegister.setBackground(Color.WHITE);
-		btnRegister.setBounds(616, 6, 117, 29);
-		contentPane.add(btnRegister);
-		getContentPane().add(Register);
+		btnLogout = new JButton("ログアウト");
+		btnLogout.setBackground(Color.WHITE);
+		btnLogout.setBounds(616, 6, 117, 29);
+		contentPane.add(btnLogout);
+		getContentPane().add(btnLogout);
 		
-		JButton btnAva = new JButton("空き状況");
-		btnAva.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-		btnAva.setBounds(506, 385, 227, 58);
-		contentPane.add(btnAva);
-		getContentPane().add(Availability);
+		btnAkiSearch = new JButton("空き状況");
+		btnAkiSearch.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		btnAkiSearch.setBounds(506, 403, 227, 58);
+		contentPane.add(btnAkiSearch);
+		getContentPane().add(btnAkiSearch);
 		
-		JButton btnReserve = new JButton("予約確認");
-		btnReserve.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-		btnReserve.setBounds(506, 467, 227, 58);
-		contentPane.add(btnReserve);
-		getContentPane().add(BookingConfirmation);
+		btnYoyakuKakunin = new JButton("予約確認");
+		btnYoyakuKakunin.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		btnYoyakuKakunin.setBounds(506, 482, 227, 58);
+		contentPane.add(btnYoyakuKakunin);
+		getContentPane().add(btnYoyakuKakunin);
 		
-		JButton btnReserveRegister = new JButton("予約登録");
-		btnReserveRegister.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-		btnReserveRegister.setBounds(506, 556, 227, 58);
-		contentPane.add(btnReserveRegister);
-		getContentPane().add(ReservationRegistration);
+		btnYoyakuToroku = new JButton("予約登録");
+		btnYoyakuToroku.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+		btnYoyakuToroku.setBounds(506, 567, 227, 58);
+		contentPane.add(btnYoyakuToroku);
+		getContentPane().add(btnYoyakuToroku);
 		
 		setVisible(true);
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == Login) {
+		if(e.getSource() == btnLogout) {
 			setVisible(false);
+			Controller.loginDisplay();
 			
 			
-		}else if(e.getSource() == Register) {
+		}else if(e.getSource() == btnRegister) {
 			setVisible(false);
+			Controller.registerDisplay();
+			
+			
+		}else if(e.getSource() == btnYoyakuToroku) {
+			setVisible(false);
+			Controller.yoyakuDisplay();
+			
+			
+		}else if (e.getSource() == btnAkiSearch) {
+			setVisible(false);
+			Controller.AkiSearchDisplay();
+			
+			
+		}else if (e.getSource() == btnYoyakuKakunin) {
+			setVisible(false);
+			Controller.YoyakukakuninDisplay();
 			
 			
 		}

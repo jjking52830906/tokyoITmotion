@@ -19,9 +19,7 @@ public class MainMenuFrame extends JFrame implements ActionListener{
 	private JPanel GazouPane;
 	private JButton Login;
 	private JButton Register;
-	private JButton YoyakuToroku;
 	private JButton AkiSearch;
-	private JButton btnReserve;
 
 	/**
 	 * Create the frame.
@@ -54,7 +52,7 @@ public class MainMenuFrame extends JFrame implements ActionListener{
 		Login.setBounds(487, 6, 117, 29);
 		Login.addActionListener(this);
 		GazouPane.add(Login);
-		add(Login);
+		getContentPane().add(Login);
 		
 		
 		Register = new JButton("登録");
@@ -62,31 +60,15 @@ public class MainMenuFrame extends JFrame implements ActionListener{
 		Register.setBounds(616, 6, 117, 29);
 		GazouPane.add(Register);
 		Register.addActionListener(this);
-		add(Register);
+		getContentPane().add(Register);
 		
 		
 		AkiSearch = new JButton("空き状況");
 		AkiSearch.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-		AkiSearch.setBounds(506, 385, 227, 58);
+		AkiSearch.setBounds(496, 565, 227, 58);
 		GazouPane.add(AkiSearch);
 		AkiSearch.addActionListener(this);
-		add(AkiSearch);
-		
-		
-		btnReserve = new JButton("予約確認");
-		btnReserve.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-		btnReserve.setBounds(506, 467, 227, 58);
-		GazouPane.add(btnReserve);
-		add(btnReserve);
-		btnReserve.addActionListener(this);
-		
-		
-		YoyakuToroku = new JButton("予約登録");
-		YoyakuToroku.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-		YoyakuToroku.setBounds(506, 556, 227, 58);
-		GazouPane.add(YoyakuToroku);
-		add(YoyakuToroku);
-		YoyakuToroku.addActionListener(this);
+		getContentPane().add(AkiSearch);
 		
 		
 		setVisible(true);
@@ -95,24 +77,19 @@ public class MainMenuFrame extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == Login) {
 			setVisible(false);
-			
 			Controller.loginDisplay();
+			
+			
 		}else if(e.getSource() == Register) {
 			setVisible(false);
-			
 			Controller.registerDisplay();
-		}else if(e.getSource() == YoyakuToroku) {
-			setVisible(false);
 			
-			Controller.yoyakuDisplay();
+			
 		}else if (e.getSource() == AkiSearch) {
 			setVisible(false);
-			
 			Controller.AkiSearchDisplay();
-		}else if (e.getSource() == btnReserve) {
-			setVisible(false);
 			
-			Controller.YoyakukakuninDisplay();
+			
 		}
 	}
 }
