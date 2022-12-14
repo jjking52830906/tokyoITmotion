@@ -2,8 +2,7 @@ package model;
 
 public class Yoyaku {
 	private String strDate;
-	private String before;
-	private String after;
+	private String hour;
 	private String basho;
 	
 	public Yoyaku() {
@@ -11,35 +10,28 @@ public class Yoyaku {
 	}
 	
 	
-	public Yoyaku(String strDate, String getBefore, String getAfter, String getBasho) {
+	public Yoyaku(String strDate, String getHour, String getBasho) {
 		setStrDate(strDate);
-		setBefore(getBefore);
-		setAfter(getAfter);
+		setHour(getHour);
 		setBasho(getBasho);
 	}
 	
+	public String getHour() {
+		return hour;
+	}
+
+
+	public void setHour(String hour) {
+		this.hour = hour;
+	}
+
+
 	public String getStrDate() {
 		return strDate;
 	}
 
 	public void setStrDate(String strDate) {
 		this.strDate = strDate;
-	}
-
-	public String getBefore() {
-		return before;
-	}
-
-	public void setBefore(String before) {
-		this.before = before;
-	}
-
-	public String getAfter() {
-		return after;
-	}
-
-	public void setAfter(String after) {
-		this.after = after;
 	}
 
 	public String getBasho() {

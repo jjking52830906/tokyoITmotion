@@ -99,9 +99,9 @@ public class Controller {
 		return rel;
 	}
 	
-	public static String[][][][] akiSearch(String[] data)throws Exception{
+	public static String[][] akiSearch(String[] data)throws Exception{
 		AkiSearchAction action = new AkiSearchAction();
-		String[][][][] tableData = action.execute(data);
+		String[][] tableData = action.execute(data);
 		return tableData;
 	}
 	

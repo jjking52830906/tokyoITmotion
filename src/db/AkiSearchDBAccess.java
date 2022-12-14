@@ -26,10 +26,9 @@ public class AkiSearchDBAccess extends ControlDBAccess{
 					Date getDate = rs.getDate("DATE");
 					SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd");
 					String strDate = new SimpleDateFormat("yyyy-MM-dd").format(date);
-					String getBefore = rs.getString("BEFORE");
-					String getAfter = rs.getString("AFTER");
+					String getHour = rs.getString("");
 					String getBasho = rs.getString("");
-					Yoyaku yoyaku = new Yoyaku(strDate, getBefore, getAfter, getBasho);
+					Yoyaku yoyaku = new Yoyaku(strDate, getHour, getBasho);
 					list.add(yoyaku);
 				}
 			}
