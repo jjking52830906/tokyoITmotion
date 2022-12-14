@@ -180,7 +180,7 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 				String[] data = {strDate, before, after, basho};
 				String[][][][] tableData = Controller.akiSearch(data);
 			}catch (Exception ex) {
-				
+				JOptionPane.showMessageDialog(this, "一致する情報は見つかりませんでした。", "【確認】", JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
 		if(e.getSource() == Return) {

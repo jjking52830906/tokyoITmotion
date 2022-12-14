@@ -105,7 +105,8 @@ public class LoginRegisterFrame extends JFrame implements ActionListener {
             		int rel = Controller.loginRegister(id, pass);
             		if(rel == 1) {
             			JOptionPane.showMessageDialog(this, "IDとパスワード登録に成功しました", "登録完了", JOptionPane.INFORMATION_MESSAGE);
-            			new MainMenuFrame();
+            			setVisible(false);
+            			Controller.mainMenuDisplay();
             		}else {
             			JOptionPane.showMessageDialog(this, "IDとパスワード登録に失敗しました", "登録失敗", JOptionPane.WARNING_MESSAGE);
             		}
