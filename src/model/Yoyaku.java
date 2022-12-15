@@ -10,8 +10,8 @@ public class Yoyaku {
 	}
 	
 	
-	public Yoyaku(String strDate, String getHour, String getBasho) {
-		setStrDate(strDate);
+	public Yoyaku(String getStrDate, String getHour, String getBasho) {
+		setStrDate(getStrDate);
 		setHour(getHour);
 		setBasho(getBasho);
 	}

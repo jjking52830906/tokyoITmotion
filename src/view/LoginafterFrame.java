@@ -18,10 +18,8 @@ public class LoginafterFrame extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	
-	private JButton Login;
 	private JButton btnLogout;
 	
-	private JButton btnRegister;
 	private JButton btnAkiSearch;
 	private JButton btnYoyakuKakunin;
 	private JButton btnYoyakuToroku;
@@ -57,37 +55,39 @@ public class LoginafterFrame extends JFrame implements ActionListener{
 		btnLogout.setBounds(616, 6, 117, 29);
 		contentPane.add(btnLogout);
 		getContentPane().add(btnLogout);
+		btnLogout.addActionListener(this);
 		
 		btnAkiSearch = new JButton("空き状況");
 		btnAkiSearch.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
 		btnAkiSearch.setBounds(506, 403, 227, 58);
 		contentPane.add(btnAkiSearch);
 		getContentPane().add(btnAkiSearch);
+		btnAkiSearch.addActionListener(this);
 		
 		btnYoyakuKakunin = new JButton("予約確認");
 		btnYoyakuKakunin.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
 		btnYoyakuKakunin.setBounds(506, 482, 227, 58);
 		contentPane.add(btnYoyakuKakunin);
 		getContentPane().add(btnYoyakuKakunin);
+		btnYoyakuKakunin.addActionListener(this);
 		
 		btnYoyakuToroku = new JButton("予約登録");
 		btnYoyakuToroku.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
 		btnYoyakuToroku.setBounds(506, 567, 227, 58);
 		contentPane.add(btnYoyakuToroku);
 		getContentPane().add(btnYoyakuToroku);
+		btnYoyakuToroku.addActionListener(this);
 		
 		setVisible(true);
 	}
-	
+	public void inputToLogAfter(int input) {
+		
+	}
 	public void actionPerformed(ActionEvent e) {
+		
 		if(e.getSource() == btnLogout) {
 			setVisible(false);
-			Controller.loginDisplay();
-			
-			
-		}else if(e.getSource() == btnRegister) {
-			setVisible(false);
-			Controller.registerDisplay();
+			Controller.mainMenuDisplay();
 			
 			
 		}else if(e.getSource() == btnYoyakuToroku) {

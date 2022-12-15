@@ -1,0 +1,37 @@
+package db;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class IdPassInputDBAccess extends ControlDBAccess{
+	public int idpassInput(String id, String pass)throws Exception{
+		
+		Connection con = createConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int input = 0;
+		try {
+			if(con != null) {
+				String sql = "SELECT CUSTID FROM LOGIN WHERE LOGID = ? AND LOGPASS = ?;";
+				pstmt.setString(1, id);
+				pstmt.setString(2, pass);
+				rs = pstmt.executeQuery();
+				input = rs.getInt("CUSTID");
+			}
+		}catch (SQLException e) {
+			throw new Exception("顧客ID取得処理に失敗しました。");
+		}finally {
+			try {
+				if(pstmt != null) {
+					pstmt.close();
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		closeConnection(con);
+		return input;
+	}
+}

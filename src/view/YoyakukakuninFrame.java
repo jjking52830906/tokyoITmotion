@@ -5,9 +5,13 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableColumnModel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 import control.Controller;
 
@@ -15,9 +19,9 @@ public class YoyakukakuninFrame extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	
-	private JLabel lblShisetu;
-	private JLabel lblDate;
-	private JLabel lblJikoku;
+	private JScrollPane scrollPane;
+	private DefaultTableModel tableModel;
+	private JTable table;
 	
 	private JButton Return;
 
@@ -27,49 +31,48 @@ public class YoyakukakuninFrame extends JFrame implements ActionListener{
 	public YoyakukakuninFrame() {
 		setTitle("【予約確認画面】");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 347);
+		setBounds(100, 100, 531, 437);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("施設名");
-		lblNewLabel.setBounds(55, 45, 50, 13);
-		contentPane.add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("年月日");
-		lblNewLabel_1.setBounds(55, 103, 50, 13);
-		contentPane.add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_2 = new JLabel("時刻");
-		lblNewLabel_2.setBounds(55, 166, 50, 13);
-		contentPane.add(lblNewLabel_2);
-		
 		Return = new JButton("戻る");
-		Return.setBounds(146, 236, 130, 41);
+		Return.setBounds(373, 347, 130, 41);
 		contentPane.add(Return);
 		getContentPane().add(Return);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(12, 10, 491, 327);
+		contentPane.add(scrollPane);
 		Return.addActionListener(this);
 		
-		lblShisetu = new JLabel();
-		lblShisetu.setBounds(136, 42, 147, 19);
-		contentPane.add(lblShisetu);
+		String[] columnNames = {"氏名", "年月日", "時刻", "施設名"};
+		tableModel = new DefaultTableModel(columnNames, 0);
+		table = new JTable(tableModel);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		
-		lblDate = new JLabel();
-		lblDate.setBounds(136, 100, 147, 19);
-		contentPane.add(lblDate);
+		DefaultTableColumnModel columnModel = (DefaultTableColumnModel) table.getColumnModel();
+		TableColumn column0 = columnModel.getColumn(0);
+		TableColumn column1 = columnModel.getColumn(1);
+		TableColumn column2 = columnModel.getColumn(2);
+		TableColumn column3 = columnModel.getColumn(3);
+		column0.setPreferredWidth(90);
+		column1.setPreferredWidth(150);
+		column2.setPreferredWidth(100);
+		column3.setPreferredWidth(100);
 		
-		lblJikoku = new JLabel();
-		lblJikoku.setBounds(136, 163, 147, 19);
-		contentPane.add(lblJikoku);
+		
+		
+		scrollPane.setViewportView(table);
 		
 		setVisible(true);
 	}
 	public void actionPerformed(ActionEvent e) { 
 		if(e.getSource() == Return) {
 			setVisible(false);
-			Controller.mainMenuDisplay();
+			Controller.loginafterDisplay();
 		}
 	}
 }

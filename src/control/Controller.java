@@ -7,6 +7,7 @@ import action.AccountRegisterAction;
 import action.AkiSearchAction;
 import action.AkiSearchDisplayAction;
 import action.AkikekkaDisplayAction;
+import action.InputToLoginAfterFrameAction;
 import action.LoginDisplayAction;
 import action.LoginNinshouAction;
 import action.LoginRegisterAction;
@@ -17,6 +18,7 @@ import action.RegisterDisplayAction;
 import action.YoyakuDisplayAction;
 import action.YoyakuRegisterAction;
 import action.YoyakukauninDisplayAction;
+import action.idPassInputAction;
 
 public class Controller {
 	
@@ -98,4 +100,15 @@ public class Controller {
 		return tableData;
 	}
 	
+	public static int idPass(String id, String pass)throws Exception{
+		idPassInputAction action = new idPassInputAction();
+		int input = action.execute(id, pass);
+		return input;
+	}
+	
+	public static void inputToLoginAfterFrame(int input) {
+		InputToLoginAfterFrameAction action = new InputToLoginAfterFrame();
+		action.execute(input);
+	}
+
 }

@@ -2,8 +2,6 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.sql.Date;
 
 import javax.swing.DefaultComboBoxModel;
@@ -34,12 +32,6 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 	private JComboBox cbDay;
 	private JLabel lblDay;
 	
-	private JLabel lblPM;
-	private JComboBox cbbefore;
-	private JLabel lblBefore;
-	private JComboBox cbafter;
-	private JLabel lblAfter;
-	
 	private JLabel lblInstitution;
 	private JComboBox cbInstitution;
 	
@@ -47,6 +39,7 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 	private DefaultTableModel tableModel;
 	private JTable table;
 	
+	private JButton kakutei;
 	private JButton Search;
 	private JButton Return;
 
@@ -95,46 +88,22 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 		lblDay.setBounds(361, 98, 21, 13);
 		contentPane.add(lblDay);
 		
-		lblPM = new JLabel("時刻");
-		lblPM.setBounds(38, 160, 37, 13);
-		contentPane.add(lblPM);
-		
 		String[] before={"9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"};
-		cbbefore = new JComboBox(before);
-		cbbefore.setBounds(98, 156, 39, 21);
-		getContentPane().add(cbbefore);
-		cbbefore.addActionListener(this);
-		
-		lblBefore = new JLabel("時");
-		lblBefore.setBounds(149, 160, 21, 13);
-		contentPane.add(lblBefore);
-		
-		JLabel lblNewLabel = new JLabel("～");
-		lblNewLabel.setBounds(182, 156, 30, 13);
-		contentPane.add(lblNewLabel);
 		
 		String[] after={"9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"};
-		cbafter = new JComboBox(after);
-		cbafter.setBounds(224, 156, 39, 21);
-		getContentPane().add(cbafter);
-		cbafter.addActionListener(this);
-		
-		lblAfter = new JLabel("時");
-		lblAfter.setBounds(285, 160, 21, 13);
-		contentPane.add(lblAfter);
 		
 		lblInstitution = new JLabel("施設");
-		lblInstitution.setBounds(38, 215, 30, 13);
+		lblInstitution.setBounds(45, 170, 30, 13);
 		contentPane.add(lblInstitution);
 		
 		String[] institution = {"体育館", "野球場", "サッカー場", "テニスコート", "プール"};
 		cbInstitution = new JComboBox(institution);
-		cbInstitution.setBounds(97, 211, 114, 21);
+		cbInstitution.setBounds(87, 166, 114, 21);
 		getContentPane().add(cbInstitution);
 		cbInstitution.addActionListener(this);
 		
 		Search = new JButton("検索");
-		Search.setBounds(52, 329, 131, 41);
+		Search.setBounds(251, 444, 131, 41);
 		contentPane.add(Search);
 		getContentPane().add(Search);
 		Search.addActionListener(this);
@@ -149,7 +118,7 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 		contentPane.add(scrollPane);
 		Return.addActionListener(this);
 		
-		String[] columnNames = {"年月日", "時刻", "施設名"};
+		String[] columnNames = {"チェック", "年月日", "時刻", "施設名"};
 		tableModel = new DefaultTableModel(columnNames, 0);
 		table = new JTable(tableModel);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -158,83 +127,63 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 		TableColumn column0 = columnModel.getColumn(0);
 		TableColumn column1 = columnModel.getColumn(1);
 		TableColumn column2 = columnModel.getColumn(2);
-		column0.setPreferredWidth(150);
-		column1.setPreferredWidth(100);
+		TableColumn column3 = columnModel.getColumn(3);
+		column0.setPreferredWidth(90);
+		column1.setPreferredWidth(150);
 		column2.setPreferredWidth(100);
-		
-		table.addMouseListener(new SearchMouseEvent());
+		column3.setPreferredWidth(100);
 		
 		scrollPane.setViewportView(table);
+		
+		kakutei = new JButton("確定");
+		kakutei.setBounds(52, 326, 131, 41);
+		contentPane.add(kakutei);
 		
 		setVisible(true);
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==Search) {
-			String before =(String)cbbefore.getSelectedItem();
-			String after = (String)cbafter.getSelectedItem();
 			String year = (String)cbYear.getSelectedItem();
 			String month = (String)cbMonth.getSelectedItem();
 			String day = (String)cbDay.getSelectedItem();
-			String basho = (String)cbInstitution.getSelectedItem();
-			int benum = Integer.parseInt(before);
-			int afnum = Integer.parseInt(after);
-			int bemonth = Integer.parseInt(month);
-			int beday = Integer.parseInt(day);
 			String strDate = year + "-" + month + "-" + day;
 			Date date = Date.valueOf(strDate);
-			
-
-			if(benum>=afnum&&bemonth==2&&beday>28) {
-				JOptionPane.showMessageDialog(this, "正しい日付と時刻を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
-			}else if(benum>=afnum&&bemonth==4&&beday==31) {
-				JOptionPane.showMessageDialog(this, "正しい日付と時刻を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
-			}else if(benum>=afnum&&bemonth==6&&beday==31) {
-				JOptionPane.showMessageDialog(this, "正しい日付と時刻を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
-			}else if(benum>=afnum&&bemonth==9&&beday==31) {
-				JOptionPane.showMessageDialog(this, "正しい日付と時刻を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
-			}else if(benum>=afnum&&bemonth==11&&beday==31) {
-				JOptionPane.showMessageDialog(this, "正しい日付と時刻を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
-			}else if(benum>=afnum) {
-				JOptionPane.showMessageDialog(this, "正しい時刻を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
-			}else if(bemonth==2&&beday>28) {
-				JOptionPane.showMessageDialog(this, "正しい日付を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
-			}else if(bemonth==4&&beday==31) {
-				JOptionPane.showMessageDialog(this, "正しい日付を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
-			}else if(bemonth==6&&beday==31) {
-				JOptionPane.showMessageDialog(this, "正しい日付を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
-			}else if(bemonth==9&&beday==31) {
-				JOptionPane.showMessageDialog(this, "正しい日付を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
-			}else if(bemonth==11&&beday==31) {
-				JOptionPane.showMessageDialog(this, "正しい日付を入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
+			String basho = (String)cbInstitution.getSelectedItem();
+			String bashoId = "0";
+			if(basho == "体育館") {
+				bashoId = "1";
+			}else if(basho == "野球場") {
+				bashoId = "2";
+			}else if(basho == "サッカー場") {
+				bashoId = "3";
+			}else if(basho == "テニスコート") {
+				bashoId = "4";
+			}else if(basho == "プール") {
+				bashoId = "5";
 			}
 			try {
-				String[] data = {strDate, before, after, basho};
+				String[] data = {strDate, bashoId};
 				String[][] tableData = Controller.akiSearch(data);
 				
 				if(tableData != null) {
 					tableModel.setRowCount(0);
 					
 					for(String[] rowData : tableData) {
-						tableModel.addRow(rowData);
+						tableModel.addRow(new Object[] {false, rowData});
 					}
 				}
 			}catch (Exception ex) {
 				JOptionPane.showMessageDialog(this, "一致する情報は見つかりませんでした。", "【確認】", JOptionPane.INFORMATION_MESSAGE);
 			}
-		}
-		if(e.getSource() == Return) {
+		}else if(e.getSource() == Return) {
 			setVisible(false);
-			Controller.mainMenuDisplay();
-		}
-	}
-	
-	private class SearchMouseEvent extends MouseAdapter{
-		public void mouseClicked(MouseEvent e) {
+			Controller.loginafterDisplay(input);
+			
+			
+		}else if(e.getSource() == kakutei) {
 			setVisible(false);
 			
-			int rowIndex = table.getSelectedRow();
-			String id = (String)table
 		}
 	}
 }
