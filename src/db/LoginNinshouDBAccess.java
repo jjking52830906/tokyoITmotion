@@ -2,6 +2,7 @@ package db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LoginNinshouDBAccess extends ControlDBAccess{
@@ -10,26 +11,21 @@ public class LoginNinshouDBAccess extends ControlDBAccess{
 	
 		Connection con = createConnection();
 		PreparedStatement pstmt = null;
-		
+		ResultSet rs = null;
+		int i = 0;
 		try {
 			if(con != null) {
 				String sql = "SELECT LOGID, LOGPASS FROM LOGIN WHERE LOGID = ? AND LOGPASS = ?;";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, id);
 				pstmt.setString(2, pass);
-				result = pstmt.executeQuery();
-				
+				rs = pstmt.executeQuery();
+				while(rs.next()) 
+				i++;
 			}
 		}catch (SQLException e) {
 			throw new Exception("IDとパスワード情報取得処理に失敗しました。");
 		}finally {
-			try {
-				if(rs != null) {
-					pstmt.close();
-				}
-			}catch(SQLException e) {
-				e.printStackTrace();
-			}
 			try {
 				if(pstmt != null) {
 					pstmt.close();
@@ -39,6 +35,6 @@ public class LoginNinshouDBAccess extends ControlDBAccess{
 			}
 		}
 		closeConnection(con);
-		return list;
+		return i;
 	}
 }

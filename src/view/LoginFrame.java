@@ -121,6 +121,7 @@ public class LoginFrame extends JFrame implements ActionListener{
 						JOptionPane.showMessageDialog(this, "IDまたはパスワードが違います。", "ログイン失敗", JOptionPane.WARNING_MESSAGE);
 					}
 				}catch (Exception ex) {
+					ex.printStackTrace();
 					ControlUtility.systemErrorMessage(this, ex);
 				}
 			}else {
