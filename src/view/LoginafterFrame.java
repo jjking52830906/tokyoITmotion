@@ -51,7 +51,6 @@ public class LoginafterFrame extends JFrame implements ActionListener{
 		lblNewLabel_1.setBounds(-563, -60, 2048, 1365);
 		lblNewLabel_1.setIcon(new ImageIcon(MainMenuFrame.class.getResource("/image/white_00032.jpg")));
 		panel.add(lblNewLabel_1);
-		getContentPane().add(Login);
 		
 		btnLogout = new JButton("ログアウト");
 		btnLogout.setBackground(Color.WHITE);
@@ -104,8 +103,6 @@ public class LoginafterFrame extends JFrame implements ActionListener{
 		}else if (e.getSource() == btnYoyakuKakunin) {
 			setVisible(false);
 			Controller.YoyakukakuninDisplay();
-			
-			
 		}
 	}
 }
