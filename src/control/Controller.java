@@ -7,7 +7,6 @@ import action.AccountRegisterAction;
 import action.AkiSearchAction;
 import action.AkiSearchDisplayAction;
 import action.AkikekkaDisplayAction;
-import action.IDPassRegisterAction;
 import action.LoginDisplayAction;
 import action.LoginNinshouAction;
 import action.LoginRegisterAction;
@@ -91,12 +90,6 @@ public class Controller {
 		LoginNinshouAction action = new LoginNinshouAction();
 		String[] tableIpass = action.execute(ipass);
 		return tableIpass;
-	}
-	
-	public static int idpassRegister(String id, String pass) throws Exception{
-		IDPassRegisterAction action = new IDPassRegisterAction();
-		int rel = action.execute(id, pass);
-		return rel;
 	}
 	
 	public static String[][] akiSearch(String[] data)throws Exception{
