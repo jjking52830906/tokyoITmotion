@@ -112,14 +112,13 @@ public class LoginFrame extends JFrame implements ActionListener{
 			
 			if(!(id.equals("")) && !(pass.equals(""))) {
 				try {
-					String[] ipass = {id, pass};
-					String[] tableIpass = Controller.ninshou(ipass);
-					
-					if(tableIpass != null) {
+					int nin = Controller.ninshou(id, pass);
+					if(nin == 1) {
+						JOptionPane.showMessageDialog(this, "ログインに成功しました！", "ログイン成功", JOptionPane.INFORMATION_MESSAGE);
 						setVisible(false);
 						Controller.loginafterDisplay();
 					}else {
-						JOptionPane.showMessageDialog(this, "ログインIDまたはパスワードが間違っています。", "【確認】", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(this, "IDまたはパスワードが違います。", "ログイン失敗", JOptionPane.WARNING_MESSAGE);
 					}
 				}catch (Exception ex) {
 					ControlUtility.systemErrorMessage(this, ex);

@@ -86,10 +86,10 @@ public class Controller {
 	}
 	
 	//アクション系
-	public static String[] ninshou(String[] ipass)throws Exception{
+	public static int ninshou(String id, String pass)throws Exception{
 		LoginNinshouAction action = new LoginNinshouAction();
-		String[] tableIpass = action.execute(ipass);
-		return tableIpass;
+		int nin = action.execute(id, pass);
+		return nin;
 	}
 	
 	public static String[][] akiSearch(String[] data)throws Exception{
