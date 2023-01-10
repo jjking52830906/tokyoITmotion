@@ -140,6 +140,10 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 		contentPane.add(kakutei);
 		
 		setVisible(true);
+		int pass;
+		public void inputToLogAfter(int input) {
+			 pass = input;
+		}
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -178,7 +182,7 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 			}
 		}else if(e.getSource() == Return) {
 			setVisible(false);
-			Controller.loginafterDisplay(input);
+			Controller.loginafterDisplay(pass);
 			
 			
 		}else if(e.getSource() == kakutei) {

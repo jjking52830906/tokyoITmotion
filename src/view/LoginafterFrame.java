@@ -80,8 +80,9 @@ public class LoginafterFrame extends JFrame implements ActionListener{
 		
 		setVisible(true);
 	}
+	int pass;
 	public void inputToLogAfter(int input) {
-		
+		 pass = input;
 	}
 	public void actionPerformed(ActionEvent e) {
 		
@@ -92,7 +93,7 @@ public class LoginafterFrame extends JFrame implements ActionListener{
 			
 		}else if(e.getSource() == btnYoyakuToroku) {
 			setVisible(false);
-			Controller.yoyakuDisplay();
+			Controller.yoyakuDisplay(pass);
 			
 			
 		}else if (e.getSource() == btnAkiSearch) {
@@ -102,7 +103,7 @@ public class LoginafterFrame extends JFrame implements ActionListener{
 			
 		}else if (e.getSource() == btnYoyakuKakunin) {
 			setVisible(false);
-			Controller.YoyakukakuninDisplay();
+			Controller.YoyakukakuninDisplay(pass);
 		}
 	}
 }

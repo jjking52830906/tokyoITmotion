@@ -43,9 +43,9 @@ public class Controller {
 		action.execute();
 	}
 	
-	public static void yoyakuDisplay() {
+	public static void yoyakuDisplay(int input) {
 		YoyakuDisplayAction action = new YoyakuDisplayAction();
-		action.execute();
+		action.execute(input);
 	}
 	
 	public static void AkiSearchDisplay() {
@@ -53,9 +53,9 @@ public class Controller {
 		action.execute();
 	}
 	
-	public static void YoyakukakuninDisplay() {
+	public static void YoyakukakuninDisplay(int input) {
 		YoyakukauninDisplayAction action = new YoyakukauninDisplayAction();
-		action.execute();
+		action.execute(input);
 	}
 	
 	public static void AkikekkaDisplay() {
@@ -106,9 +106,8 @@ public class Controller {
 		return input;
 	}
 	
-	public static void inputToLoginAfterFrame(int input) {
-		InputToLoginAfterFrameAction action = new InputToLoginAfterFrame();
+	public static void inputToLoginAfterFrame(int input)throws Exception{
+		InputToLoginAfterFrameAction action = new	InputToLoginAfterFrameAction();
 		action.execute(input);
 	}
-
 }
