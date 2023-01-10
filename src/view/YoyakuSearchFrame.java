@@ -43,10 +43,8 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 	private JButton Search;
 	private JButton Return;
 
-	/**
-	 * Create the frame.
-	 */
-	public YoyakuSearchFrame() {
+	static int pass;
+	public YoyakuSearchFrame(int input) {
 		setTitle("【予約登録画面】");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450, 200, 828, 534);
@@ -140,10 +138,7 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 		contentPane.add(kakutei);
 		
 		setVisible(true);
-		int pass;
-		public void inputToLogAfter(int input) {
-			 pass = input;
-		}
+		 pass = input;
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -182,12 +177,13 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 			}
 		}else if(e.getSource() == Return) {
 			setVisible(false);
-			Controller.loginafterDisplay(pass);
-			
-			
+			try {
+				Controller. inputToLoginAfterFrame(pass);
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
 		}else if(e.getSource() == kakutei) {
 			setVisible(false);
-			
 		}
 	}
 }

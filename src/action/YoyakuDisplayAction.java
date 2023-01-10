@@ -1,7 +1,7 @@
 package action;
-
+import view.YoyakuSearchFrame;
 public class YoyakuDisplayAction {
 	public void execute(int input) {
-		new  inputToLogAfter(input);
+		new  YoyakuSearchFrame(input);
 	}
 }

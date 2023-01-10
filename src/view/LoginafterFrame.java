@@ -15,12 +15,8 @@ import javax.swing.border.EmptyBorder;
 import control.Controller;
 
 public class LoginafterFrame extends JFrame implements ActionListener{
-
 	private JPanel contentPane;
-	
 	private JButton btnLogout;
-	
-	private JButton btnAkiSearch;
 	private JButton btnYoyakuKakunin;
 	private JButton btnYoyakuToroku;
 
