@@ -4,6 +4,6 @@ import view.YoyakukakuninFrame;
 
 public class YoyakukauninDisplayAction {
 	public void execute(int input) {
-		new YoyakukakuninFrame();
+		new YoyakukakuninFrame(input);
 	}
 }

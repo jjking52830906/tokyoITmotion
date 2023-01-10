@@ -118,7 +118,6 @@ public class LoginFrame extends JFrame implements ActionListener{
 						int input = Controller.idPass(id, pass);
 						setVisible(false);
 						Controller.inputToLoginAfterFrame(input);
-						Controller.loginafterDisplay();
 					}else {
 						JOptionPane.showMessageDialog(this, "IDまたはパスワードが違います。", "ログイン失敗", JOptionPane.WARNING_MESSAGE);
 					}

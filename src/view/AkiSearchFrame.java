@@ -181,7 +181,7 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 			
 		}else if(e.getSource() == Return) {
 			setVisible(false);
-            Controller.loginafterDisplay();
+            new MainMenuFrame();
 		}
 	}
 }

@@ -12,7 +12,6 @@ import action.LoginDisplayAction;
 import action.LoginNinshouAction;
 import action.LoginRegisterAction;
 import action.LoginRegisterDisplayAction;
-import action.LoginafterDisplayAction;
 import action.MainMenuDisplayAction;
 import action.RegisterDisplayAction;
 import action.YoyakuDisplayAction;
@@ -50,7 +49,7 @@ public class Controller {
 	
 	public static void AkiSearchDisplay() {
 		AkiSearchDisplayAction action = new AkiSearchDisplayAction();
-		action.execute();
+		action.execute(); 
 	}
 	
 	public static void YoyakukakuninDisplay(int input) {
@@ -63,10 +62,7 @@ public class Controller {
 		action.execute();
 	}
 	
-	public static void loginafterDisplay() {
-		LoginafterDisplayAction action = new LoginafterDisplayAction();
-		action.execute();
-	}
+	
 	
 	//登録系
 	public static int accountRegister(String fname, String lname, Date date, String radio, String fAddress, String lAddress, String tel) throws Exception {

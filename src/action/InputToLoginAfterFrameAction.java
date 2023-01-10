@@ -1,7 +1,7 @@
 package action;
-
+import view.LoginafterFrame;
 public class InputToLoginAfterFrameAction {
 	public void execute(int input)throws Exception{
-		inputToLogAfter(input);
+	new LoginafterFrame(input);
 	}
 }

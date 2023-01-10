@@ -24,10 +24,8 @@ public class LoginafterFrame extends JFrame implements ActionListener{
 	private JButton btnYoyakuKakunin;
 	private JButton btnYoyakuToroku;
 
-	/**
-	 * Create the frame.
-	 */
-	public LoginafterFrame() {
+	 static int pass;
+	public LoginafterFrame(  int input) {
 		setTitle("【メインメニュー】");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 757, 674);
@@ -57,12 +55,6 @@ public class LoginafterFrame extends JFrame implements ActionListener{
 		getContentPane().add(btnLogout);
 		btnLogout.addActionListener(this);
 		
-		btnAkiSearch = new JButton("空き状況");
-		btnAkiSearch.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-		btnAkiSearch.setBounds(506, 403, 227, 58);
-		contentPane.add(btnAkiSearch);
-		getContentPane().add(btnAkiSearch);
-		btnAkiSearch.addActionListener(this);
 		
 		btnYoyakuKakunin = new JButton("予約確認");
 		btnYoyakuKakunin.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
@@ -79,11 +71,10 @@ public class LoginafterFrame extends JFrame implements ActionListener{
 		btnYoyakuToroku.addActionListener(this);
 		
 		setVisible(true);
+		pass = input;
+		System.out.println(pass);
 	}
-	int pass;
-	public void inputToLogAfter(int input) {
-		 pass = input;
-	}
+	
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource() == btnLogout) {
@@ -94,11 +85,6 @@ public class LoginafterFrame extends JFrame implements ActionListener{
 		}else if(e.getSource() == btnYoyakuToroku) {
 			setVisible(false);
 			Controller.yoyakuDisplay(pass);
-			
-			
-		}else if (e.getSource() == btnAkiSearch) {
-			setVisible(false);
-			Controller.AkiSearchDisplay();
 			
 			
 		}else if (e.getSource() == btnYoyakuKakunin) {

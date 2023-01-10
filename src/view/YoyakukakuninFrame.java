@@ -25,10 +25,8 @@ public class YoyakukakuninFrame extends JFrame implements ActionListener{
 	
 	private JButton Return;
 
-	/**
-	 * Create the frame.
-	 */
-	public YoyakukakuninFrame() {
+    static int pass;
+	public YoyakukakuninFrame(int input) {
 		setTitle("【予約確認画面】");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 531, 437);
@@ -68,11 +66,17 @@ public class YoyakukakuninFrame extends JFrame implements ActionListener{
 		scrollPane.setViewportView(table);
 		
 		setVisible(true);
+		pass = input;
+		System.out.println(pass);
 	}
 	public void actionPerformed(ActionEvent e) { 
 		if(e.getSource() == Return) {
 			setVisible(false);
-			Controller.loginafterDisplay();
+			try {
+				Controller. inputToLoginAfterFrame(pass);
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
 		}
 	}
 }
