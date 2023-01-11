@@ -39,7 +39,7 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 	private DefaultTableModel tableModel;
 	private JTable table;
 	
-	private JButton kakutei;
+	private JButton toroku;
 	private JButton Search;
 	private JButton Return;
 
@@ -133,9 +133,9 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 		
 		scrollPane.setViewportView(table);
 		
-		kakutei = new JButton("確定");
-		kakutei.setBounds(52, 326, 131, 41);
-		contentPane.add(kakutei);
+		toroku = new JButton("登録");
+		toroku.setBounds(52, 326, 131, 41);
+		contentPane.add(toroku);
 		
 		setVisible(true);
 		 pass = input;
@@ -163,14 +163,20 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 			}
 			try {
 				String[] data = {strDate, bashoId};
-				String[][] tableData = Controller.akiSearch(data);
+				Object[][] tableData = Controller.akiSearch(data);
 				
 				if(tableData != null) {
+
 					tableModel.setRowCount(0);
-					
-					for(String[] rowData : tableData) {
-						tableModel.addRow(new Object[] {false, rowData});
+
+					for(Object[] rowData : tableData) {
+
+						tableModel.addRow(rowData);
 					}
+
+				} else {
+					JOptionPane.showMessageDialog(this, "一致する情報は見つかりませんでした。", "【確認】", JOptionPane.INFORMATION_MESSAGE);
+					tableModel.setRowCount(0);
 				}
 			}catch (Exception ex) {
 				JOptionPane.showMessageDialog(this, "一致する情報は見つかりませんでした。", "【確認】", JOptionPane.INFORMATION_MESSAGE);
@@ -182,8 +188,8 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
-		}else if(e.getSource() == kakutei) {
-			setVisible(false);
+		}else if(e.getSource() == toroku) {
+			
 		}
 	}
 }

@@ -1,6 +1,5 @@
 package action;
 
-import java.sql.Date;
 import java.util.ArrayList;
 
 import db.AkiSearchDBAccess;
@@ -8,15 +7,14 @@ import model.ControlUtility2;
 import model.Yoyaku;
 
 public class AkiSearchAction {
-	public String[][] execute(String[] data)throws Exception{
+	public Object[][] execute(String[] data)throws Exception{
 		
 		ArrayList<Yoyaku> list = null;
 		AkiSearchDBAccess dao = new AkiSearchDBAccess();
-		String strDate = data[0];
-		Date date = Date.valueOf(strDate);
+		//日付と場所IDが一致しておりかつステータスが0、custIdがnullの状態
 		list = dao.akiSearch(data[0], data[1]);
 		
-		String[][] tableData = null;
+		Object[][] tableData = null;
 		if(list != null && list.size() != 0) {
 			tableData = ControlUtility2.akiSearchToArray(list);
 		}

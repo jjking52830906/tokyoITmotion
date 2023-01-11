@@ -90,9 +90,9 @@ public class Controller {
 		return nin;
 	}
 	
-	public static String[][] akiSearch(String[] data)throws Exception{
+	public static Object[][] akiSearch(String[] data)throws Exception{
 		AkiSearchAction action = new AkiSearchAction();
-		String[][] tableData = action.execute(data);
+		Object[][] tableData = action.execute(data);
 		return tableData;
 	}
 	

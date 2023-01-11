@@ -17,25 +17,26 @@ public class AkiSearchDBAccess extends ControlDBAccess{
 		ResultSet rs = null;
 		ArrayList<Yoyaku> list = new ArrayList<Yoyaku>();
 		Date date = Date.valueOf(strDate);
+		int IntbashoId = Integer.parseInt(bashoId);
 		try {
 			if(con != null) {
-				String sql = "SELECT  DATE, HOUR, BASHONAME FROM YOYAKU WHERE DATE = ? AND BASHOID = ? AND STATUS = 0";
+				String sql = "SELECT  DATE, HOUR, BASHOID FROM YOYAKU WHERE DATE = ? AND BASHOID = ? AND STATUS = 0 AND CUSTID IS null";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setDate(1, date);
-				pstmt.setString(2, bashoId);
+				pstmt.setInt(2, IntbashoId);
 				rs = pstmt.executeQuery();
 				while(rs.next() == true) {
 					Date getDate = rs.getDate("DATE");
 					SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd");
 					String getStrDate = new SimpleDateFormat("yyyy-MM-dd").format(getDate);
 					String getHour = rs.getString("HOUR");
-					String getBasho = rs.getString("BASHONAME");
-					Yoyaku yoyaku = new Yoyaku(getStrDate, getHour, getBasho);
+					int getBashoId = rs.getInt("BASHOID");
+					Yoyaku yoyaku = new Yoyaku(getStrDate, getHour, getBashoId);
 					list.add(yoyaku);
 				}
 			}
 		}catch(SQLException e) {
-			throw new Exception("顧客情報検索処理に失敗しました！");
+			throw new Exception("検索処理に失敗しました！");
 		}finally {
 			try {
 				if(rs != null) {

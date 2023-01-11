@@ -1,32 +1,29 @@
 package model;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 public class Yoyaku implements Serializable{
-	private Date date;
+	private String strDate;
 	private String hour;
-	private String bashoId;
+	private int bashoId;
 	private String status;
 	private int custId;
 	
 	public Yoyaku() {
 	}
-	
-	public Yoyaku(Date date, String hour, String bashoId, String status, int custId) {
-		setDate(date);
+
+	public Yoyaku(String strDate, String hour, int bashoId) {
+		setStrDate(strDate);
 		setHour(hour);
 		setBashoId(bashoId);
-		setStatus(status);
-		setCustId(custId);
 	}
 
-	public Date getDate() {
-		return date;
+	public String getStrDate() {
+		return strDate;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setStrDate(String strDate) {
+		this.strDate = strDate;
 	}
 
 	public String getHour() {
@@ -37,11 +34,11 @@ public class Yoyaku implements Serializable{
 		this.hour = hour;
 	}
 
-	public String getBashoId() {
+	public int getBashoId() {
 		return bashoId;
 	}
 
-	public void setBashoId(String bashoId) {
+	public void setBashoId(int bashoId) {
 		this.bashoId = bashoId;
 	}
 
