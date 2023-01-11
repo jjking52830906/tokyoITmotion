@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-public class ControlUtility2 {
+public class ControlUtility2{
 	public static Object[][] akiSearchToArray(ArrayList<Yoyaku>list){
 		int listSize = list.size();
 		Object[][] tableData = new Object[listSize][4];
@@ -11,7 +11,7 @@ public class ControlUtility2 {
 			
 		for(int i=0; i<listSize; i++) {
 			Yoyaku yoyaku = list.get(i);
-			tableData[i][0] = new Boolean(false);
+			tableData[i][0] = false;
 			tableData[i][1] = yoyaku.getStrDate();
 			tableData[i][2] = yoyaku.getHour();
 			
@@ -29,8 +29,15 @@ public class ControlUtility2 {
 			}
 			
 			tableData[i][3] = bashoName;
+			
 		}
 		
 		return tableData;
+		
+		
 	}
+
+	
+	
+	
 }

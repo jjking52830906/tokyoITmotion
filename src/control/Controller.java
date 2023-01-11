@@ -1,7 +1,6 @@
 package control;
 
 import java.sql.Date;
-import java.sql.Time;
 
 import action.AccountRegisterAction;
 import action.AkiSearchAction;
@@ -15,7 +14,6 @@ import action.LoginRegisterDisplayAction;
 import action.MainMenuDisplayAction;
 import action.RegisterDisplayAction;
 import action.YoyakuDisplayAction;
-import action.YoyakuRegisterAction;
 import action.YoyakukauninDisplayAction;
 import action.idPassInputAction;
 
@@ -69,12 +67,6 @@ public class Controller {
 		AccountRegisterAction action = new AccountRegisterAction();
 		int res = action.execute(fname, lname, date, radio, fAddress, lAddress, tel);
 		return res;
-	}
-	
-	public static int yoyokuRegister(int insid, Date resdate, Time strtime, Time fintime, int custid, String purpose, String place) throws Exception{
-		YoyakuRegisterAction action = new YoyakuRegisterAction();
-		int rem = action.execute(insid, resdate, strtime, fintime, custid, purpose, place);
-		return rem;
 	}
 	
 	public static int loginRegister(String id, String pass)throws Exception{
