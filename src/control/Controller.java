@@ -105,4 +105,9 @@ public class Controller {
 		return null;
 		
 	}
+	
+	public static void loginIdCheck(int sal)throws Exception{
+		IdCheckAction action new IdCheckAction();
+		action.execute();
+	}
 }
