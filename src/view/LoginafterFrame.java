@@ -1,5 +1,4 @@
 package view;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -13,7 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import control.Controller;
-
 public class LoginafterFrame extends JFrame implements ActionListener{
 	private JPanel contentPane;
 	private JButton btnLogout;
