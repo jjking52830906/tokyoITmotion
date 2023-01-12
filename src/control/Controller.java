@@ -6,6 +6,7 @@ import action.AccountRegisterAction;
 import action.AkiSearchAction;
 import action.AkiSearchDisplayAction;
 import action.AkikekkaDisplayAction;
+import action.IdCheckAction;
 import action.InputToLoginAfterFrameAction;
 import action.LoginDisplayAction;
 import action.LoginNinshouAction;
@@ -106,8 +107,8 @@ public class Controller {
 		
 	}
 	
-	public static void loginIdCheck(int sal)throws Exception{
-		IdCheckAction action new IdCheckAction();
-		action.execute();
+	public static int loginIdCheck(String logId)throws Exception{
+		IdCheckAction action = new IdCheckAction();
+		return action.execute(logId);
 	}
 }

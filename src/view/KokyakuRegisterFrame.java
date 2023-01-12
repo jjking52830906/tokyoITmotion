@@ -190,11 +190,11 @@ public class KokyakuRegisterFrame extends JFrame implements ActionListener{
         contentPane.add(lblNewLabel_2);
         
         JLabel lblLoginId = new JLabel("ログインID");
-        lblLoginId.setBounds(12, 47, 50, 13);
+        lblLoginId.setBounds(12, 47, 92, 13);
         contentPane.add(lblLoginId);
         
         JLabel lblPassword = new JLabel("パスワード");
-        lblPassword.setBounds(12, 94, 50, 13);
+        lblPassword.setBounds(12, 94, 92, 13);
         contentPane.add(lblPassword);
         
         txtLoginId = new JTextField();
@@ -266,30 +266,45 @@ public class KokyakuRegisterFrame extends JFrame implements ActionListener{
                  try {
                 	 int sal = Controller.loginIdCheck(logId);
                 	 if(sal == 1) {
-                		 JOptionPane.showMessageDialog(this, "ログイン")
+                		 JOptionPane.showMessageDialog(this, "既に同じログインIDが登録してあります。別のログインIDを入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
+                	 }else {
+                		//先に顧客情報登録処理を行う
+                         try {
+                             int res = Controller.accountRegister(fname, lname, date, radio, fAddress, lAddress, tel);
+                             if(res == 1) {
+                                 JOptionPane.showMessageDialog(this, "顧客情報登録に成功しました", "登録完了", JOptionPane.INFORMATION_MESSAGE);
+                             }else {
+                                 JOptionPane.showMessageDialog(this, "顧客情報登録に失敗しました", "登録失敗", JOptionPane.WARNING_MESSAGE);
+                             }
+                         }catch(Exception ex) {
+                             ErrorDialogUtility.systemErrorMessage(this, ex);
+                         }
+                         //次にログイン情報を登録処理
+                         try {
+                     		int rel = Controller.loginRegister(logId, logPass);
+                     		if(rel == 1) {
+                     			JOptionPane.showMessageDialog(this, "IDとパスワード登録に成功しました", "登録完了", JOptionPane.INFORMATION_MESSAGE);
+                     			setVisible(false);
+                     			Controller.mainMenuDisplay();
+                     		}else {
+                     			JOptionPane.showMessageDialog(this, "IDとパスワード登録に失敗しました", "登録失敗", JOptionPane.WARNING_MESSAGE);
+                     		}
+                     	}catch(Exception ex) {
+                     		ErrorDialogUtility.systemErrorMessage(this, ex);
+                     	}
+                         
+                         
+                         txtLoginId.setText("");
+                         txtPassword.setText("");
+                         txtFName.setText("");
+                         txtLName.setText("");
+                         txtLAddress.setText("");
+                         txtTel.setText("");
                 	 }
+                 }catch (Exception ex) {
+                	 ErrorDialogUtility.systemErrorMessage(this, ex);
                  }
-                 //先に顧客情報登録処理を行う
-                 try {
-                     int res = Controller.accountRegister(fname, lname, date, radio, fAddress, lAddress, tel);
-                     if(res == 1) {
-                         JOptionPane.showMessageDialog(this, "顧客情報登録に成功しました", "登録完了", JOptionPane.INFORMATION_MESSAGE);
-                         setVisible(false);
-                         Controller.loginRegisterDisplay();
-                     }else {
-                         JOptionPane.showMessageDialog(this, "顧客情報登録に失敗しました", "登録失敗", JOptionPane.WARNING_MESSAGE);
-                     }
-                 }catch(Exception ex) {
-                     ErrorDialogUtility.systemErrorMessage(this, ex);
-                 }
-                 //次にログイン情報を登録処理
                  
-                 txtLoginId.setText("");
-                 txtPassword.setText("");
-                 txtFName.setText("");
-                 txtLName.setText("");
-                 txtLAddress.setText("");
-                 txtTel.setText("");
              }else {
                  JOptionPane.showMessageDialog(this, "未入力の項目があります", "エラー", JOptionPane.WARNING_MESSAGE);
              }
