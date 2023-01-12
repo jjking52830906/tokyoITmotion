@@ -14,6 +14,7 @@ import action.LoginRegisterDisplayAction;
 import action.MainMenuDisplayAction;
 import action.RegisterDisplayAction;
 import action.YoyakuDisplayAction;
+import action.YoyakukakuninAction;
 import action.YoyakukauninDisplayAction;
 import action.idPassInputAction;
 
@@ -97,5 +98,11 @@ public class Controller {
 	public static void inputToLoginAfterFrame(int input)throws Exception{
 		InputToLoginAfterFrameAction action = new	InputToLoginAfterFrameAction();
 		action.execute(input);
+	}
+	public static Object[][] yoyakukakunin()throws Exception{
+		YoyakukakuninAction action = new YoyakukakuninAction();
+		Object[][] tableData = action.execute();
+		return null;
+		
 	}
 }
