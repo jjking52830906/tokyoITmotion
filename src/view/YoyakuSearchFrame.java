@@ -119,9 +119,19 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 		Return.addActionListener(this);
 		
 		String[] columnNames = {"チェック", "年月日", "時刻", "施設名"};
-		tableModel = new DefaultTableModel(columnNames, 0);
+		tableModel = new DefaultTableModel(columnNames, 0) {
+			@Override
+			public Class<?> getColumnClass(int columnIndex) {
+				switch (columnIndex) {
+					case 0: return Boolean.class;
+					default:
+						return super.getColumnClass(columnIndex);
+				}
+			}
+		};
 		table = new JTable(tableModel);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		
 		DefaultTableColumnModel columnModel = (DefaultTableColumnModel) table.getColumnModel();
 		TableColumn column0 = columnModel.getColumn(0);
 		TableColumn column1 = columnModel.getColumn(1);
@@ -163,42 +173,18 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 				bashoId = "5";
 			}
 			try {
-				String[] columnNames = {"チェック", "年月日", "時刻", "施設名"};
-				tableModel = new DefaultTableModel(columnNames, 0);
-				table = new JTable(tableModel);
-				table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-				DefaultTableColumnModel columnModel = (DefaultTableColumnModel) table.getColumnModel();
-				TableColumn column0 = columnModel.getColumn(0);
-				TableColumn column1 = columnModel.getColumn(1);
-				TableColumn column2 = columnModel.getColumn(2);
-				TableColumn column3 = columnModel.getColumn(3);
-				column0.setPreferredWidth(90);
-				column1.setPreferredWidth(150);
-				column2.setPreferredWidth(100);
-				column3.setPreferredWidth(100);
 				String[] data = {strDate, bashoId};
 				Object[][] tableData = Controller.akiSearch(data);
 				
 				if(tableData != null) {
-					DefaultTableModel model = new DefaultTableModel(tableData, columnNames);
-					table = new JTable(tableModel) {
-						@Override
-						public Class<?> getColumnClass(int column) {
-			                switch (column) {
-			                    case 0:
-			                        return String.class;
-			                    case 1:
-			                        return String.class;
-			                    case 2:
-			                        return Integer.class;
-			                    case 3:
-			                        return Double.class;
-			                    default:
-			                        return Boolean.class;
-			                }
-			            }
-					};
-					table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+					
+					
+					tableModel.setRowCount(0);
+				
+					for(Object[] rowData : tableData) {
+						
+						tableModel.addRow(rowData);
+					}
 				
 				} else {
 					JOptionPane.showMessageDialog(this, "一致する情報は見つかりませんでした。", "【確認】", JOptionPane.INFORMATION_MESSAGE);

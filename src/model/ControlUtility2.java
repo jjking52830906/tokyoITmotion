@@ -11,7 +11,7 @@ public class ControlUtility2{
 			
 		for(int i=0; i<listSize; i++) {
 			Yoyaku yoyaku = list.get(i);
-			tableData[i][0] = false;
+			tableData[i][0] = new Boolean (false);
 			tableData[i][1] = yoyaku.getStrDate();
 			tableData[i][2] = yoyaku.getHour();
 			
