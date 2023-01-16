@@ -115,6 +115,6 @@ public class Controller {
 	
 	public static String IdSearch()throws Exception{
 		IdSearchAction action = new IdSearchAction();
-		return action.execute(); 
+		return action.execute();  
 	}
 }

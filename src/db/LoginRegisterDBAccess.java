@@ -12,7 +12,7 @@ public class LoginRegisterDBAccess extends ControlDBAccess{
 		try {
 			String sql = "INSERT INTO LOGIN(LOGID,LOGPASS,CUSTID) VALUES(?, ?,?);";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, id);
+			pstmt.setString(1, id); 
 			pstmt.setString(2, pass);
 			pstmt.setString(3, custid);
 			result = pstmt.executeUpdate();

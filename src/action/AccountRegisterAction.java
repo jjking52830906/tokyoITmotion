@@ -11,6 +11,4 @@ public class AccountRegisterAction {
 		int res = crdb.registerAccount(fname, lname, date, radio, fAddress, lAddress, tel);
 		return res;
 	}
-
-	
 }

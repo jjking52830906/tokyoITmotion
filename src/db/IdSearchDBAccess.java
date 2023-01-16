@@ -9,7 +9,7 @@ public class IdSearchDBAccess extends ControlDBAccess {
 	public String IdSearch()throws Exception{
 		Connection con = createConnection();
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+		ResultSet rs = null; 
 		String id = null;
 		try {
 			if(con != null) {

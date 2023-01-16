@@ -265,7 +265,7 @@ public class KokyakuRegisterFrame extends JFrame implements ActionListener{
                  //custId一致処理
                  try {
                 	 int sal = Controller.loginIdCheck(logId);
-                	 if(sal == 1) {
+                	 if(sal == 1) { 
                 		 JOptionPane.showMessageDialog(this, "既に同じログインIDが登録してあります。別のログインIDを入力してください。", "エラー", JOptionPane.WARNING_MESSAGE);
                 	 }else {
                 		//先に顧客情報登録処理を行う
