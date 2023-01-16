@@ -7,6 +7,7 @@ import action.AkiSearchAction;
 import action.AkiSearchDisplayAction;
 import action.AkikekkaDisplayAction;
 import action.IdCheckAction;
+import action.IdSearchAction;
 import action.InputToLoginAfterFrameAction;
 import action.LoginDisplayAction;
 import action.LoginNinshouAction;
@@ -71,9 +72,9 @@ public class Controller {
 		return res;
 	}
 	
-	public static int loginRegister(String id, String pass)throws Exception{
+	public static int loginRegister(String id, String pass,String custid)throws Exception{
 		LoginRegisterAction action = new LoginRegisterAction();
-		int rel = action.execute(id, pass);
+		int rel = action.execute(id, pass,custid);
 		return rel;
 	}
 	
@@ -110,5 +111,10 @@ public class Controller {
 	public static int loginIdCheck(String logId)throws Exception{
 		IdCheckAction action = new IdCheckAction();
 		return action.execute(logId);
+	}
+	
+	public static String IdSearch()throws Exception{
+		IdSearchAction action = new IdSearchAction();
+		return action.execute(); 
 	}
 }

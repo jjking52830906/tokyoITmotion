@@ -281,7 +281,8 @@ public class KokyakuRegisterFrame extends JFrame implements ActionListener{
                          }
                          //次にログイン情報を登録処理
                          try {
-                     		int rel = Controller.loginRegister(logId, logPass);
+                            String custId = Controller.IdSearch();
+                     		int rel = Controller.loginRegister(logId, logPass,custId);
                      		if(rel == 1) {
                      			JOptionPane.showMessageDialog(this, "IDとパスワード登録に成功しました", "登録完了", JOptionPane.INFORMATION_MESSAGE);
                      			setVisible(false);

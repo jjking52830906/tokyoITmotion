@@ -5,15 +5,16 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class LoginRegisterDBAccess extends ControlDBAccess{
-	public int registerLogin(String id, String pass)throws Exception{
+	public int registerLogin(String id, String pass,String custid)throws Exception{
 		int result = 0;
 		Connection con = createConnection();
 		PreparedStatement pstmt = null;
 		try {
-			String sql = "INSERT INTO LOGIN(LOGID,LOGPASS) VALUES(?, ?);";
+			String sql = "INSERT INTO LOGIN(LOGID,LOGPASS,CUSTID) VALUES(?, ?,?);";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.setString(2, pass);
+			pstmt.setString(3, custid);
 			result = pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
