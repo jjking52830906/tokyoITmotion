@@ -61,7 +61,7 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 		
 		cbYear = new JComboBox();
 		cbYear.setBounds(87, 94, 96, 21);
-		cbYear.setModel(new DefaultComboBoxModel(new String[] {"2022", "2023"}));
+		cbYear.setModel(new DefaultComboBoxModel(new String[] {"2023"}));
 		contentPane.add(cbYear);
 		
 		lblYear = new JLabel("年");
