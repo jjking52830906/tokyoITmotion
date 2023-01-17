@@ -69,30 +69,28 @@ public class YoyakukakuninFrame extends JFrame implements ActionListener{
 		setVisible(true);
 		pass = input;
 		System.out.println(pass);
+
+		try {
+			Object[][] tableData = Controller.yoyakukakunin(pass);
+			if(tableData != null) {
+
+				tableModel.setRowCount(0);
+
+				for(Object[] rowData : tableData) {
+
+					tableModel.addRow(rowData);
+				}
+			}else {
+				JOptionPane.showMessageDialog(this, "一致する情報は見つかりませんでした。", "【確認】", JOptionPane.INFORMATION_MESSAGE);
+				tableModel.setRowCount(0);
+			}
+
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(this, "一致する情報は見つかりませんでした。", "【確認】", JOptionPane.INFORMATION_MESSAGE);
+		}
 	}
 	public void actionPerformed(ActionEvent e) { 
 		if(e.getSource() == Return) {
-			setVisible(false);
-			try {
-				Object[][] tableData = Controller.yoyakukakunin();
-
-				if(tableData != null) {
-
-					tableModel.setRowCount(0);
-
-					for(Object[] rowData : tableData) {
-
-						tableModel.addRow(rowData);
-					}
-
-				} else {
-					JOptionPane.showMessageDialog(this, "一致する情報は見つかりませんでした。", "【確認】", JOptionPane.INFORMATION_MESSAGE);
-					tableModel.setRowCount(0);
-				}
-			}catch (Exception ex) {
-				JOptionPane.showMessageDialog(this, "一致する情報は見つかりませんでした。", "【確認】", JOptionPane.INFORMATION_MESSAGE);
-			}
-		}else if(e.getSource() == Return) {
 			setVisible(false);
 			try {
 				Controller. inputToLoginAfterFrame(pass);

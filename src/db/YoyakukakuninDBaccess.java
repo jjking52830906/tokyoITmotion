@@ -7,29 +7,43 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 
-import model.Yoyaku;
-
 public class YoyakukakuninDBaccess extends ControlDBAccess{
-	public Object[][] yoyaku()throws Exception{
+	public Object[][] yoyaku(int pass)throws Exception{
 		Connection con = createConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-
+		String[][] tableData = new String[99][99];
+		int a=0;
 		try {
 			if(con != null) {
-				String sql = "SELECT  FIRSTNAME, Date, Hour,INSNAME FROM YOYAKU WHERE DATE = ? AND BASHOID = ? AND STATUS = 0 AND CUSTID IS null";
+				String sql = "SELECT  LASTNAME, FIRSTNAME, Date, Hour,BASHONAME "
+						   + "FROM YOYAKU, CUSTOMER,BASHO "
+						   + "WHERE YOYAKU.CUSTID = CUSTOMER.CUSTID "
+						   + "AND BASHO.BASHOID=YOYAKU.BASHOID "
+						   + "AND YOYAKU.CUSTID = ? "
+						   + "AND STATUS = 1;";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setDate(1, date);
-				pstmt.setInt(2, IntbashoId);
+				pstmt.setInt(1, pass);
 				rs = pstmt.executeQuery();
 				while(rs.next() == true) {
+					String Name2 = rs.getString("LASTNAME");
+					String Name1 = rs.getString("FIRSTNAME");
+					String Name = Name2+Name1;
 					Date getDate = rs.getDate("DATE");
 					SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd");
 					String getStrDate = new SimpleDateFormat("yyyy-MM-dd").format(getDate);
 					String getHour = rs.getString("HOUR");
-					int getBashoId = rs.getInt("BASHOID");
-					Yoyaku yoyaku = new Yoyaku(getStrDate, getHour, getBashoId);
-					list.add(yoyaku);
+					String Basho = rs.getString("BASHONAME");
+					System.out.println(Name+getStrDate+getHour+Basho);
+					
+					tableData[a][0] = Name;
+					tableData[a][1] = getStrDate;
+					tableData[a][2] = getHour;
+					tableData[a][3] = Basho;
+					a++;
+					
+					System.out.println(tableData[0][3]);
+					
 				}
 			}
 		}catch(SQLException e) {
@@ -51,6 +65,6 @@ public class YoyakukakuninDBaccess extends ControlDBAccess{
 			}
 		}
 		closeConnection(con);
-		return null;
+		return tableData;
 	}
 }

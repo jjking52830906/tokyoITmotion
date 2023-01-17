@@ -101,10 +101,10 @@ public class Controller {
 		InputToLoginAfterFrameAction action = new	InputToLoginAfterFrameAction();
 		action.execute(input);
 	}
-	public static Object[][] yoyakukakunin()throws Exception{
+	public static Object[][] yoyakukakunin(int pass)throws Exception{
 		YoyakukakuninAction action = new YoyakukakuninAction();
-		Object[][] tableData = action.execute();
-		return null;
+		String[][] tableData = (String[][])action.execute(pass);
+		return tableData;
 		
 	}
 	
