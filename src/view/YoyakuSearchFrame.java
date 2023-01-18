@@ -2,7 +2,6 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Date;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -39,7 +38,7 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 	private DefaultTableModel tableModel;
 	private JTable table;
 	
-	private JButton toroku;
+	private JButton register;
 	private JButton Search;
 	private JButton Return;
 	
@@ -144,21 +143,21 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 		
 		scrollPane.setViewportView(table);
 		
-		toroku = new JButton("登録");
-		toroku.setBounds(52, 326, 131, 41);
-		contentPane.add(toroku);
+		register = new JButton("登録");
+		register.setBounds(52, 326, 131, 41);
+		contentPane.add(register);
 		
 		setVisible(true);
 		 pass = input;
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()==Search) {
+		if(e.getSource()==Search) { 
 			String year = (String)cbYear.getSelectedItem();
 			String month = (String)cbMonth.getSelectedItem();
 			String day = (String)cbDay.getSelectedItem();
+			//日付合体
 			String strDate = year + "-" + month + "-" + day;
-			Date date = Date.valueOf(strDate);
 			String basho = (String)cbInstitution.getSelectedItem();
 			String bashoId = "0";
 			if(basho == "体育館") {
@@ -173,11 +172,11 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 				bashoId = "5";
 			}
 			try {
+				
 				String[] data = {strDate, bashoId};
-				Object[][] tableData = Controller.akiSearch(data);
+				Object[][] tableData = Controller.akiHyoji(data);
 				
 				if(tableData != null) {
-					
 					
 					tableModel.setRowCount(0);
 				
@@ -185,11 +184,11 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 						
 						tableModel.addRow(rowData);
 					}
-				
 				} else {
 					JOptionPane.showMessageDialog(this, "一致する情報は見つかりませんでした。", "【確認】", JOptionPane.INFORMATION_MESSAGE);
 					tableModel.setRowCount(0);
 				}
+				
 				
 			}catch (Exception ex) {
 				JOptionPane.showMessageDialog(this, "一致する情報は見つかりませんでした。", "【確認】", JOptionPane.INFORMATION_MESSAGE);
@@ -201,7 +200,7 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
-		}else if(e.getSource() == toroku) {
+		}else if(e.getSource() == register) { 
 			
 		}
 	}

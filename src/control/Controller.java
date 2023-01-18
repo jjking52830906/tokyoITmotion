@@ -5,6 +5,7 @@ import java.sql.Date;
 import action.AccountRegisterAction;
 import action.AkiSearchAction;
 import action.AkiSearchDisplayAction;
+import action.AkihyojiAction;
 import action.AkikekkaDisplayAction;
 import action.IdCheckAction;
 import action.IdSearchAction;
@@ -84,9 +85,15 @@ public class Controller {
 		int nin = action.execute(id, pass);
 		return nin;
 	}
-	
+	//旧
 	public static Object[][] akiSearch(String[] data)throws Exception{
 		AkiSearchAction action = new AkiSearchAction();
+		Object[][] tableData = action.execute(data);
+		return tableData;
+	}
+	//新
+	public static Object[][] akiHyoji(String[] data)throws Exception{
+		AkihyojiAction action = new AkihyojiAction();
 		Object[][] tableData = action.execute(data);
 		return tableData;
 	}
