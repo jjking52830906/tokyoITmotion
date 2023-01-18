@@ -8,9 +8,9 @@ public class LoginRegisterDBAccess extends ControlDBAccess{
 	public int registerLogin(String id, String pass,String custid)throws Exception{
 		int result = 0;
 		Connection con = createConnection();
-		PreparedStatement pstmt = null;
+		PreparedStatement pstmt = null; 
 		try {
-			String sql = "INSERT INTO LOGIN(LOGID,LOGPASS,CUSTID) VALUES(?, ?,?);";
+			String sql = "INSERT INTO LOGIN(LOGID,LOGPASS,CUSTID) VALUES(HEX(AES_ENCRYPT(?,'ENCRYPT-KEY')),HEX(AES_ENCRYPT( ?,'ENCRYPT-KEY')),?);";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id); 
 			pstmt.setString(2, pass);

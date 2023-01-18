@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import model.Yoyaku;
 
-public class SelectYoyaku extends ControlDBAccess{
+public class SelectYoyaku extends ControlDBAccess{ 
 	public aaa(Yoyaku yoyaku) throws Exception{
 		Connection con = createConnection();
 		PreparedStatement pstmt = null;

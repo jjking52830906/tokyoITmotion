@@ -8,11 +8,11 @@ public class IdCheckDBAccess extends ControlDBAccess {
 	public int IdCheck(String id)throws Exception{
 		Connection con = createConnection();
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+		ResultSet rs = null; 
 		int i = 0;
 		try {
 			if(con != null) {
-				String sql = "SELECT * FROM LOGIN WHERE LOGID = ? ;";
+				String sql = "SELECT AES_DECRYPT(UNHEX(`LOGID`),'ENCRYPT-KEY')FROM LOGIN WHERE AES_DECRYPT(UNHEX(`LOGID`),'ENCRYPT-KEY') = ?;";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, id);
 				rs = pstmt.executeQuery();
@@ -20,6 +20,7 @@ public class IdCheckDBAccess extends ControlDBAccess {
 				i++;
 			}
 		}catch (SQLException e) {
+			e.printStackTrace();
 			throw new Exception("処理に失敗しました。");
 		}finally {
 			try {

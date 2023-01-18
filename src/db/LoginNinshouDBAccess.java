@@ -11,11 +11,11 @@ public class LoginNinshouDBAccess extends ControlDBAccess{
 	
 		Connection con = createConnection();
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+		ResultSet rs = null; 
 		int i = 0;
 		try {
 			if(con != null) {
-				String sql = "SELECT LOGID, LOGPASS FROM LOGIN WHERE LOGID = ? AND LOGPASS = ?;";
+				String sql = "SELECT AES_DECRYPT(UNHEX(`LOGID`),'ENCRYPT-KEY'),AES_DECRYPT(UNHEX(`LOGPASS`),'ENCRYPT-KEY')FROM LOGIN WHERE AES_DECRYPT(UNHEX(`LOGID`),'ENCRYPT-KEY') = ? AND AES_DECRYPT(UNHEX(`LOGPASS`),'ENCRYPT-KEY') = ?;";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, id);
 				pstmt.setString(2, pass);
