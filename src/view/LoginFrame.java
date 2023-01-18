@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
@@ -79,8 +80,9 @@ public class LoginFrame extends JFrame implements ActionListener{
 		lblPassword.setBounds(57, 147, 68, 13);
 		panel1.add(lblPassword);
 		
-		txtPassword = new JTextField();
+		txtPassword = new JPasswordField();
 		txtPassword.setBounds(127, 144, 168, 19);
+		((JPasswordField) txtPassword).setEchoChar('*');
 		panel1.add(txtPassword);
 		txtPassword.setColumns(10);
 		
