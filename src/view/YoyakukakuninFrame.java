@@ -38,12 +38,13 @@ public class YoyakukakuninFrame extends JFrame implements ActionListener{
 		contentPane.setLayout(null);
 
 		Return = new JButton("戻る");
-		Return.setBounds(373, 347, 130, 41);
+		Return.setBounds(200, 347, 130, 41);
 		contentPane.add(Return);
 		getContentPane().add(Return);
 
+
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(12, 10, 491, 327);
+		scrollPane.setBounds(12, 15, 491, 327);
 		contentPane.add(scrollPane);
 		Return.addActionListener(this);
 
@@ -60,7 +61,7 @@ public class YoyakukakuninFrame extends JFrame implements ActionListener{
 		column0.setPreferredWidth(90);
 		column1.setPreferredWidth(150);
 		column2.setPreferredWidth(100);
-		column3.setPreferredWidth(100);
+		column3.setPreferredWidth(148);
 
 
 
@@ -99,4 +100,6 @@ public class YoyakukakuninFrame extends JFrame implements ActionListener{
 			}
 		}
 	}
+
+
 }

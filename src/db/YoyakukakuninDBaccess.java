@@ -12,7 +12,7 @@ public class YoyakukakuninDBaccess extends ControlDBAccess{
 		Connection con = createConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String[][] tableData = new String[99][99];
+		String[][] tableData = new String[19][4];
 		int a=0;
 		try {
 			if(con != null) {
