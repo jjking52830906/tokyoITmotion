@@ -16,6 +16,7 @@ import action.LoginRegisterAction;
 import action.LoginRegisterDisplayAction;
 import action.MainMenuDisplayAction;
 import action.RegisterDisplayAction;
+import action.RegisterYoyakuAction;
 import action.YoyakuDisplayAction;
 import action.YoyakukakuninAction;
 import action.YoyakukauninDisplayAction;

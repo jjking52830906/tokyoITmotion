@@ -2,7 +2,6 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.swing.DefaultComboBoxModel;
@@ -209,14 +208,8 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 			
 			for(int j=0; j<rowcount; j++) {
 				bolean[j] = (Boolean) tableModel.getValueAt(j, 0);
-				if(bolean[j] == true) {
-					Date getDate = (Date) tableModel.getValueAt(j, 1);
-					int getHour = (int) tableModel.getValueAt(j, 2);
-					int getBashoId = (int) tableModel.getValueAt(j, 3);
-					Yoyaku yoyaku = new Yoyaku(getDate, getHour, getBashoId);
-					list.add(yoyaku);
-				}
 			}
+			
 			int listSize = list.size();
 			if(listSize != 0) {
 				try {
