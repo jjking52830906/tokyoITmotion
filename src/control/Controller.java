@@ -1,9 +1,9 @@
 package control;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 import action.AccountRegisterAction;
-import action.AkiSearchAction;
 import action.AkiSearchDisplayAction;
 import action.AkihyojiAction;
 import action.AkikekkaDisplayAction;
@@ -20,6 +20,7 @@ import action.YoyakuDisplayAction;
 import action.YoyakukakuninAction;
 import action.YoyakukauninDisplayAction;
 import action.idPassInputAction;
+import model.Yoyaku;
 
 public class Controller {
 	
@@ -79,7 +80,11 @@ public class Controller {
 		return rel;
 	}
 	
-	public static int
+	public static int registerYoyaku(ArrayList<Yoyaku>list, int pass) {
+		RegisterYoyakuAction action = new RegisterYoyakuAction();
+		int in = action.execute(list, pass);
+		return in;
+	}
 	
 	//アクション系
 	public static int ninshou(String id, String pass)throws Exception{

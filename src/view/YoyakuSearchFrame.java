@@ -217,16 +217,21 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 					list.add(yoyaku);
 				}
 			}
-			try {
-				int listSize = list.size();
-				if(listSize != 0) {
-					Controller.registerYoyaku(list, pass);
-				}else {
-					JOptionPane.showMessageDialog(this, "選択してください。", "【確認】", JOptionPane.INFORMATION_MESSAGE);
+			int listSize = list.size();
+			if(listSize != 0) {
+				try {
+					int in = Controller.registerYoyaku(list, pass);
+					if(in == 1) {
+						JOptionPane.showMessageDialog(this, "予約登録に成功しました", "登録完了", JOptionPane.INFORMATION_MESSAGE);
+					}else {
+						JOptionPane.showMessageDialog(this, "予約登録に失敗しました", "登録失敗", JOptionPane.INFORMATION_MESSAGE);
+					}
+				}catch (Exception ex){
+					ErrorDialogUtility.systemErrorMessage(this, ex);
 				}
-			}catch (Exception ex) {
-				ErrorDialogUtility.systemErrorMessage(this, ex);
-			}
+			}else {
+				JOptionPane.showMessageDialog(this, "選択してください。", "【確認】", JOptionPane.INFORMATION_MESSAGE);
+			}	
 		}
 	}
 }
