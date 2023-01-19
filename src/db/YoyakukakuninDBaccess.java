@@ -41,9 +41,6 @@ public class YoyakukakuninDBaccess extends ControlDBAccess{
 					tableData[a][2] = getHour;
 					tableData[a][3] = Basho;
 					a++;
-					
-					System.out.println(tableData[0][3]);
-					
 				}
 			}
 		}catch(SQLException e) {
