@@ -79,17 +79,13 @@ public class Controller {
 		return rel;
 	}
 	
+	public static int
+	
 	//アクション系
 	public static int ninshou(String id, String pass)throws Exception{
 		LoginNinshouAction action = new LoginNinshouAction();
 		int nin = action.execute(id, pass);
 		return nin;
-	}
-	//旧
-	public static Object[][] akiSearch(String[] data)throws Exception{
-		AkiSearchAction action = new AkiSearchAction();
-		Object[][] tableData = action.execute(data);
-		return tableData;
 	}
 	//新
 	public static Object[][] akiHyoji(String[] data)throws Exception{

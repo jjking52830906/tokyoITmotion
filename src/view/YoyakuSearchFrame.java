@@ -205,7 +205,7 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 		}else if(e.getSource() == register) {
 			int rowcount = tableModel.getRowCount();
 			Boolean[] bolean = new Boolean[rowcount];
-			ArrayList<Yoyaku> list = new ArrayList<Yoyaku>();
+			ArrayList<Yoyaku> list = null;
 			
 			for(int j=0; j<rowcount; j++) {
 				bolean[j] = (Boolean) tableModel.getValueAt(j, 0);
@@ -216,6 +216,16 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 					Yoyaku yoyaku = new Yoyaku(getDate, getHour, getBashoId);
 					list.add(yoyaku);
 				}
+			}
+			try {
+				int listSize = list.size();
+				if(listSize != 0) {
+					Controller.registerYoyaku(list, pass);
+				}else {
+					JOptionPane.showMessageDialog(this, "選択してください。", "【確認】", JOptionPane.INFORMATION_MESSAGE);
+				}
+			}catch (Exception ex) {
+				ErrorDialogUtility.systemErrorMessage(this, ex);
 			}
 		}
 	}
