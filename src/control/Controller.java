@@ -81,7 +81,7 @@ public class Controller {
 		return rel;
 	}
 	
-	public static int registerYoyaku(ArrayList<Yoyaku>list, int pass) {
+	public static int registerYoyaku(ArrayList<Yoyaku>list, int pass) throws Exception {
 		RegisterYoyakuAction action = new RegisterYoyakuAction();
 		int in = action.execute(list, pass);
 		return in;

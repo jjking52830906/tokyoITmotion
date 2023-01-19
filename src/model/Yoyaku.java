@@ -14,12 +14,10 @@ public class Yoyaku implements Serializable{
 	}
 
 	public Yoyaku(Date Date, int hour, int bashoId) {
-		setDate(Date);
+		setDate(date);
 		setHour(hour);
 		setBashoId(bashoId);
 	}
-
-	
 
 	public Date getDate() {
 		return date;
