@@ -60,8 +60,6 @@ public class Yoyaku implements Serializable{
 	public void setCustId(int custId) {
 		this.custId = custId;
 	}
-	
-	
 }
 
 

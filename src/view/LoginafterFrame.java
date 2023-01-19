@@ -66,7 +66,6 @@ public class LoginafterFrame extends JFrame implements ActionListener{
 		
 		setVisible(true);
 		pass = input;
-		System.out.println(pass);
 	}
 	
 	public void actionPerformed(ActionEvent e) {

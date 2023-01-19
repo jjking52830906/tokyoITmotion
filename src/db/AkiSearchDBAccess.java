@@ -14,17 +14,17 @@ public class AkiSearchDBAccess extends ControlDBAccess{
 		Connection con = createConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		ArrayList<Yoyaku> list = new ArrayList<Yoyaku>();
+		ArrayList<Yoyaku> list = new ArrayList<Yoyaku>(); 
 		Date date = Date.valueOf(strDate);
 		int IntbashoId = Integer.parseInt(bashoId);
 		try {
 			if(con != null) {
-				String sql = "SELECT  DATE, HOUR, BASHOID FROM YOYAKU WHERE DATE = ? AND BASHOID = ? AND STATUS = 1 AND CUSTID ISNOT null";
+				String sql = "SELECT  DATE, HOUR, BASHOID FROM YOYAKU WHERE DATE = ? AND BASHOID = ? AND STATUS = 1 AND CUSTID IS NOT null;";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setDate(1, date);
 				pstmt.setInt(2, IntbashoId);
 				rs = pstmt.executeQuery();
-				while(rs.next() == true) {
+				while(rs.next()) {
 					Date getDate = rs.getDate("DATE");
 					int getHour = rs.getInt("HOUR");
 					int getBashoId = rs.getInt("BASHOID");
@@ -33,6 +33,7 @@ public class AkiSearchDBAccess extends ControlDBAccess{
 				}
 			}
 		}catch(SQLException e) {
+			e.printStackTrace();
 			throw new Exception("検索処理に失敗しました！");
 		}finally {
 			try {
