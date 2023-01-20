@@ -68,8 +68,8 @@ public class YoyakukakuninFrame extends JFrame implements ActionListener{
 		scrollPane.setViewportView(table);
 
 		setVisible(true);
+		
 		pass = input;
-		System.out.println(pass);
 
 		try {
 			Object[][] tableData = Controller.yoyakukakunin(pass);
@@ -90,6 +90,8 @@ public class YoyakukakuninFrame extends JFrame implements ActionListener{
 			JOptionPane.showMessageDialog(this, "一致する情報は見つかりませんでした。", "【確認】", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
+	
+	
 	public void actionPerformed(ActionEvent e) { 
 		if(e.getSource() == Return) {
 			setVisible(false);

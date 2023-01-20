@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 
 public class YoyakukakuninDBaccess extends ControlDBAccess{
-	public Object[][] yoyaku(int pass)throws Exception{
+	public Object[][] yoyakuSearch(int pass)throws Exception{
 		Connection con = createConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

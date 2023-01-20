@@ -116,11 +116,11 @@ public class Controller {
 		InputToLoginAfterFrameAction action = new	InputToLoginAfterFrameAction();
 		action.execute(input);
 	}
+	
 	public static Object[][] yoyakukakunin(int pass)throws Exception{
 		YoyakukakuninAction action = new YoyakukakuninAction();
-		String[][] tableData = (String[][])action.execute(pass);
+		Object[][] tableData = action.execute(pass);
 		return tableData;
-		
 	}
 	
 	public static int loginIdCheck(String logId)throws Exception{
