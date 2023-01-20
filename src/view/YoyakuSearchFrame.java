@@ -51,7 +51,7 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 	public YoyakuSearchFrame(int input) {
 		setTitle("【予約登録画面】");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(250, 130, 828, 534);
+		setBounds(250, 130, 850, 534);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -140,8 +140,8 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 		TableColumn column1 = columnModel.getColumn(1);
 		TableColumn column2 = columnModel.getColumn(2);
 		TableColumn column3 = columnModel.getColumn(3);
-		column0.setPreferredWidth(90);
-		column1.setPreferredWidth(150);
+		column0.setPreferredWidth(100);
+		column1.setPreferredWidth(100);
 		column2.setPreferredWidth(100);
 		column3.setPreferredWidth(100);
 		
