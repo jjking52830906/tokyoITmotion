@@ -242,7 +242,7 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 						JOptionPane.showMessageDialog(this, "予約登録に成功しました", "登録完了", JOptionPane.INFORMATION_MESSAGE);
 						
 						setVisible(false);
-						Controller.mainMenuDisplay();
+						Controller. inputToLoginAfterFrame(pass);
 					}else {
 						JOptionPane.showMessageDialog(this, "予約登録に失敗しました", "登録失敗", JOptionPane.INFORMATION_MESSAGE);
 					}
