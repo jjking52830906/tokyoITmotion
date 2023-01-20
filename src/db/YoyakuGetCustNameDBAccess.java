@@ -1,36 +1,32 @@
 package db;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import model.Yoyaku;
+import model.Customer;
 
-public class YoyakukakuninDBaccess extends ControlDBAccess{
-	public ArrayList<Yoyaku> yoyakuSearch(int pass)throws Exception{
+public class YoyakuGetCustNameDBAccess extends ControlDBAccess{
+	public ArrayList<Customer> yoyakuGetCustName(int pass)throws Exception{
 		Connection con = createConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		ArrayList<Yoyaku> list = new ArrayList<Yoyaku>();
+		ArrayList<Customer> list = new ArrayList<Customer>();
 		try {
 			if(con != null) {
-				String sql = "SELECT DATE, HOUR, BASHOID CUSTID FROM WHERE CUSTID = ?;";
+				String sql = "SELECT FIRSTNAME, LASTNAME FROM CUSTOMER WHERE CUSTID = ?;";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, pass);
 				rs = pstmt.executeQuery();
-				while(rs.next() == true) {
-					Date getDate = rs.getDate("DATE");
-					int getHour = rs.getInt("HOUR");
-					int getBashoId = rs.getInt("BASHOID");
-					Yoyaku yoyaku = new Yoyaku(getDate, getHour, getBashoId);
-					list.add(yoyaku);
-				}
+				String firstName = rs.getString("FIRSTNAME");
+				String lastName = rs.getString("LASTNAME");
+				Customer cust = new Customer(firstName, lastName);
+				list.add(cust);
 			}
 		}catch(SQLException e) {
-			throw new Exception("検索処理に失敗しました！");
+			throw new Exception("氏名検索処理に失敗しました！");
 		}finally {
 			try {
 				if(rs != null) {
@@ -47,6 +43,7 @@ public class YoyakukakuninDBaccess extends ControlDBAccess{
 				e.printStackTrace();
 			}
 		}
+		
 		closeConnection(con);
 		return list;
 	}

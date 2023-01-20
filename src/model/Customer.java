@@ -14,7 +14,10 @@ public class Customer implements Serializable{
     public Customer() {
     }
     
-    
+    public Customer(String firstName, String lastName) {
+    	setFirstName(firstName);
+    	setLastName(lastName);
+    }
     
     public Customer(int custId, String firstName, String lastName, Date birth, String sex, String firstAddress, String lastAddress, int tel) {
         this.custId = custId;
