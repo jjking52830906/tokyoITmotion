@@ -17,7 +17,7 @@ public class LoginafterFrame extends JFrame implements ActionListener{
 	private JButton btnLogout;
 	private JButton btnYoyakuKakunin;
 	private JButton btnYoyakuToroku;
-
+ 
 	 static int pass;
 	public LoginafterFrame(  int input) {
 		setTitle("【メインメニュー】");

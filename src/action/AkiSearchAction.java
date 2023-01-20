@@ -13,7 +13,6 @@ public class AkiSearchAction {
 		AkiSearchDBAccess dao = new AkiSearchDBAccess();
 		
 		list = dao.akiSearch(data[0], data[1]);
-		
 		Object[][] tableData = null;
 		tableData = ControlUtility2.akiSearchToTable(list, data);
 		return tableData;

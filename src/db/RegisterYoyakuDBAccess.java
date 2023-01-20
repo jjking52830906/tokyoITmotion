@@ -22,7 +22,7 @@ public class RegisterYoyakuDBAccess extends ControlDBAccess {
 			date[i] = yoyaku.getDate();
 			hour[i] = yoyaku.getHour();
 			bashoId[i] = yoyaku.getBashoId();
-		}
+		} 
 		try {
 			for(int i=0; i<listSize; i++) {
 				String sql = "INSERT INTO YOYAKU (DATE, HOUR, BASHOID, STATUS, CUSTID)VALUES(?, ?, ?, 1, ?);";

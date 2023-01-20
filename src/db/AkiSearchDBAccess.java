@@ -21,7 +21,7 @@ public class AkiSearchDBAccess extends ControlDBAccess{
 			if(con != null) {
 				String sql = "SELECT  DATE, HOUR, BASHOID FROM YOYAKU WHERE DATE = ? AND BASHOID = ? AND STATUS = 1 AND CUSTID IS NOT null;";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setDate(1, date);
+				pstmt.setDate(1, date); 
 				pstmt.setInt(2, IntbashoId);
 				rs = pstmt.executeQuery();
 				while(rs.next()) {

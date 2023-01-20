@@ -39,32 +39,35 @@ public class ControlUtility2{
 				tableData[i][2] = bashoName;
 				hour++;
 			}
-		}else {
-			int i=0;
-			int j=0;
-			while(hour <= 21) {
-				if(hour != getHour[j]) {
-					tableData[i][0] = date;
-					tableData[i][1] = hour;
-					int bashoId = Integer.parseInt(data[1]);
-					if(bashoId == 1) {
-						bashoName = "体育館";
-					}else if(bashoId == 2) {
-						bashoName = "野球場";
-					}else if(bashoId == 3) {
-						bashoName = "サッカー場";
-					}else if(bashoId == 4) {
-						bashoName = "テニスコート";
-					}else if(bashoId == 5) {
-						bashoName = "プール";
+			}else {
+				int i=0;
+				int j=0;
+				while(hour <= 21) {
+					for (int a= 0;a<listSize;a++) {
+						if(hour == getHour[a])
+							j = getHour[a];
 					}
-					tableData[i][2] = bashoName;
-					i++;
-					hour++;
-				}else {
-					hour++;
+					if(hour != j) {
+						
+						tableData[i][0] = date;
+						tableData[i][1] = hour;
+						int bashoId = Integer.parseInt(data[1]);
+						if(bashoId == 1) {
+							bashoName = "体育館";
+						}else if(bashoId == 2) {
+							bashoName = "野球場";
+						}else if(bashoId == 3) {
+							bashoName = "サッカー場";
+						}else if(bashoId == 4) {
+							bashoName = "テニスコート";
+						}else if(bashoId == 5) {
+							bashoName = "プール";
+						} 
+						tableData[i][2] = bashoName;
+						i++;
 				}
-			}
+					hour++;
+		}
 		}
 		return tableData;
 	}
