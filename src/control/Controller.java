@@ -106,6 +106,13 @@ public class Controller {
 		Object[][] tableData = action.execute(data);
 		return tableData;
 	}
+	//予約確認
+	public static Object[][] yoyakukakunin(int pass)throws Exception{
+		YoyakukakuninAction action = new YoyakukakuninAction();
+		Object[][] tableData = action.execute(pass);
+		return tableData;
+	}
+	
 	public static int idPass(String id, String pass)throws Exception{
 		idPassInputAction action = new idPassInputAction();
 		int input = action.execute(id, pass);
@@ -115,12 +122,6 @@ public class Controller {
 	public static void inputToLoginAfterFrame(int input)throws Exception{
 		InputToLoginAfterFrameAction action = new	InputToLoginAfterFrameAction();
 		action.execute(input);
-	}
-	
-	public static Object[][] yoyakukakunin(int pass)throws Exception{
-		YoyakukakuninAction action = new YoyakukakuninAction();
-		Object[][] tableData = action.execute(pass);
-		return tableData;
 	}
 	
 	public static int loginIdCheck(String logId)throws Exception{

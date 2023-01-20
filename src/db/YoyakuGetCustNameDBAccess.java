@@ -20,10 +20,12 @@ public class YoyakuGetCustNameDBAccess extends ControlDBAccess{
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, pass);
 				rs = pstmt.executeQuery();
-				String firstName = rs.getString("FIRSTNAME");
-				String lastName = rs.getString("LASTNAME");
-				Customer cust = new Customer(firstName, lastName);
-				list.add(cust);
+				while(rs.next()) {
+					String firstName = rs.getString("FIRSTNAME");
+					String lastName = rs.getString("LASTNAME");
+					Customer customer = new Customer(firstName, lastName);
+					list.add(customer);
+				}
 			}
 		}catch(SQLException e) {
 			throw new Exception("氏名検索処理に失敗しました！");

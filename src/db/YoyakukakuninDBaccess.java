@@ -17,11 +17,11 @@ public class YoyakukakuninDBaccess extends ControlDBAccess{
 		ArrayList<Yoyaku> list = new ArrayList<Yoyaku>();
 		try {
 			if(con != null) {
-				String sql = "SELECT DATE, HOUR, BASHOID CUSTID FROM WHERE CUSTID = ?;";
+				String sql = "SELECT DATE, HOUR, BASHOID FROM YOYAKU WHERE STATUS = 1 AND CUSTID = ?;";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, pass);
 				rs = pstmt.executeQuery();
-				while(rs.next() == true) {
+				while(rs.next()) {
 					Date getDate = rs.getDate("DATE");
 					int getHour = rs.getInt("HOUR");
 					int getBashoId = rs.getInt("BASHOID");

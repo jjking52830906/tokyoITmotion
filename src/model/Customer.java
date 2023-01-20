@@ -19,16 +19,6 @@ public class Customer implements Serializable{
     	setLastName(lastName);
     }
     
-    public Customer(int custId, String firstName, String lastName, Date birth, String sex, String firstAddress, String lastAddress, int tel) {
-        this.custId = custId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.birth = birth;
-        this.sex = sex;
-        this.firstAddress = firstAddress;
-        this.lastAddress = lastAddress;
-        this.tel = tel;
-    }
     public int getCustId() {
         return custId;
     }
