@@ -44,7 +44,11 @@ public class ControlUtility3 {
 			int i=0;
 			int j=0;
 			while(hour <= 21) {
-				if(hour != getHour[j]) {
+				for (int a= 0;a<listSize;a++) {
+					if(hour == getHour[a])
+						j = getHour[a];
+				}
+				if(hour != j) {
 					
 					tableData[i][0] = new Boolean(false);
 					tableData[i][1] = date;
@@ -63,13 +67,10 @@ public class ControlUtility3 {
 					}
 					tableData[i][3] = bashoName;
 					i++;
-					hour++;
-				}else {
-					hour++;
-				}
 			}
+				hour++;
 		}
-
+		}
 		return tableData;
 	}
 }

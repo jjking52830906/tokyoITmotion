@@ -13,7 +13,6 @@ public class AkihyojiAction {
 		AkiSearchDBAccess dao = new AkiSearchDBAccess();
 		
 		list = dao.akiSearch(data[0], data[1]);
-		
 		Object[][] tableData = null;
 		tableData = ControlUtility3.AkihyojiToArray(list, data);
 		return tableData;
