@@ -22,7 +22,7 @@ public class LoginafterFrame extends JFrame implements ActionListener{
 	public LoginafterFrame(  int input) {
 		setTitle("【メインメニュー】");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 757, 674);
+		setBounds(300, 50, 757, 674);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(192, 192, 192));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
