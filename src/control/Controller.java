@@ -82,6 +82,10 @@ public class Controller {
 	}
 	
 	public static int registerYoyaku(ArrayList<Yoyaku>list, int pass) throws Exception {
+		for(int i=0; i<list.size(); i++) {
+			System.out.println(list.get(i).getDate());
+		}
+		
 		RegisterYoyakuAction action = new RegisterYoyakuAction();
 		int in = action.execute(list, pass);
 		return in;

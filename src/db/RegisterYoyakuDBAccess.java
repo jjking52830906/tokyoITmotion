@@ -20,22 +20,25 @@ public class RegisterYoyakuDBAccess extends ControlDBAccess {
 		for(int i=0; i<listSize; i++) {
 			Yoyaku yoyaku = list.get(i);
 			date[i] = yoyaku.getDate();
+			System.out.println(date[i]);
 			hour[i] = yoyaku.getHour();
+			System.out.println(hour[i]);
 			bashoId[i] = yoyaku.getBashoId();
+			System.out.println(bashoId[i]);
 		}
 		try {
 			for(int i=0; i<listSize; i++) {
 				String sql = "INSERT INTO YOYAKU (DATE, HOUR, BASHOID, STATUS, CUSTID)VALUES(?, ?, ?, 1, ?);";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setDate(i, date[i]);
+				pstmt.setDate(1, date[i]);
 				pstmt.setInt(2, hour[i]);
 				pstmt.setInt(3, bashoId[i]);
 				pstmt.setInt(4, pass);
-				result = pstmt.executeUpdate();
-			}	
+			}
+			result = pstmt.executeUpdate();
 		}catch(SQLException e){
 			e.printStackTrace();
-			throw new Exception("アカウント登録処理に失敗しました。");
+			throw new Exception("予約登録処理に失敗しました。");
 		}finally {
 			try {
 				if(pstmt != null) {
