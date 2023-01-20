@@ -214,7 +214,6 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 				bolean[j] = (Boolean) tableModel.getValueAt(j, 0);
 				if(bolean[j] == true) {
 					Date getDate = (Date) tableModel.getValueAt(j, 1);
-					System.out.println(getDate);
 					int getHour = (int) tableModel.getValueAt(j, 2);
 					String getBashoName = (String) tableModel.getValueAt(j, 3);
 					int setBashoId = 0;

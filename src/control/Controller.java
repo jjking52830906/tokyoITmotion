@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 import action.AccountRegisterAction;
+import action.AkiSearchAction;
 import action.AkiSearchDisplayAction;
 import action.AkihyojiAction;
 import action.AkikekkaDisplayAction;
@@ -93,13 +94,18 @@ public class Controller {
 		int nin = action.execute(id, pass);
 		return nin;
 	}
-	//新
+	//予約サーチ
 	public static Object[][] akiHyoji(String[] data)throws Exception{
 		AkihyojiAction action = new AkihyojiAction();
 		Object[][] tableData = action.execute(data);
 		return tableData;
 	}
-	
+	//空きサーチ
+	public static Object[][] akiSearch(String[] data)throws Exception{
+		AkiSearchAction action = new AkiSearchAction();
+		Object[][] tableData = action.execute(data);
+		return tableData;
+	}
 	public static int idPass(String id, String pass)throws Exception{
 		idPassInputAction action = new idPassInputAction();
 		int input = action.execute(id, pass);
