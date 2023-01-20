@@ -159,12 +159,12 @@ public class KokyakuRegisterFrame extends JFrame implements ActionListener{
         
         
         lblTelNote = new JLabel("※ハイフンなし");
-        lblTelNote.setBounds(118, 310, 92, 13);
+        lblTelNote.setBounds(105, 304, 92, 13);
         contentPane.add(lblTelNote);
         
         
         txtTel = new JTextField();
-        txtTel.setBounds(108, 282, 261, 19);
+        txtTel.setBounds(102, 282, 261, 19);
         contentPane.add(txtTel);
         txtTel.setColumns(10);
                 
