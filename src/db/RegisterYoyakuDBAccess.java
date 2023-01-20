@@ -31,8 +31,8 @@ public class RegisterYoyakuDBAccess extends ControlDBAccess {
 				pstmt.setInt(2, hour[i]);
 				pstmt.setInt(3, bashoId[i]);
 				pstmt.setInt(4, pass);
+				result = pstmt.executeUpdate();
 			}
-			result = pstmt.executeUpdate();
 		}catch(SQLException e){
 			e.printStackTrace();
 			throw new Exception("予約登録処理に失敗しました。");
