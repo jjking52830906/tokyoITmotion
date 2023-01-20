@@ -57,7 +57,7 @@ public class KokyakuRegisterFrame extends JFrame implements ActionListener{
     public KokyakuRegisterFrame() {
         setTitle("【登録画面】");
         setDefaultCloseOperation(KokyakuRegisterFrame.EXIT_ON_CLOSE);
-        setBounds(420, 150, 625, 467);
+        setBounds(360, 150, 625, 467);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
