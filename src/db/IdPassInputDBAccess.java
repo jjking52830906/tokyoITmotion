@@ -15,7 +15,7 @@ public class IdPassInputDBAccess extends ControlDBAccess{
 		int i=0;
 		try {
 			if(con != null) {
-				String sql = "SELECT CUSTID FROM LOGIN WHERE LOGID = ? AND LOGPASS = ?;";
+				String sql = "SELECT CUSTID FROM LOGIN WHERE AES_DECRYPT(UNHEX(`LOGID`),'ENCRYPT-KEY') = ? AND AES_DECRYPT(UNHEX(`LOGPASS`),'ENCRYPT-KEY') = ?;";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, id);
 				pstmt.setString(2, pass);
