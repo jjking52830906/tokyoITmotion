@@ -234,7 +234,10 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 			}
 			
 			int listSize = list.size();
+<<<<<<< HEAD
 			System.out.print(listSize);
+=======
+>>>>>>> branch 'topic' of https://github.com/jjking52830906/tokyoITmotion.git
 			if(listSize != 0) {
 				try {
 					int in = Controller.registerYoyaku(list, pass);

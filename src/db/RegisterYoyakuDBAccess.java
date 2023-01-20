@@ -20,11 +20,8 @@ public class RegisterYoyakuDBAccess extends ControlDBAccess {
 		for(int i=0; i<listSize; i++) {
 			Yoyaku yoyaku = list.get(i);
 			date[i] = yoyaku.getDate();
-			System.out.println(date[i]);
 			hour[i] = yoyaku.getHour();
-			System.out.println(hour[i]);
 			bashoId[i] = yoyaku.getBashoId();
-			System.out.println(bashoId[i]);
 		}
 		try {
 			for(int i=0; i<listSize; i++) {

@@ -1,45 +1,71 @@
 package model;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class ControlUtility2{
-	public static Object[][] akiSearchToArray(ArrayList<Yoyaku>list){
-		int listSize = list.size();
-		Object[][] tableData = new Object[listSize][4];
-		String bashoName = null;
+	public static Object[][] akiSearchToTable(ArrayList<Yoyaku>list, String[] data){
+		//ステータス１のデータ
 		
-			
-		for(int i=0; i<listSize; i++) {
+		int listSize = list.size();
+		int[] getHour = new int[listSize];
+		for(int i=0; i<listSize;i++) {
 			Yoyaku yoyaku = list.get(i);
-			tableData[i][0] = new Boolean (false);
-			tableData[i][1] = yoyaku.getStrDate();
-			tableData[i][2] = yoyaku.getHour();
-			
-			int bashoId = yoyaku.getBashoId();
-			if(bashoId == 1) {
-				bashoName = "体育館";
-			}else if(bashoId == 2) {
-				bashoName = "野球場";
-			}else if(bashoId == 3) {
-				bashoName = "サッカー場";
-			}else if(bashoId == 4) {
-				bashoName = "テニスコート";
-			}else if(bashoId == 5) {
-				bashoName = "プール";
-			}
-			
-			tableData[i][3] = bashoName;
+			getHour[i] = yoyaku.getHour();
 		}
 		
+		Object[][] tableData = new Object[13 - listSize][3];
+		//入れるデータ
+		Date date = Date.valueOf(data[0]);
+		int hour = 9;
+		String bashoName = null;
 		
+		if(listSize == 0) {
+			for(int i=0; hour <= 21; i++) {
+				tableData[i][0] = date;
+				tableData[i][1] = hour;
+				int bashoId = Integer.parseInt(data[1]);
+				if(bashoId == 1) {
+					bashoName = "体育館";
+				}else if(bashoId == 2) {
+					bashoName = "野球場";
+				}else if(bashoId == 3) {
+					bashoName = "サッカー場";
+				}else if(bashoId == 4) {
+					bashoName = "テニスコート";
+				}else if(bashoId == 5) {
+					bashoName = "プール";
+				}
+				tableData[i][2] = bashoName;
+				hour++;
+			}
+		}else {
+			int i=0;
+			int j=0;
+			while(hour <= 21) {
+				if(hour != getHour[j]) {
+					tableData[i][0] = date;
+					tableData[i][1] = hour;
+					int bashoId = Integer.parseInt(data[1]);
+					if(bashoId == 1) {
+						bashoName = "体育館";
+					}else if(bashoId == 2) {
+						bashoName = "野球場";
+					}else if(bashoId == 3) {
+						bashoName = "サッカー場";
+					}else if(bashoId == 4) {
+						bashoName = "テニスコート";
+					}else if(bashoId == 5) {
+						bashoName = "プール";
+					}
+					tableData[i][2] = bashoName;
+					i++;
+					hour++;
+				}else {
+					hour++;
+				}
+			}
+		}
 		return tableData;
-		
-		
 	}
-	
-	
-
-	
-	
-	
 }
