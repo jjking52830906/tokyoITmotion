@@ -214,14 +214,30 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 				bolean[j] = (Boolean) tableModel.getValueAt(j, 0);
 				if(bolean[j] == true) {
 					Date getDate = (Date) tableModel.getValueAt(j, 1);
+					System.out.println(getDate);
 					int getHour = (int) tableModel.getValueAt(j, 2);
-					int getBashoId = (int) tableModel.getValueAt(j, 3);
-					Yoyaku yoyaku = new Yoyaku(getDate, getHour, getBashoId);
+					String getBashoName = (String) tableModel.getValueAt(j, 3);
+					int setBashoId = 0;
+					if(getBashoName == "体育館") {
+						setBashoId = 1;
+					}else if(getBashoName == "野球場") {
+						setBashoId = 2;
+					}else if(getBashoName == "サッカー場") {
+						setBashoId = 3;
+					}else if(getBashoName == "テニスコート") {
+						setBashoId = 4;
+					}else if(getBashoName == "プール") {
+						setBashoId = 5;
+					}
+					Yoyaku yoyaku = new Yoyaku(getDate, getHour, setBashoId);
 					list.add(yoyaku);
 				}
 			}
 			
 			int listSize = list.size();
+			for(int i=0; i<listSize; i++) {
+				System.out.println(list.get(i).getDate());
+			}
 			if(listSize != 0) {
 				try {
 					int in = Controller.registerYoyaku(list, pass);
