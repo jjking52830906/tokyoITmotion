@@ -132,7 +132,15 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 				}
 			}
 		};
-		table = new JTable(tableModel);
+		table = new JTable(tableModel) {
+			@Override public boolean isCellEditable(int row, int column) {
+				if(column == 0) {
+					return true;
+				}else {
+					return false;
+				}
+			}
+		};
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		
 		DefaultTableColumnModel columnModel = (DefaultTableColumnModel) table.getColumnModel();
@@ -153,7 +161,7 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 		register.addActionListener(this);
 		
 		setVisible(true);
-		 pass = input;
+		pass = input;
 	}
 
 	public void actionPerformed(ActionEvent e) {

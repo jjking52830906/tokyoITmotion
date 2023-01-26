@@ -117,7 +117,11 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 		
 		String[] columnNames = {"年月日", "時刻", "施設名"};
 		tableModel = new DefaultTableModel(columnNames, 0);
-		table = new JTable(tableModel);
+		table = new JTable(tableModel) {
+			@Override public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		
 		DefaultTableColumnModel columnModel = (DefaultTableColumnModel) table.getColumnModel();
