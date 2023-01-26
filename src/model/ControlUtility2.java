@@ -6,7 +6,6 @@ import java.util.ArrayList;
 public class ControlUtility2{
 	public static Object[][] akiSearchToTable(ArrayList<Yoyaku>list, String[] data){
 		//ステータス１のデータ
-		
 		int listSize = list.size();
 		int[] getHour = new int[listSize];
 		for(int i=0; i<listSize;i++) {
@@ -15,7 +14,7 @@ public class ControlUtility2{
 		}
 		
 		Object[][] tableData = new Object[13 - listSize][3];
-		//入れるデータ
+		//入れるデータ 
 		Date date = Date.valueOf(data[0]);
 		int hour = 9;
 		String bashoName = null;

@@ -42,7 +42,7 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 	private JButton Return;
 	
 	public AkiSearchFrame() {
-		setTitle("【空き検索画面】");
+		setTitle("【空き状況検索画面】");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(250, 130, 828, 534);
 		contentPane = new JPanel();
@@ -126,9 +126,9 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 		TableColumn column0 = columnModel.getColumn(0);
 		TableColumn column1 = columnModel.getColumn(1);
 		TableColumn column2 = columnModel.getColumn(2);
-		column0.setPreferredWidth(90);
-		column1.setPreferredWidth(150);
-		column2.setPreferredWidth(100);
+		column0.setPreferredWidth(132);
+		column1.setPreferredWidth(132);
+		column2.setPreferredWidth(132);
 		
 		scrollPane.setViewportView(table);
 		
@@ -152,7 +152,7 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 				bashoId = "3";
 			}else if(basho == "テニスコート") {
 				bashoId = "4";
-			}else if(basho == "プール") {
+			}else if(basho == "プール") { 
 				bashoId = "5";
 			}
 			try {
@@ -160,10 +160,10 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 				String[] data = {strDate, bashoId};
 				Object[][] tableData = Controller.akiSearch(data);
 				
-				if(tableData != null) {
+				if(tableData.length >0) {
 					tableModel.setRowCount(0);
-					
-					for(Object[] rowData : tableData) {
+					 
+					for(Object[] rowData : tableData) { 
 						
 						tableModel.addRow(rowData);
 						

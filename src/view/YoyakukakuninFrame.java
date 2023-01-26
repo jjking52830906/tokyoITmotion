@@ -17,13 +17,10 @@ import javax.swing.table.TableColumn;
 import control.Controller;
 
 public class YoyakukakuninFrame extends JFrame implements ActionListener{
-
 	private JPanel contentPane;
-
 	private JScrollPane scrollPane;
 	private DefaultTableModel tableModel;
 	private JTable table;
-
 	private JButton Return;
 
 	static int pass;
@@ -33,7 +30,6 @@ public class YoyakukakuninFrame extends JFrame implements ActionListener{
 		setBounds(400, 150, 531, 437);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
@@ -49,7 +45,7 @@ public class YoyakukakuninFrame extends JFrame implements ActionListener{
 		contentPane.add(scrollPane);
 		 
 
-		String[] columnNames = {"氏名", "年月日", "時刻", "施設名"};
+		String[] columnNames = {"氏名", "年月日", "時刻", "施設名"}; 
 		tableModel = new DefaultTableModel(columnNames, 0);
 		table = new JTable(tableModel) {
 			@Override public boolean isCellEditable(int row, int column) {
@@ -78,14 +74,10 @@ public class YoyakukakuninFrame extends JFrame implements ActionListener{
 
 		try {
 			Object[][] tableData = Controller.yoyakukakunin(pass);
-			if(tableData != null) {
-
+			if(tableData.length > 0) {
 				tableModel.setRowCount(0);
-
-				for(Object[] rowData : tableData) {
-
+				for(Object[] rowData : tableData) 
 					tableModel.addRow(rowData);
-				}
 			}else {
 				JOptionPane.showMessageDialog(this, "一致する情報は見つかりませんでした。", "【確認】", JOptionPane.INFORMATION_MESSAGE);
 				tableModel.setRowCount(0);
@@ -95,8 +87,6 @@ public class YoyakukakuninFrame extends JFrame implements ActionListener{
 			JOptionPane.showMessageDialog(this, "一致する情報は見つかりませんでした。", "【確認】", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
-	
-	
 	public void actionPerformed(ActionEvent e) { 
 		if(e.getSource() == Return) {
 			setVisible(false);
@@ -107,6 +97,4 @@ public class YoyakukakuninFrame extends JFrame implements ActionListener{
 			}
 		}
 	}
-
-
 }
