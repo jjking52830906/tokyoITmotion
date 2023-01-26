@@ -43,7 +43,7 @@ public class LoginafterFrame extends JFrame implements ActionListener{
 		panel.add(lblNewLabel_1);
 		
 		btnLogout = new JButton("ログアウト");
-		btnLogout.setBackground(Color.WHITE);
+		btnLogout.setBackground(Color.WHITE); 
 		btnLogout.setBounds(616, 6, 117, 29);
 		contentPane.add(btnLogout);
 		getContentPane().add(btnLogout);

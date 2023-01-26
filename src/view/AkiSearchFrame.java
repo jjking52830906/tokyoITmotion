@@ -25,7 +25,7 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 	
 	private JLabel lblDate;
 	private JComboBox cbYear;
-	private JLabel lblYear;
+	private JLabel lblYear; 
 	private JComboBox cbMonth;
 	private JLabel lblMonth;
 	private JComboBox cbDay;
@@ -38,12 +38,11 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 	private DefaultTableModel tableModel;
 	private JTable table;
 	
-	private JButton register;
 	private JButton Search;
 	private JButton Return;
 	
 	public AkiSearchFrame() {
-		setTitle("【予約登録画面】");
+		setTitle("【空き検索画面】");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(250, 130, 828, 534);
 		contentPane = new JPanel();
@@ -113,7 +112,6 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(403, 10, 397, 475);
 		contentPane.add(scrollPane);
-		Return.addActionListener(this);
 		
 		String[] columnNames = {"年月日", "時刻", "施設名"};
 		tableModel = new DefaultTableModel(columnNames, 0);
@@ -181,11 +179,7 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 			}
 		}else if(e.getSource() == Return) {
 			setVisible(false);
-			try {
-				Controller.mainMenuDisplay();
-			} catch (Exception e1) {
-				e1.printStackTrace();
-			}
+			Controller.mainMenuDisplay();
 		}
 	}
 }

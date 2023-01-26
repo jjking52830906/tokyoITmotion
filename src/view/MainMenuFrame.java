@@ -70,7 +70,7 @@ public class MainMenuFrame extends JFrame implements ActionListener{
 		AkiSearch.addActionListener(this);
 		getContentPane().add(AkiSearch);
 		
-		
+		 
 		setVisible(true);
 	}
 	

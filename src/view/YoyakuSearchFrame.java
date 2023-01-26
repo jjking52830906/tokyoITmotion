@@ -83,7 +83,7 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 		String[] Day={"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
 		cbDay = new JComboBox(Day);
 		cbDay.setBounds(310, 94, 39, 21);
-		getContentPane().add(cbDay);
+		getContentPane().add(cbDay); 
 		cbDay.addActionListener(this);
 		
 		lblDay = new JLabel("日");
@@ -119,7 +119,7 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(403, 10, 397, 475);
 		contentPane.add(scrollPane);
-		Return.addActionListener(this);
+		
 		
 		String[] columnNames = {"チェック", "年月日", "時刻", "施設名"};
 		tableModel = new DefaultTableModel(columnNames, 0) {
