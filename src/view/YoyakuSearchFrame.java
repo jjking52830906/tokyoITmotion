@@ -186,10 +186,10 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 			}
 			try {
 				
-				String[] data = {strDate, bashoId};
+				String[] data = {strDate, bashoId}; 
 				Object[][] tableData = Controller.akiHyoji(data);
 				
-				if(tableData != null) {
+				if(tableData.length > 0) {
 					tableModel.setRowCount(0);
 					
 					for(Object[] rowData : tableData) {
