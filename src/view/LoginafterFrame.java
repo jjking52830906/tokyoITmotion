@@ -72,7 +72,7 @@ public class LoginafterFrame extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource() == btnLogout) {
-			JOptionPane.showMessageDialog(this, "ログアウトしました。", "確認", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(this, "ログアウトしました。", "ログアウト", JOptionPane.WARNING_MESSAGE);
 			setVisible(false);
 			Controller.mainMenuDisplay();
 			

@@ -7,14 +7,12 @@ import action.AccountRegisterAction;
 import action.AkiSearchAction;
 import action.AkiSearchDisplayAction;
 import action.AkihyojiAction;
-import action.AkikekkaDisplayAction;
 import action.IdCheckAction;
 import action.IdSearchAction;
 import action.InputToLoginAfterFrameAction;
 import action.LoginDisplayAction;
 import action.LoginNinshouAction;
 import action.LoginRegisterAction;
-import action.LoginRegisterDisplayAction;
 import action.MainMenuDisplayAction;
 import action.RegisterDisplayAction;
 import action.RegisterYoyakuAction;
@@ -42,11 +40,6 @@ public class Controller {
 		action.execute();
 	}
 	
-	public static void loginRegisterDisplay() {
-		LoginRegisterDisplayAction action = new LoginRegisterDisplayAction();
-		action.execute();
-	}
-	
 	public static void yoyakuDisplay(int input) {
 		YoyakuDisplayAction action = new YoyakuDisplayAction();
 		action.execute(input);
@@ -60,11 +53,6 @@ public class Controller {
 	public static void YoyakukakuninDisplay(int input) {
 		YoyakukauninDisplayAction action = new YoyakukauninDisplayAction();
 		action.execute(input);
-	}
-	
-	public static void AkikekkaDisplay() {
-		AkikekkaDisplayAction action = new AkikekkaDisplayAction();
-		action.execute();
 	}
 	
 	
