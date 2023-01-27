@@ -246,7 +246,7 @@ public class KokyakuRegisterFrame extends JFrame implements ActionListener{
              int idlength = logId.length();
              String regex_AlphaNum = "^[A-Za-z0-9]+$" ; // 半角英数字のみ
              String kigo = ".*[-@+*;:#$%&0-9]+.*";
-             String kigo2 = ".*[-@+*;:#$%&]+.*";
+             String kigo2 = ".*['`~/|@+*;:#$%&]+.*";
              
              if(!(logId.equals("")) && !(logPass.equals("")) && !(fname.equals("")) && !(lname.equals("")) && !(lAddress.equals("")) && !(tel.equals(""))) {
             	 if(!((checkLogic(regex_AlphaNum, logId) == true) && idlength >= 3 && idlength <= 16)) {
