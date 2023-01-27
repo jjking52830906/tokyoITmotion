@@ -49,7 +49,7 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 
 	static int pass;
 	public YoyakuSearchFrame(int input) {
-		setTitle("【予約登録画面】");
+		setTitle("【予約登録】");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(250, 130, 850, 534);
 		contentPane = new JPanel();

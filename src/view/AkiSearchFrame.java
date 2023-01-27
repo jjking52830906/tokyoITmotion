@@ -42,7 +42,7 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 	private JButton Return;
 
 	public AkiSearchFrame() {
-		setTitle("【空き状況検索画面】");
+		setTitle("【空き状況検索】");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(250, 130, 828, 534);
 		contentPane = new JPanel();
