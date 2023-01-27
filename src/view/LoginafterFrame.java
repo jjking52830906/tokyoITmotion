@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -46,7 +47,7 @@ public class LoginafterFrame extends JFrame implements ActionListener{
 		btnLogout.setBackground(Color.WHITE); 
 		btnLogout.setBounds(616, 6, 117, 29);
 		contentPane.add(btnLogout);
-		getContentPane().add(btnLogout);
+		getContentPane().add(btnLogout); 
 		btnLogout.addActionListener(this);
 		
 		
@@ -71,6 +72,7 @@ public class LoginafterFrame extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource() == btnLogout) {
+			JOptionPane.showMessageDialog(this, "ログアウトしました。", "確認", JOptionPane.WARNING_MESSAGE);
 			setVisible(false);
 			Controller.mainMenuDisplay();
 			

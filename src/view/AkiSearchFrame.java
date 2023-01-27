@@ -161,7 +161,7 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 					return;
 				}
 			}else {
-				if(Integer.parseInt(month) == 2 && Integer.parseInt(day)>2){
+				if(Integer.parseInt(month) == 2 && Integer.parseInt(day)>28){
 					JOptionPane.showMessageDialog(this, "正しい日付を選択してください", "入力エラー", JOptionPane.WARNING_MESSAGE);
 					return;
 				}else if(Integer.parseInt(month) == 4 && Integer.parseInt(day)>30){
