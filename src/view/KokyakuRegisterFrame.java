@@ -104,7 +104,7 @@ public class KokyakuRegisterFrame extends JFrame implements ActionListener{
         String[] day = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
         cbDay = new JComboBox(day);
         cbDay.setBounds(313, 179, 56, 21);
-        getContentPane().add(cbDay);
+        getContentPane().add(cbDay); 
         cbDay.addActionListener(this);
         
         lblAddress = new JLabel("住所");
@@ -242,10 +242,11 @@ public class KokyakuRegisterFrame extends JFrame implements ActionListener{
                    radio = rbSex[i].getText();
                  }
              }
-             
              int passlength = logPass.length();
              int idlength = logId.length();
              String regex_AlphaNum = "^[A-Za-z0-9]+$" ; // 半角英数字のみ
+             String kigo = ".*[-@+*;:#$%&0-9]+.*";
+             String kigo2 = ".*[-@+*;:#$%&]+.*";
              
              if(!(logId.equals("")) && !(logPass.equals("")) && !(fname.equals("")) && !(lname.equals("")) && !(lAddress.equals("")) && !(tel.equals(""))) {
             	 if(!((checkLogic(regex_AlphaNum, logId) == true) && idlength >= 3 && idlength <= 16)) {
@@ -254,6 +255,12 @@ public class KokyakuRegisterFrame extends JFrame implements ActionListener{
                  }else if(!((checkLogic(regex_AlphaNum, logPass) == true) && passlength >= 6 && passlength <= 16)){
                      JOptionPane.showMessageDialog(this, "パスワードには半角英数字で6文字以上16文字以内で入力してください", "入力エラー", JOptionPane.WARNING_MESSAGE);
                      return;
+                 }else if (!(checkLogic(kigo, fname) == false && checkLogic(kigo, lname) == false)){
+                     JOptionPane.showMessageDialog(this, "氏名欄には記号を登録できません", "入力エラー", JOptionPane.WARNING_MESSAGE);
+                	 return;
+                 }else if (checkLogic(kigo2,lAddress) == true){
+                     JOptionPane.showMessageDialog(this, "住所欄に使用できない記号が含まれています", "入力エラー", JOptionPane.WARNING_MESSAGE);
+                	 return;
                  }
                  try {
                      Long.parseLong(tel);

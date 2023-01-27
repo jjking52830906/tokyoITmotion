@@ -41,6 +41,7 @@ public class LoginFrame extends JFrame implements ActionListener{
 	 * Create the frame.
 	 */
 	public LoginFrame() {
+		setTitle("【ログイン画面】");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(220, 50, 900, 650);
 		contentPane = new JPanel();
