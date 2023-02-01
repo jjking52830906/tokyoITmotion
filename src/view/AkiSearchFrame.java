@@ -152,7 +152,7 @@ public class AkiSearchFrame extends JFrame implements ActionListener{
 				bashoId = "3";
 			}else if(basho == "テニスコート") {
 				bashoId = "4";
-			}else if(basho == "プール") { 
+			}else if(basho == "プール") {    
 				bashoId = "5";
 			}
 			if(Integer.parseInt(year) % 400 == 0 || (Integer.parseInt(year) % 4 == 0 && Integer.parseInt(year) % 100 != 0)) {

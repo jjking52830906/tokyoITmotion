@@ -200,7 +200,7 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 				}else if(Integer.parseInt(month) == 11 && Integer.parseInt(day)>30){
 					JOptionPane.showMessageDialog(this, "正しい日付を選択してください", "入力エラー", JOptionPane.WARNING_MESSAGE);
 					return;
-				}
+				}   
 			}else {
 				if(Integer.parseInt(month) == 2 && Integer.parseInt(day)>28){
 					JOptionPane.showMessageDialog(this, "正しい日付を選択してください", "入力エラー", JOptionPane.WARNING_MESSAGE);
