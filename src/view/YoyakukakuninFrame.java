@@ -38,12 +38,12 @@ public class YoyakukakuninFrame extends JFrame implements ActionListener{
 		contentPane.add(Return);
 		getContentPane().add(Return);
 		Return.addActionListener(this);
- 
+
 
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(12, 15, 491, 327);
 		contentPane.add(scrollPane);
-		 
+
 
 		String[] columnNames = {"氏名", "年月日", "時刻", "施設名"}; 
 		tableModel = new DefaultTableModel(columnNames, 0);
@@ -69,7 +69,7 @@ public class YoyakukakuninFrame extends JFrame implements ActionListener{
 		scrollPane.setViewportView(table);
 
 		setVisible(true);
-		
+
 		pass = input;
 
 		try {
