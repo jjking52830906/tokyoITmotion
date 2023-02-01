@@ -258,7 +258,7 @@ public class KokyakuRegisterFrame extends JFrame implements ActionListener{
 				}else if (!(checkLogic(kigo, fname) == false && checkLogic(kigo, lname) == false)){
 					JOptionPane.showMessageDialog(this, "氏名欄には数字・記号を登録できません", "入力エラー", JOptionPane.WARNING_MESSAGE);
 					return;
-				}else if (!(fname.length() <10 && lname.length() <10)){
+				}else if (!(fname.length() <=10 && lname.length() <=10)){
 					JOptionPane.showMessageDialog(this, "性・名はそれぞれ10字以内で入力してください", "入力エラー", JOptionPane.WARNING_MESSAGE);
 					return;
 				}else if (checkLogic(kigo2,lAddress) == true){
