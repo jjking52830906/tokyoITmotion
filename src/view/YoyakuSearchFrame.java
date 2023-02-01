@@ -171,19 +171,8 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 			String day = (String)cbDay.getSelectedItem();
 			//日付合体
 			String strDate = year + "-" + month + "-" + day;
-			String basho = (String)cbInstitution.getSelectedItem();
-			String bashoId = "0";
-			if(basho == "体育館") {
-				bashoId = "1";
-			}else if(basho == "野球場") {
-				bashoId = "2";
-			}else if(basho == "サッカー場") {
-				bashoId = "3";
-			}else if(basho == "テニスコート") {
-				bashoId = "4";
-			}else if(basho == "プール") {
-				bashoId = "5";
-			}
+			String bashoName = (String)cbInstitution.getSelectedItem();
+			
 			if(Integer.parseInt(year) % 400 == 0 || (Integer.parseInt(year) % 4 == 0 && Integer.parseInt(year) % 100 != 0)) {
 				if(Integer.parseInt(month) == 2 && Integer.parseInt(day)>29){
 					JOptionPane.showMessageDialog(this, "正しい日付を選択してください", "入力エラー", JOptionPane.WARNING_MESSAGE);
@@ -220,8 +209,10 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 				}
 			}
 			try {
-
-				String[] data = {strDate, bashoId}; 
+				int bashoId = Controller.selectBashoId(bashoName);
+				String strBashoId = String.valueOf(bashoId);
+				
+				String[] data = {strDate, strBashoId}; 
 				Object[][] tableData = Controller.akiHyoji(data);
 
 				if(tableData.length > 0) {

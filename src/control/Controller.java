@@ -20,6 +20,7 @@ import action.YoyakuDisplayAction;
 import action.YoyakukakuninAction;
 import action.YoyakukauninDisplayAction;
 import action.idPassInputAction;
+import action.selectBashoIdAction;
 import model.Yoyaku;
 
 public class Controller {
@@ -120,5 +121,11 @@ public class Controller {
 	public static String IdSearch()throws Exception{
 		IdSearchAction action = new IdSearchAction();
 		return action.execute();  
+	}
+	
+	public static int selectBashoId(String bashoName)throws Exception{
+		selectBashoIdAction action = new selectBashoIdAction();
+		int bashoId = action.execute(bashoName);
+		return bashoId;
 	}
 }
