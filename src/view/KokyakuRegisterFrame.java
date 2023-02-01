@@ -256,12 +256,18 @@ public class KokyakuRegisterFrame extends JFrame implements ActionListener{
 					JOptionPane.showMessageDialog(this, "パスワードには半角英数字で6文字以上16文字以内で入力してください", "入力エラー", JOptionPane.WARNING_MESSAGE);
 					return;
 				}else if (!(checkLogic(kigo, fname) == false && checkLogic(kigo, lname) == false)){
-					JOptionPane.showMessageDialog(this, "氏名欄には記号を登録できません", "入力エラー", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(this, "氏名欄には数字・記号を登録できません", "入力エラー", JOptionPane.WARNING_MESSAGE);
+					return;
+				}else if (!(fname.length() <10 && lname.length() <10)){
+					JOptionPane.showMessageDialog(this, "性・名はそれぞれ10字以内で入力してください", "入力エラー", JOptionPane.WARNING_MESSAGE);
 					return;
 				}else if (checkLogic(kigo2,lAddress) == true){
 					JOptionPane.showMessageDialog(this, "住所欄に使用できない記号が含まれています", "入力エラー", JOptionPane.WARNING_MESSAGE);
 					return;
-				}
+		       }else if (lAddress.length() > 60){
+				JOptionPane.showMessageDialog(this, "市区町村以下欄は６０字以内で入力してください", "入力エラー", JOptionPane.WARNING_MESSAGE);
+				return;
+			}
 				try {
 					Long.parseLong(tel);
 				}catch(NumberFormatException n) {
@@ -288,7 +294,7 @@ public class KokyakuRegisterFrame extends JFrame implements ActionListener{
 						}
 						//次にログイン情報を登録処理
 						try {
-							String custId = Controller.IdSearch();
+							String custId = Controller.IdSearch(); 
 							int rel = Controller.loginRegister(logId, logPass,custId);
 							if(rel == 1) {
 								JOptionPane.showMessageDialog(this, "IDとパスワード登録に成功しました", "登録完了", JOptionPane.INFORMATION_MESSAGE);
