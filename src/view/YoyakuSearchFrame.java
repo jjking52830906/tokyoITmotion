@@ -240,52 +240,45 @@ public class YoyakuSearchFrame extends JFrame implements ActionListener{
 				e1.printStackTrace();
 			}
 		}else if(e.getSource() == register) {
-			int rowcount = tableModel.getRowCount();
-			Boolean[] bolean = new Boolean[rowcount];
-			ArrayList<Yoyaku> list = new ArrayList<Yoyaku>();
-			//listがなぜか反応してくれない
-			for(int j=0; j<rowcount; j++) {
-				bolean[j] = (Boolean) tableModel.getValueAt(j, 0);
-				if(bolean[j] == true) {
-					Date getDate = (Date) tableModel.getValueAt(j, 1);
-					int getHour = (int) tableModel.getValueAt(j, 2);
-					String getBashoName = (String) tableModel.getValueAt(j, 3);
-					int setBashoId = 0;
-					if(getBashoName == "体育館") {
-						setBashoId = 1;
-					}else if(getBashoName == "野球場") {
-						setBashoId = 2;
-					}else if(getBashoName == "サッカー場") {
-						setBashoId = 3;
-					}else if(getBashoName == "テニスコート") {
-						setBashoId = 4;
-					}else if(getBashoName == "プール") {
-						setBashoId = 5;
+			try {
+				int rowcount = tableModel.getRowCount();
+				Boolean[] bolean = new Boolean[rowcount];
+				ArrayList<Yoyaku> list = new ArrayList<Yoyaku>();
+				//listがなぜか反応してくれない
+				for(int j=0; j<rowcount; j++) {
+					bolean[j] = (Boolean) tableModel.getValueAt(j, 0);
+					if(bolean[j] == true) {
+						Date getDate = (Date) tableModel.getValueAt(j, 1);
+						int getHour = (int) tableModel.getValueAt(j, 2);
+						String getBashoName = (String) tableModel.getValueAt(j, 3);
+						int setBashoId= Controller.selectBashoId(getBashoName);
+						Yoyaku yoyaku = new Yoyaku(getDate, getHour, setBashoId);
+						list.add(yoyaku);
 					}
-					Yoyaku yoyaku = new Yoyaku(getDate, getHour, setBashoId);
-					list.add(yoyaku);
 				}
+
+				int listSize = list.size();
+
+				if(listSize != 0) {
+					try {
+						int in = Controller.registerYoyaku(list, pass);
+						if(in == 1) {
+							JOptionPane.showMessageDialog(this, "予約登録に成功しました", "登録完了", JOptionPane.INFORMATION_MESSAGE);
+
+							setVisible(false);
+							Controller. inputToLoginAfterFrame(pass);
+						}else {
+							JOptionPane.showMessageDialog(this, "予約登録に失敗しました", "登録失敗", JOptionPane.INFORMATION_MESSAGE);
+						}
+					}catch (Exception ex){
+						ErrorDialogUtility.systemErrorMessage(this, ex);
+					}
+				}else {
+					JOptionPane.showMessageDialog(this, "選択してください。", "【確認】", JOptionPane.INFORMATION_MESSAGE);
+				}
+			}catch (Exception ex) {
+				JOptionPane.showMessageDialog(this, "情報取得処理に失敗しました");
 			}
-
-			int listSize = list.size();
-
-			if(listSize != 0) {
-				try {
-					int in = Controller.registerYoyaku(list, pass);
-					if(in == 1) {
-						JOptionPane.showMessageDialog(this, "予約登録に成功しました", "登録完了", JOptionPane.INFORMATION_MESSAGE);
-
-						setVisible(false);
-						Controller. inputToLoginAfterFrame(pass);
-					}else {
-						JOptionPane.showMessageDialog(this, "予約登録に失敗しました", "登録失敗", JOptionPane.INFORMATION_MESSAGE);
-					}
-				}catch (Exception ex){
-					ErrorDialogUtility.systemErrorMessage(this, ex);
-				}
-			}else {
-				JOptionPane.showMessageDialog(this, "選択してください。", "【確認】", JOptionPane.INFORMATION_MESSAGE);
-			}	
 		}
 	}
 }
