@@ -20,7 +20,7 @@ public class LoginafterFrame extends JFrame implements ActionListener{
 	private JButton btnYoyakuToroku;
  
 	 static int pass;
-	public LoginafterFrame(  int input) {
+	public LoginafterFrame(  int input) { 
 		setTitle("【メインメニュー】");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(300, 50, 757, 674);
