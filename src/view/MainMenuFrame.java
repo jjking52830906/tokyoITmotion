@@ -44,7 +44,7 @@ public class MainMenuFrame extends JFrame implements ActionListener{
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setBackground(new Color(220, 20, 60));
 		lblNewLabel_1.setBounds(-563, -60, 2048, 1365);
-		lblNewLabel_1.setIcon(new ImageIcon(MainMenuFrame.class.getResource("/image/white_00032.jpg")));
+		lblNewLabel_1.setIcon(new ImageIcon(MainMenuFrame.class.getResource("/image/aaa.png")));
 		panel.add(lblNewLabel_1);
 		
 		Login = new JButton("ログイン");
