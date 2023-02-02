@@ -274,6 +274,41 @@ public class KokyakuRegisterFrame extends JFrame implements ActionListener{
 					JOptionPane.showMessageDialog(this, "電話番号には数字を入力してください", "入力値エラー", JOptionPane.WARNING_MESSAGE);
 					return;
 				}
+				if(Integer.parseInt(year) % 400 == 0 || (Integer.parseInt(year) % 4 == 0 && Integer.parseInt(year) % 100 != 0)) {
+					if(Integer.parseInt(month) == 2 && Integer.parseInt(day)>29){
+						JOptionPane.showMessageDialog(this, "正しい日付を選択してください", "入力エラー", JOptionPane.WARNING_MESSAGE);
+						return;
+					}else if(Integer.parseInt(month) == 4 && Integer.parseInt(day)>30){
+						JOptionPane.showMessageDialog(this, "正しい日付を選択してください", "入力エラー", JOptionPane.WARNING_MESSAGE);
+						return;
+					}else if(Integer.parseInt(month) == 6 && Integer.parseInt(day)>30){
+						JOptionPane.showMessageDialog(this, "正しい日付を選択してください", "入力エラー", JOptionPane.WARNING_MESSAGE);
+						return;
+					}else if(Integer.parseInt(month) == 9 && Integer.parseInt(day)>30){
+						JOptionPane.showMessageDialog(this, "正しい日付を選択してください", "入力エラー", JOptionPane.WARNING_MESSAGE);
+						return;
+					}else if(Integer.parseInt(month) == 11 && Integer.parseInt(day)>30){
+						JOptionPane.showMessageDialog(this, "正しい日付を選択してください", "入力エラー", JOptionPane.WARNING_MESSAGE);
+						return;
+					}
+				}else {
+					if(Integer.parseInt(month) == 2 && Integer.parseInt(day)>28){
+						JOptionPane.showMessageDialog(this, "正しい日付を選択してください", "入力エラー", JOptionPane.WARNING_MESSAGE);
+						return;
+					}else if(Integer.parseInt(month) == 4 && Integer.parseInt(day)>30){
+						JOptionPane.showMessageDialog(this, "正しい日付を選択してください", "入力エラー", JOptionPane.WARNING_MESSAGE);
+						return;
+					}else if(Integer.parseInt(month) == 6 && Integer.parseInt(day)>30){
+						JOptionPane.showMessageDialog(this, "正しい日付を選択してください", "入力エラー", JOptionPane.WARNING_MESSAGE);
+						return;
+					}else if(Integer.parseInt(month) == 9 && Integer.parseInt(day)>30){
+						JOptionPane.showMessageDialog(this, "正しい日付を選択してください", "入力エラー", JOptionPane.WARNING_MESSAGE);
+						return;
+					}else if(Integer.parseInt(month) == 11 && Integer.parseInt(day)>30){
+						JOptionPane.showMessageDialog(this, "正しい日付を選択してください", "入力エラー", JOptionPane.WARNING_MESSAGE);
+						return;
+					}
+				}
 
 				//custId一致処理
 				try {
