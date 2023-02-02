@@ -251,7 +251,7 @@ public class KokyakuRegisterFrame extends JFrame implements ActionListener{
 			if(!(logId.equals("")) && !(logPass.equals("")) && !(fname.equals("")) && !(lname.equals("")) && !(lAddress.equals("")) && !(tel.equals(""))) {
 				if(!((checkLogic(regex_AlphaNum, logId) == true) && idlength >= 3 && idlength <= 16)) {
 					JOptionPane.showMessageDialog(this, "ログインIDには半角英数字で3文字以上16文字以内で入力してください", "入力エラー", JOptionPane.WARNING_MESSAGE);
-					return;
+					return; 
 				}else if(!((checkLogic(regex_AlphaNum, logPass) == true) && passlength >= 6 && passlength <= 16)){
 					JOptionPane.showMessageDialog(this, "パスワードには半角英数字で6文字以上16文字以内で入力してください", "入力エラー", JOptionPane.WARNING_MESSAGE);
 					return;
